@@ -3,5 +3,8 @@ export type pwdType = {
   pwdNo: string;
   surname: string;
   name: string;
-  done: boolean;
+  middleName: string;
+  Purok: string;
+  sex: string;
+  typeOfDisability: string;
 };

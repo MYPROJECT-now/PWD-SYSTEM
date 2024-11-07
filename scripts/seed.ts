@@ -13,17 +13,29 @@ const FillDatabase = async () => {
             pwdNo: "001",
             surname: "Divinagracia",
             name: "Ian Red",
+            middleName: "Estrada",
+            Purok: "Purok 1",
+            sex: "Male",
+            typeOfDisability: "None" 
         },
         {
             pwdNo: "002",
             surname: "Curatchia",
             name: "Darius",
+            middleName: "Estrada",
+            Purok: "Purok 1",
+            sex: "Male",
+            typeOfDisability: "None", 
         },
 
         {
             pwdNo: "003",
             surname: "Recierdo",
             name: "angela",
+             middleName: "Estrada",
+            Purok: "Purok 3",
+            sex: "Female",
+            typeOfDisability: "None",  
         },
         
     ]);

@@ -13,28 +13,23 @@ const Todos: FC<Props> = ({ todos }) => {
   // State to manage the list of todo items
   const [todoItems, setTodoItems] = useState<pwdType[]>(todos);
 
-  // Function to create a new todo item
-  // const createTodo = (pwdNo: string, surname: string, name: string) => {
-  //   const id = (todoItems.at(-1)?.id || 0) + 1;
-  //   addTodo(id, pwdNo, surname, name);
-  //   setTodoItems((prev) => [...prev, { id: id, pwdNo, surname, name, done: false }]);
-  // };
+  // state for search
+  const [searchResults, setSearchResults] = useState<pwdType[]>([]);
+
+
+
 
   // Function to change the text of a todo item
-  const changeTodoText = (id: number, pwdNo: string, surname: string, name: string) => {
+  const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
+    sex: string,  typeOfDisability: string) => {
     setTodoItems((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name } : todo))
+      prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
+        sex, typeOfDisability, } : todo))
     );
-    editTodo(id, pwdNo, surname, name);
+    editTodo(id, pwdNo, surname, name, middlename, purok,
+      sex, typeOfDisability);
   };
 
-  // Function to toggle the "done" status of a todo item
-  // const toggleIsTodoDone = (id: number) => {
-  //   setTodoItems((prev) =>
-  //     prev.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
-  //   );
-  //   toggleTodo(id);
-  // };
 
   // Function to delete a todo item
   const deleteTodoItem = (id: number) => {
@@ -42,51 +37,130 @@ const Todos: FC<Props> = ({ todos }) => {
     deleteTodo(id);
   };
 
+
+  //filtering method
+  // Add a new state to store the selected Purok value
+const [selectedPurok, setSelectedPurok] = useState('');
+
+// search engine
+const [searchQuery, setSearchQuery] = useState('');
+
+// Filter the todoItems based on the selected Purok value
+const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPurok || selectedPurok === '');
+
   // Rendering the Todo List component
 
   return (
-    <main className="items-center px-5">
-        {/* Mapping through todoItems and rendering Todo component for each */}
-        <table className="w-full table-auto mt-8 gap-2  border-collapse">
-          <thead>
-            <tr>
-              <th className="border border-black">ID</th>
-              <th className="border border-black">PwdNo</th>
-              <th className="border border-black">Surname</th>
-              <th className="border border-black">Name</th>
-              {/* <th className="border border-black">Done</th> */}
-              <th className="border border-black">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {todoItems.map((todo) => (
-              <tr key={todo.id}>
-              <Todo    
-                todo={todo}
-                changeTodoText={changeTodoText}
-                // toggleIsTodoDone={toggleIsTodoDone}
-                deleteTodoItem={deleteTodoItem}
-              />
-              </tr>
-            ))}
+    <main className="px-[90px] mt-5">
+       {/* Add a search input field */}
+    <div className="flex gap-3">
+
+    <input
+      type="search"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Search PWD MEMBERS"
+      className="pl-2 border-gray-300 border-2 rounded-md py-2 w-[400px]"
+    />
+
+       {/* Mapping through todoItems and rendering Todo component for each */}
+       <select value={selectedPurok} onChange={(e) => setSelectedPurok(e.target.value)} 
+       className="border-gray-300 border-2 rounded-md py-2.5">
+        <option value="">Purok</option>
+          {["Purok 1", "Purok 2", "Purok 3", "Purok 4", "Purok 5", "Purok 6", "Purok 7"].map((purok) => (
+            <option key={purok} value={purok}>
+              {purok}
+            </option>
+          ))}
+        </select>
+
+<button
+  type="button"
+  onClick={() => {
+    // Filter the todoItems based on the search query
+    const filteredItems = todoItems.filter((todo) => {
+      const query = searchQuery.toLowerCase();
+      return (
+        todo.pwdNo.toLowerCase().includes(query) ||
+        todo.surname.toLowerCase().includes(query) ||
+        todo.name.toLowerCase().includes(query)
+      );
+    });
+    setSearchResults(filteredItems);
+  }}
+
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+>
+  Search
+</button>
+
+     
+
+        <button 
+         onClick={() => {
+          setSelectedPurok(''); 
+          setSearchQuery('');
+          setSearchResults([]);
+          }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">   
+          Clear Filter
+        </button>
+
+        </div>
+
+          <table className=" mt-3 border-collapse mx-auto w-fulll ">
+  <thead>
+    <tr>
+      <th className="border border-black px-2">PwdNo</th>
+      <th className="border border-black px-5">Surname</th>
+      <th className="border border-black px-6">Name</th>
+      <th className="border border-black px-3">Middlename</th>
+      <th className="border border-black px-3">Purok</th>
+      <th className="border border-black px-6">Sex</th>
+      <th className="border border-black px-[100px]">Type of Disability</th>
+
+      {/* <th className="border border-black">Done</th> */}
+      <th className="border border-black px-10">Actions</th>
+    </tr>
+  </thead>
+
+   {searchResults.length > 0 ? (
+  <tbody>
+    {/* Render the filtered items */}
+    {searchResults.map((todo) => (
+      <tr key={todo.id}>
+        <Todo
+          todo={todo}
+          changeTodoText={changeTodoText}
+          deleteTodoItem={deleteTodoItem}
+        />
+      </tr>
+    ))}
+  </tbody>
+) : (
+
+  <tbody>
+    {filteredTodoItems.map((todo) => (
+      <tr key={todo.id}>
+        <Todo    
+          todo={todo}
+          changeTodoText={changeTodoText}
+          deleteTodoItem={deleteTodoItem}
+      />
+      </tr>
+    ))}
             
-          </tbody>
+  </tbody>
+)}
         </table>
+
         <Add_page />
       {/* Adding Todo component for creating new todos */}
       {/* <AddTodo createTodo={createTodo} /> */}
     </main>
   );
 
- 
-
-
-
-
-
-
 };
-   // Rendering the Todo List component
 
 
 export default Todos;

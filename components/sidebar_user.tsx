@@ -40,43 +40,6 @@ export const Sidebar_user = ({ className }: Props) => {
                         href="/Masterlist"
                         iconSrc="/pdao.png" 
                     />
-
-                    <SidebarItem 
-                        label="Service Request" 
-                        href="/Service Request"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="Renewals" 
-                        href="/Renewals"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="ID Registration" 
-                        href="/ID Registration"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="Reports" 
-                        href="/Reports"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <hr />
-
-                    <SidebarItem 
-                        label="Settings" 
-                        href="/Settings"
-                        iconSrc="/pdao.png" 
-                    />
-                    <SidebarItem 
-                        label="Help" 
-                        href="/Help"
-                        iconSrc="/pdao.png" 
-                    />
                 </div>
 
             </div>

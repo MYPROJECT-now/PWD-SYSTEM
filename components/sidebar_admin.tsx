@@ -40,43 +40,6 @@ export const Sidebar_admin = ({ className }: Props) => {
                         href="/admin/masterlist"
                         iconSrc="/pdao.png" 
                     />
-
-                    <SidebarItem 
-                        label="Service Request" 
-                        href="/admin/ServiceRequest"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="Renewals" 
-                        href="/adminRenewals"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="ID Registration" 
-                        href="/admin/ID_Registration"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="Reports" 
-                        href="/admin/Reports"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <hr />
-
-                    <SidebarItem 
-                        label="Settings" 
-                        href="/admin/Settings"
-                        iconSrc="/pdao.png" 
-                    />
-                    <SidebarItem 
-                        label="Help" 
-                        href="/admin/Help"
-                        iconSrc="/pdao.png" 
-                    />
                 </div>
 
                 
