@@ -4,16 +4,6 @@ import { useAddModal } from "@/store/use-add-modal";
 import { addTodo } from "@/actions/todoAction";
 import { AddTodo } from "./addTodo";
 
-interface TodoItem {
-  id: number;
-  pwdNo: string;
-  surname: string;
-  name: string;
-  middleName: string;
-  Purok: string;
-  sex: string;
-  typeOfDisability: string;
-}
 
 export const Add_page = () => {
   const { open } = useAddModal();

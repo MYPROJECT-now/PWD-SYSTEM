@@ -5,8 +5,6 @@ import { Dashboard_header } from "@/components/header";
 import AdminClientComponent from "../admin_validate";
 import Todos from "@/components/todos";
 import { getData } from "@/actions/todoAction";
-import { useEffect, useState } from "react";
-import { pwdType } from "@/types/todoTypes";
 
 const Masterlistpage = async () => {
    const data = await getData();
