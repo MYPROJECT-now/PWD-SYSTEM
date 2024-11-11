@@ -5,7 +5,7 @@ import { ChangeEvent, FC, useState } from "react";
 interface Props {
   todo: pwdType;
   changeTodoText: (id: number, pwdNo: string, surname: string, name: string, middleName: string, 
-    Purok: string, sex: string,typeOfDisability: string, ) => void;
+    Purok: string, age: number, issueDate: string, expiryDate: string, typeOfDisability: string, ) => void;
   // toggleIsTodoDone: (id: number, done: boolean) => void;
   deleteTodoItem: (id: number) => void;
 }
@@ -25,7 +25,9 @@ const Todo: FC<Props> = ({
   const [name, setName] = useState(todo.name);
   const [middlename, setMiddlename] = useState(todo.middleName);
   const [purok, setPurok] = useState(todo.Purok);
-  const [sex, setSex] = useState(todo.sex);
+  const [age, setAge] = useState(todo.age);
+  const [issueDate, setIssueDate] = useState(todo.issueDate);
+  const [expiryDate, setExpiryDate] = useState(todo.expiryDate);
   const [typeOfDisability, setTypeOfDisability] = useState(todo.typeOfDisability);
 
 
@@ -49,8 +51,16 @@ const Todo: FC<Props> = ({
   const handlePurokChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPurok(e.target.value);
   };
-  const handleSexChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSex(e.target.value);
+  const handleAgeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAge(Number(e.target.value));
+  };
+
+  const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIssueDate(e.target.value);
+  };
+
+  const handleExpiryDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setExpiryDate(e.target.value);
   };
 
   const handleTypeOfDisabilityChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +75,7 @@ const Todo: FC<Props> = ({
 
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, sex, typeOfDisability);
+    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, issueDate, expiryDate, typeOfDisability);
     setEditing(false);
   };
 
@@ -77,7 +87,9 @@ const Todo: FC<Props> = ({
     setName(todo.name);
     setMiddlename(todo.middleName); 
     setPurok(todo.Purok);
-    setSex(todo.sex);
+    setAge(todo.age);
+    setIssueDate(todo.issueDate);
+    setExpiryDate(todo.expiryDate);
     setTypeOfDisability(todo.typeOfDisability);
   };
 
@@ -139,8 +151,28 @@ return (
     <td className="border border-black w-0">
       <input
         type="text"
-        value={sex}
-        onChange={handleSexChange}
+        value={age}
+        onChange={handleAgeChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+
+    <td className="border border-black w-0">
+      <input
+        type="text"
+        value={issueDate}
+        onChange={handleIssueDateChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+
+    <td className="border border-black w-0">
+      <input
+        type="text"
+        value={expiryDate}
+        onChange={handleExpiryDateChange}
         readOnly={!editing}
         className="w-full text-center"
       />

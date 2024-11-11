@@ -21,13 +21,13 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Function to change the text of a todo item
   const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
-    sex: string,  typeOfDisability: string) => {
+    age: number, issueDate: string, expiryDate: string,  typeOfDisability: string) => {
     setTodoItems((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
-        sex, typeOfDisability, } : todo))
+        age, issueDate, expiryDate, typeOfDisability, } : todo))
     );
     editTodo(id, pwdNo, surname, name, middlename, purok,
-      sex, typeOfDisability);
+      age, issueDate, expiryDate, typeOfDisability);
   };
 
 
@@ -51,7 +51,7 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
   // Rendering the Todo List component
 
   return (
-    <main className="px-[90px] mt-5">
+    <main className="px-[20px] mt-5">
        {/* Add a search input field */}
     <div className="flex gap-3">
 
@@ -108,7 +108,8 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
 
         </div>
 
-          <table className=" mt-3 border-collapse mx-auto w-fulll ">
+<div className="max-w-[1100px] overflow-x-auto">
+          <table className=" mt-3 border-collapse mx-auto w-full">
   <thead>
     <tr>
       <th className="border border-black px-2">PwdNo</th>
@@ -116,7 +117,9 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
       <th className="border border-black px-6">Name</th>
       <th className="border border-black px-3">Middlename</th>
       <th className="border border-black px-3">Purok</th>
-      <th className="border border-black px-6">Sex</th>
+      <th className="border border-black px-6">age</th>
+      <th className="border border-black px-6">issueDate</th>
+      <th className="border border-black px-6">expiryDate</th>
       <th className="border border-black px-[100px]">Type of Disability</th>
 
       {/* <th className="border border-black">Done</th> */}
@@ -153,6 +156,9 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
   </tbody>
 )}
         </table>
+
+        </div>
+
 
         <Add_page />
       {/* Adding Todo component for creating new todos */}

@@ -13,7 +13,7 @@ export const getData = () => {
 
 
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
-  sex: string, typeOfDisability: string) => {
+  age: number, issueDate: string, expiryDate: string, sex: string, typeOfDisability: string) => {
   try {
     await db.insert(pwdTable).values({
       pwdNo: pwdNo,
@@ -21,7 +21,9 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
       name: name,
       middleName: middleName,
       Purok: Purok,
-      sex: sex,
+      age: age,
+      issueDate: issueDate,
+      expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
     });
     revalidatePath("/admin/masterlist");
@@ -49,7 +51,7 @@ export const deleteTodo = async (id: number) => {
 
 
 export const editTodo = async (id: number, pwdNo: string, surname: string, name: string, middlename: string, 
-  purok: string, sex: string, typeOfDisability: string) => {
+  purok: string, age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => {
   await db
     .update(pwdTable)
     .set({
@@ -58,7 +60,9 @@ export const editTodo = async (id: number, pwdNo: string, surname: string, name:
       name: name,
       middleName: middlename,
       Purok: purok,
-      sex: sex,
+      age: age,
+      issueDate: issueDate,
+      expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
     })
     .where(eq(pwdTable.id, id));
@@ -80,18 +84,18 @@ export async function getTotalPwd() {
   return Number(totalPwds[0].total);
 }
 
-export async function getTotalPwdsBySex(sex: string): Promise<number> {
-  const totalPwds = await db
+export async function getAgeGroupDistribution() {
+  const ageGroups = await db
     .select({
-      total: sql`COUNT(*)`.as('total'),
+      children: sql`COUNT(*) FILTER (WHERE age BETWEEN 0 AND 12)`.as("children"),
+      teens: sql`COUNT(*) FILTER (WHERE age BETWEEN 13 AND 19)`.as("teens"),
+      adults: sql`COUNT(*) FILTER (WHERE age BETWEEN 20 AND 59)`.as("adults"),
+      elderly: sql`COUNT(*) FILTER (WHERE age BETWEEN 60 AND 100)`.as("elderly"),
     })
-    .from(pwdTable)
-    .where(eq(pwdTable.sex, sex));
-    revalidatePath(`/pwds/sex/${sex}`); // Revalidate the page for the specific sex
-  return Number(totalPwds[0].total);
+    .from(pwdTable);
+
+  return ageGroups[0];
 }
-
-
 
 // export const addTodo = async ( pwdNo: string, surname: string, name: string) => {
 //   await db.insert(pwdTable).values({

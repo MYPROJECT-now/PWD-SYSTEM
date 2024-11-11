@@ -15,7 +15,9 @@ const FillDatabase = async () => {
             name: "Ian Red",
             middleName: "Estrada",
             Purok: "Purok 1",
-            sex: "Male",
+            age: 20,
+            issueDate: "2022-10-10",
+            expiryDate: "2022-10-10",
             typeOfDisability: "None" 
         },
         {
@@ -24,7 +26,9 @@ const FillDatabase = async () => {
             name: "Darius",
             middleName: "Estrada",
             Purok: "Purok 1",
-            sex: "Male",
+            age: 20,
+            issueDate: "2022-10-10",
+            expiryDate: "2022-10-10",
             typeOfDisability: "None", 
         },
 
@@ -34,8 +38,22 @@ const FillDatabase = async () => {
             name: "angela",
              middleName: "Estrada",
             Purok: "Purok 3",
-            sex: "Female",
+            age: 20,
+            issueDate: "2022-10-10",
+            expiryDate: "2022-10-10",
             typeOfDisability: "None",  
+        },
+
+        {
+            pwdNo: "004",
+            surname: "Tarsona",
+            name: "Tristan",
+             middleName: "Pilliarka",
+            Purok: "Purok 6",
+            age: 20,
+            issueDate: "2022-10-10",
+            expiryDate: "2022-10-10",
+            typeOfDisability: "Blind",  
         },
         
     ]);

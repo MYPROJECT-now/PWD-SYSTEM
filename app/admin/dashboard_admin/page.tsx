@@ -2,21 +2,16 @@
 import { useState, useEffect } from 'react';
 import { Dashboard_header } from "@/components/header";
 import AdminClientComponent from "../admin_validate";
-import { getTotalPwd, getTotalPwdsBySex } from "@/actions/todoAction";
+import { getTotalPwd } from "@/actions/todoAction";
+import AgeDistributionChart from '@/components/analytics/ageChart';
 const AdminPage = async () => {
 
   const [totalPwds, setTotalPwds] = useState(0);
-  const [totalMale, setTotalMale] = useState(0);
-  const [totalFemale, setTotalFemale] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const totalPwds = await getTotalPwd();
-      const totalMale = await getTotalPwdsBySex('Male');
-      const totalFemale = await getTotalPwdsBySex('Female');
       setTotalPwds(totalPwds);
-      setTotalMale(totalMale);
-      setTotalFemale(totalFemale);
     };
     fetchData();
   }, []);
@@ -32,17 +27,9 @@ const AdminPage = async () => {
           {totalPwds} 
           </div>
         </div>
-        <div className="h-[100px] w-[170px] bg-white rounded-lg flex flex-col items-center justify-center">
-           <p>Total Male:</p> 
-          <div className="text-lg font-bold text-dash">
-            {totalMale} 
-          </div>
 
-          <p>Total Female:</p> 
-          <div className="text-lg font-bold text-dash">
-            {totalFemale} 
-          </div>
-        </div>
+        <AgeDistributionChart />
+  
 
       </div>
       </div>

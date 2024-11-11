@@ -25,7 +25,7 @@ export const Dashboard_header = () => {
         <div className="flex flex-row justify-between mx-9">
             <div className="flex flex-col">
                 <p className="text-dash font-bold text-xl">
-                    DASHBOARD
+                    PWD MANAGEMENT SYSTEM
                 </p>
                 <p className="text-neutral-500 font-bold text-xs">
                     {currentDate}
