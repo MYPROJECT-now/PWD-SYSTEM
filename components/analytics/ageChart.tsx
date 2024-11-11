@@ -37,7 +37,7 @@ const AgeDistributionChart = () => {
         <YAxis 
         label={{ value: "Number of PWDs", angle: -90, position: "insideLeft", textanchor: "center", dy:35, dx:10}} 
         style={{ fontSize: '10px' }} 
-        
+        ticks={[0, 5, 10, 15, 20,35,30,35,40,45,50]} 
         />
         <Tooltip />
         <Bar dataKey="count" fill="#8884d8" name="Count" />

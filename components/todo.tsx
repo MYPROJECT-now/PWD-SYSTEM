@@ -103,62 +103,7 @@ const Todo: FC<Props> = ({
 
 return (
   <>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={pwdNo}
-        onChange={handlePwdNoChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={surname}
-        onChange={handleSurnameChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={name}
-        onChange={handleNameChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={middlename}
-        onChange={handleMiddlenameChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={purok}
-        onChange={handlePurokChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-    <td className="border border-black w-0">
-      <input
-        type="text"
-        value={age}
-        onChange={handleAgeChange}
-        readOnly={!editing}
-        className="w-full text-center"
-      />
-    </td>
-
-    <td className="border border-black w-0">
+     <td className="border border-black w-auto">
       <input
         type="text"
         value={issueDate}
@@ -168,7 +113,63 @@ return (
       />
     </td>
 
-    <td className="border border-black w-0">
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={pwdNo}
+        onChange={handlePwdNoChange}
+        readOnly={!editing}
+        className="w-full text-center "
+      />
+    </td>
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={surname}
+        onChange={handleSurnameChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={name}
+        onChange={handleNameChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={middlename}
+        onChange={handleMiddlenameChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={purok}
+        onChange={handlePurokChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={age}
+        onChange={handleAgeChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+
+ 
+    <td className="border border-black w-auto">
       <input
         type="text"
         value={expiryDate}
@@ -178,7 +179,7 @@ return (
       />
     </td>
 
-    <td className="border border-black w-0">
+    <td className="border border-black w-auto">
       <input
         type="text"
         value={typeOfDisability}
@@ -193,14 +194,14 @@ return (
         {editing ? (
           <button
             onClick={handleSave}
-            className="bg-green-600 text-green-50 rounded px-2 w-14 py-1"
+            className="bg-green-600 text-green-50 hover:bg-green-700 hover:text-green-100 rounded px-2 w-14 py-1"
           >
             Save
           </button>
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-blue-400 text-blue-50 rounded w-14 px-2 py-1"
+            className="bg-blue-400 text-blue-50 hover:bg-blue-500 hover:text-blue-100  w-14 px-2 py-1"
           >
             Edit
           </button>
@@ -208,14 +209,14 @@ return (
         {editing ? (
           <button
             onClick={handleCancel}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
+            className="bg-red-400 w-16 text-red-50 hover:bg-red-500 hover:text-red-100 rounded px-2 py-1"
           >
             Close
           </button>
         ) : (
           <button
             onClick={handleDelete}
-            className="bg-red-400 w-16 text-red-50 rounded px-2 py-1"
+            className="bg-red-400 w-16 text-red-50 hover:bg-red-500 hover:text-red-100 rounded px-2 py-1"
           >
             Delete
           </button>

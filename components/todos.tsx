@@ -93,9 +93,6 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
 >
   Search
 </button>
-
-     
-
         <button 
          onClick={() => {
           setSelectedPurok(''); 
@@ -112,15 +109,15 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
           <table className=" mt-3 border-collapse mx-auto w-full">
   <thead>
     <tr>
-      <th className="border border-black px-2">PwdNo</th>
-      <th className="border border-black px-5">Surname</th>
-      <th className="border border-black px-6">Name</th>
-      <th className="border border-black px-3">Middlename</th>
-      <th className="border border-black px-3">Purok</th>
-      <th className="border border-black px-6">age</th>
-      <th className="border border-black px-6">issueDate</th>
-      <th className="border border-black px-6">expiryDate</th>
-      <th className="border border-black px-[100px]">Type of Disability</th>
+      <th className="border border-black px-1">IssuanceDate</th>
+      <th className="border border-black px-1">PwdNo</th>
+      <th className="border border-black px-1">Surname</th>
+      <th className="border border-black px-1">Name</th>
+      <th className="border border-black px-1">Middlename</th>
+      <th className="border border-black px-1">Address</th>
+      <th className="border border-black">Age</th>
+      <th className="border border-black px-1">ExpiryDate</th>
+      <th className="border border-black px-1">Type of Disability</th>
 
       {/* <th className="border border-black">Done</th> */}
       <th className="border border-black px-10">Actions</th>

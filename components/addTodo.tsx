@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import { useAddModal } from "@/store/use-add-modal";
 
+import moment from 'moment';
+
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
     age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => void;
@@ -79,6 +81,15 @@ interface Props {
   const handleAdd = async () => {
     if (!pwdNo || !surname || !name || !Purok || !age || !issueDate || !expiryDate || !typeOfDisability) {
       alert("Please fill in all fields");
+      return;
+    }
+
+    if (!moment(issueDate, 'YYYY-MM-DD', true).isValid() || !moment(expiryDate, 'YYYY-MM-DD', true).isValid()) {
+      alert('Invalid date format. Please use YYYY-MM-DD.');
+      return;
+    }
+    if (moment(expiryDate).isBefore(moment(issueDate))) {
+      alert('Expiry date cannot be before issue date.');
       return;
     }
     createTodo(pwdNo, surname, name, middleName, Purok, Number(age), issueDate, expiryDate, typeOfDisability);
@@ -192,7 +203,7 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="Sex">Age:</label>
+                  <label htmlFor="Age">Age:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
@@ -208,13 +219,13 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="Sex">IssueDate:</label>
+                  <label htmlFor="IssueDate">IssueDate:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="20/01/2023"
+                    placeholder="YYYY-MM-DD"
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
                     onChange={handleIssueDateChange}
                     value={issueDate}
@@ -230,7 +241,7 @@ interface Props {
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="2025-01-01"
+                    placeholder="YYYY-MM-DD"
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
                     onChange={handleExpiryDateChange}
                     value={expiryDate}
