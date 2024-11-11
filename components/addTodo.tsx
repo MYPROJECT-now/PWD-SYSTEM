@@ -14,7 +14,7 @@ import moment from 'moment';
 
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
-    age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => void;
+    age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => void;
 }
 
 
@@ -26,6 +26,7 @@ interface Props {
   const [middleName, setMiddleName] = useState("");
   const [Purok, setPurok] = useState("");
   const [age, setAge] = useState("");
+  const [contactNo, setContactNo] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [typeOfDisability, setTypeOfDisability] = useState("");
@@ -64,6 +65,10 @@ interface Props {
     setAge(e.target.value);
   };
 
+  const handleContactNoChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setContactNo(e.target.value);
+  };
+
   const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIssueDate(e.target.value);
   };
@@ -92,13 +97,24 @@ interface Props {
       alert('Expiry date cannot be before issue date.');
       return;
     }
-    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), issueDate, expiryDate, typeOfDisability);
+
+    if (age && (Number(age) < 1 || Number(age) > 59)) {
+      alert("Invalid age. Please enter a valid age.");
+      return;
+    }
+
+    if (contactNo && (contactNo.length !== 11 || contactNo.startsWith('09') !== true)) {
+      alert('Invalid contact number. Please enter a valid contact number.');
+      return;
+    }
+    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), contactNo, issueDate, expiryDate, typeOfDisability);
     setPwdNo("");
     setSurname("");
     setName("");
     setMiddleName("");
     setPurok("");
     setAge("");
+    setContactNo("");
     setIssueDate("");
     setExpiryDate("");
     setTypeOfDisability("");
@@ -114,6 +130,22 @@ interface Props {
             </DialogTitle>
             <DialogDescription className="text-center text-xl">
             <div className="w-full flex flex-col gap-0 mt-2">
+            <div className="flex flex-row gap-9">
+                <div className="w-[120px] text-black text-start  ">
+                  <label htmlFor="IssueDate">IssuanceDate:</label>
+                </div>
+
+                <div className="w-[320px] text-black">
+                  <input
+                    type="text"
+                    placeholder="YYYY-MM-DD"
+                    className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+                    onChange={handleIssueDateChange}
+                    value={issueDate}
+                  />
+                </div>
+              </div>
+              
               <div className="flex flex-row gap-9">
                 {/* Input field for entering new todo text */}
                 <div className="w-[120px] text-black  text-start ">
@@ -180,7 +212,7 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="Purok">Purok:</label>
+                  <label htmlFor="Address">Address:</label>
                 </div>
                 <div className="w-[320px] text-black">
                   <select
@@ -219,19 +251,21 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="IssueDate">IssueDate:</label>
+                  <label htmlFor="ContactNo">ContactNo:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="YYYY-MM-DD"
+                    placeholder="09123456789"
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
-                    onChange={handleIssueDateChange}
-                    value={issueDate}
+                    onChange={handleContactNoChange}
+                    value={contactNo}
                   />
                 </div>
               </div>
+
+             
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">

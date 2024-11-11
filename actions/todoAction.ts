@@ -13,7 +13,7 @@ export const getData = () => {
 
 
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
-  age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => {
+  age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => {
   try {
     await db.insert(pwdTable).values({
       pwdNo: pwdNo,
@@ -22,6 +22,7 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
       middleName: middleName,
       Purok: Purok,
       age: age,
+      contactNo: contactNo,
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
@@ -51,7 +52,7 @@ export const deleteTodo = async (id: number) => {
 
 
 export const editTodo = async (id: number, pwdNo: string, surname: string, name: string, middlename: string, 
-  purok: string, age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => {
+  purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => {
   await db
     .update(pwdTable)
     .set({
@@ -61,6 +62,7 @@ export const editTodo = async (id: number, pwdNo: string, surname: string, name:
       middleName: middlename,
       Purok: purok,
       age: age,
+      contactNo: contactNo,
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,

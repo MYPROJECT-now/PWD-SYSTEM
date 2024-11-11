@@ -5,7 +5,7 @@ import { ChangeEvent, FC, useState } from "react";
 interface Props {
   todo: pwdType;
   changeTodoText: (id: number, pwdNo: string, surname: string, name: string, middleName: string, 
-    Purok: string, age: number, issueDate: string, expiryDate: string, typeOfDisability: string, ) => void;
+    Purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, ) => void;
   // toggleIsTodoDone: (id: number, done: boolean) => void;
   deleteTodoItem: (id: number) => void;
 }
@@ -26,6 +26,7 @@ const Todo: FC<Props> = ({
   const [middlename, setMiddlename] = useState(todo.middleName);
   const [purok, setPurok] = useState(todo.Purok);
   const [age, setAge] = useState(todo.age);
+  const [contactNo, setContactNo] = useState(todo.contactNo);
   const [issueDate, setIssueDate] = useState(todo.issueDate);
   const [expiryDate, setExpiryDate] = useState(todo.expiryDate);
   const [typeOfDisability, setTypeOfDisability] = useState(todo.typeOfDisability);
@@ -55,6 +56,9 @@ const Todo: FC<Props> = ({
     setAge(Number(e.target.value));
   };
 
+  const handleContactNoChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setContactNo(e.target.value);
+  };
   const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIssueDate(e.target.value);
   };
@@ -75,7 +79,7 @@ const Todo: FC<Props> = ({
 
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, issueDate, expiryDate, typeOfDisability);
+    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, contactNo, issueDate, expiryDate, typeOfDisability);
     setEditing(false);
   };
 
@@ -88,6 +92,7 @@ const Todo: FC<Props> = ({
     setMiddlename(todo.middleName); 
     setPurok(todo.Purok);
     setAge(todo.age);
+    setContactNo(todo.contactNo);
     setIssueDate(todo.issueDate);
     setExpiryDate(todo.expiryDate);
     setTypeOfDisability(todo.typeOfDisability);
@@ -163,6 +168,16 @@ return (
         type="text"
         value={age}
         onChange={handleAgeChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={contactNo}
+        onChange={handleContactNoChange}
         readOnly={!editing}
         className="w-full text-center"
       />

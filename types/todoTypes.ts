@@ -6,6 +6,7 @@ export type pwdType = {
   middleName: string;
   Purok: string;
   age: number;
+  contactNo: string;
   issueDate: string;
   expiryDate: string;
   typeOfDisability: string;

@@ -21,13 +21,13 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Function to change the text of a todo item
   const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
-    age: number, issueDate: string, expiryDate: string,  typeOfDisability: string) => {
+    age: number, contactNo: string, issueDate: string, expiryDate: string,  typeOfDisability: string) => {
     setTodoItems((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
-        age, issueDate, expiryDate, typeOfDisability, } : todo))
+        age, contactNo, issueDate, expiryDate, typeOfDisability, } : todo))
     );
     editTodo(id, pwdNo, surname, name, middlename, purok,
-      age, issueDate, expiryDate, typeOfDisability);
+      age, contactNo, issueDate, expiryDate, typeOfDisability);
   };
 
 
@@ -116,6 +116,7 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
       <th className="border border-black px-1">Middlename</th>
       <th className="border border-black px-1">Address</th>
       <th className="border border-black">Age</th>
+      <th className="border border-black px-1">ContactNo</th>
       <th className="border border-black px-1">ExpiryDate</th>
       <th className="border border-black px-1">Type of Disability</th>
 
