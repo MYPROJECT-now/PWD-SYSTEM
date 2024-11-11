@@ -12,7 +12,7 @@ import { useAddModal } from "@/store/use-add-modal";
 
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
-    sex: string, typeOfDisability: string) => void;
+    age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => void;
 }
 
 
@@ -23,7 +23,9 @@ interface Props {
   const [name, setName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [Purok, setPurok] = useState("");
-  const [sex, setSex] = useState("");
+  const [age, setAge] = useState("");
+  const [issueDate, setIssueDate] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
   const [typeOfDisability, setTypeOfDisability] = useState("");
 
   const { isOpen, close } = useAddModal();
@@ -56,9 +58,18 @@ interface Props {
     setPurok(e.target.value);
   };
  
-  const handleSexChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSex(e.target.value);
+  const handleAgeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAge(e.target.value);
   };
+
+  const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIssueDate(e.target.value);
+  };
+
+  const handleExpiryDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setExpiryDate(e.target.value);
+  };
+
   const handleTypeOfDisabilityChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setTypeOfDisability(e.target.value);
   };
@@ -66,17 +77,19 @@ interface Props {
 
   // Event handler for adding a new todo
   const handleAdd = async () => {
-    if (!pwdNo || !surname || !name || !Purok || !sex || !typeOfDisability) {
+    if (!pwdNo || !surname || !name || !Purok || !age || !issueDate || !expiryDate || !typeOfDisability) {
       alert("Please fill in all fields");
       return;
     }
-    createTodo(pwdNo, surname, name, middleName, Purok, sex, typeOfDisability);
+    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), issueDate, expiryDate, typeOfDisability);
     setPwdNo("");
     setSurname("");
     setName("");
     setMiddleName("");
     setPurok("");
-    setSex("");
+    setAge("");
+    setIssueDate("");
+    setExpiryDate("");
     setTypeOfDisability("");
   };
 
@@ -179,16 +192,48 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="Sex">Sex:</label>
+                  <label htmlFor="Sex">Age:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="Female"
+                    placeholder="20"
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
-                    onChange={handleSexChange}
-                    value={sex}
+                    onChange={handleAgeChange}
+                    value={age}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-row gap-9">
+                <div className="w-[120px] text-black text-start  ">
+                  <label htmlFor="Sex">IssueDate:</label>
+                </div>
+
+                <div className="w-[320px] text-black">
+                  <input
+                    type="text"
+                    placeholder="20/01/2023"
+                    className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+                    onChange={handleIssueDateChange}
+                    value={issueDate}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-row gap-9">
+                <div className="w-[120px] text-black text-start  ">
+                  <label htmlFor="ExpiryDate">ExpiryDate:</label>
+                </div>
+
+                <div className="w-[320px] text-black">
+                  <input
+                    type="text"
+                    placeholder="2025-01-01"
+                    className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+                    onChange={handleExpiryDateChange}
+                    value={expiryDate}
                   />
                 </div>
               </div>

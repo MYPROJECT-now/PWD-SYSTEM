@@ -13,7 +13,7 @@ export const getData = () => {
 
 
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
-  age: number, issueDate: string, expiryDate: string, sex: string, typeOfDisability: string) => {
+  age: number, issueDate: string, expiryDate: string, typeOfDisability: string) => {
   try {
     await db.insert(pwdTable).values({
       pwdNo: pwdNo,
