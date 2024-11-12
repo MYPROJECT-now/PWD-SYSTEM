@@ -44,7 +44,7 @@ export const Header = () => {
                         height={80}
                     />
                     <p className="pl-2 font-sans font-semibold text-xl tracking-wide" >
-                        PDAO: Management System
+                        PWD Management System
                     </p>
                 </div>
 

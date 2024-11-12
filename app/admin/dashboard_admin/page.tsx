@@ -60,7 +60,7 @@ const AdminPage = async () => {
                       <p className='text-green-400 ml-5 text-3xl font-bold' >7</p>
                     </div>
                     <div className='flex flex-row items-center gap-2'>
-                    <p className='text-red-400 text-3xl font-bold' >Inctive:</p>
+                    <p className='text-red-400 text-3xl font-bold' >Inactive:</p>
                       <p className='text-red-400 ml-4 text-3xl font-bold' >0</p>
                     </div>
                     <div className='flex flex-row items-center gap-2'>

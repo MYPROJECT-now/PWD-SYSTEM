@@ -30,7 +30,7 @@ export const Sidebar_user = ({ className }: Props) => {
 
                 <div className="flex flex-col gap-3 ">
                     <SidebarItem 
-                        label="PRIVELAGES" 
+                        label="PRIVILEGES" 
                         href="/user"
                         iconSrc="/privelage.png" 
                     />

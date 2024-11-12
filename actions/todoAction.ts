@@ -100,25 +100,25 @@ export async function getAgeGroupDistribution() {
 }
 
 
+
 export async function getDisabilityDistribution() {
-  // Query the database to count the number of occurrences for each disability type
-  const distribution = await db
+  const disabilityGroups = await db
     .select({
-      deafHardOfHearing: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Deaf/Hard of Hearing')`.as('deafHardOfHearing'),
-      intellectualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Intelectual Disability')`.as('intellectualDisability'),
-      learningDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Learning Disability')`.as('learningDisability'),
-      mentalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Mental Disability')`.as('mentalDisability'),
-      orthopedicDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Orthopedic Disability')`.as('orthopedicDisability'),
-      physicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Physical Disability')`.as('physicalDisability'),
-      psychologicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Psychological Disability')`.as('psychologicalDisability'),
-      speechLanguageImpairment: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Speech and Language Impairment')`.as('speechLanguageImpairment'),
-      visualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Visual Disability')`.as('visualDisability'),
+      deafHardOfHearing: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Deaf/Hard of Hearing')`.as("deafHardOfHearing"),
+      intellectualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Intellectual Disability')`.as("intellectualDisability"),
+      learningDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Learning Disability')`.as("learningDisability"),
+      mentalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Mental Disability')`.as("mentalDisability"),
+      physicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Physical Disability')`.as("physicalDisability"),
+      psychologicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Psychological Disability')`.as("psychologicalDisability"),
+      speechAndLanguageImpairment: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Speech and Language Impairment')`.as("speechAndLanguageImpairment"),
+      visualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Visual Disability')`.as("visualDisability"),
+      cancer: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Cancer')`.as("cancer"),
+      rareDisease: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Rare Disease')`.as("rareDisease"),
     })
     .from(pwdTable);
 
-  return distribution[0]; // Return the first (and only) row
+  return disabilityGroups[0];
 }
-
 
 
 // export const addTodo = async ( pwdNo: string, surname: string, name: string) => {
