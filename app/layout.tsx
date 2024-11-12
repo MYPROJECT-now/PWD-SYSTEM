@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "PDAO: Management System",
-  description: "Management System for PDAO in Baranggay Parian",
+  title: "PWD MANAGEMENT SYSTEM",
+  description: "Management System for PDw in Baranggay Parian",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <head>
-      <link rel="icon" href="/pdao.png " />
+      <link rel="icon" href="/home.png " />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

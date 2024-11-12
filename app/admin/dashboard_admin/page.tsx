@@ -39,7 +39,7 @@ const AdminPage = async () => {
               </div>
               <div className='text-center'>
                 <p className='text-dash text-[40px] font-bold'>TOTAL PWD:</p> 
-                <div className="text-[40px] font-bold text-dash">
+                <div className="text-[80px] font-bold text-dash">
                 {totalPwds} 
                 </div>
               </div>

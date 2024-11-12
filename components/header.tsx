@@ -34,9 +34,9 @@ export const Dashboard_header = () => {
 
             <div className="flex flex-row gap-3 items-center">
                 <Image 
-                    src="/pdao.png"
-                    width={30}
-                    height={30}
+                    src="/home.png"
+                    width={50}
+                    height={50}
                     alt="logo"
                 />
 

@@ -38,10 +38,10 @@ export const Header = () => {
             <div className="lg:max-w-screen-2xl mx-auto flex items-center justify-between  h-full px-20">
                 <div className="flex items-center ">
                     <Image
-                        src= "/pdao.png"
+                        src= "/home.png"
                         alt="pdao logo"
-                        width= {70}
-                        height={70}
+                        width= {80}
+                        height={80}
                     />
                     <p className="pl-2 font-sans font-semibold text-xl tracking-wide" >
                         PDAO: Management System

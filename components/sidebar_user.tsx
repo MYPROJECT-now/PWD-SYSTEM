@@ -17,13 +17,13 @@ export const Sidebar_user = ({ className }: Props) => {
                 className
             )}
         >
-            <div className="gap-10 mx-auto flex flex-col items-center ">
-                <Link href="/dashboard_user">
+             <div className="gap-1 mx-auto flex flex-col items-center ">
+                <Link href="/learn">
                     <Image 
-                        src="/pdao.png" 
-                        width={100}
-                        height={100} 
-                        alt="PDAO icon"
+                        src="/home.png" 
+                        width={150}
+                        height={150} 
+                        alt="Dalawika icon"
                     />
                    
                 </Link>
@@ -32,24 +32,24 @@ export const Sidebar_user = ({ className }: Props) => {
                     <SidebarItem 
                         label="PRIVELAGES" 
                         href="/user"
-                        iconSrc="/pdao.png" 
+                        iconSrc="/privelage.png" 
                     />
                      <SidebarItem 
                         label="HEALTH SERVICES" 
                         href="/user/health_services"
-                        iconSrc="/pdao.png" 
+                        iconSrc="/health.png" 
                     />
 
                     <SidebarItem 
                         label="APPLICATION" 
                         href="/user/application"
-                        iconSrc="/pdao.png" 
+                        iconSrc="/application.png" 
                     />
 
                     <SidebarItem 
-                        label="ACHIVEMENTS" 
+                        label="ACHIEVEMENTS" 
                         href="/user/achievements"
-                        iconSrc="/pdao.png" 
+                        iconSrc="/achievement.png" 
                     />
 
                    
