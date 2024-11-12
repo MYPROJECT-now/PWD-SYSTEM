@@ -28,7 +28,7 @@ export const Header = () => {
                 router.push("/admin/dashboard_admin");
             } else {
                 // Redirect to user dashboard
-                router.push("/dashboard_user");
+                router.push("/user");
             }
         }
     }, [isSignedIn, isLoaded, user, router]);

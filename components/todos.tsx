@@ -125,21 +125,28 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
     </tr>
   </thead>
 
-   {searchResults.length > 0 ? (
-  <tbody>
-    {/* Render the filtered items */}
-    {searchResults.map((todo) => (
-      <tr key={todo.id}>
-        <Todo
-          todo={todo}
-          changeTodoText={changeTodoText}
-          deleteTodoItem={deleteTodoItem}
-        />
+  {searchQuery !== '' ? (
+  searchResults.length > 0 ? (
+    <tbody>
+      {/* Render the filtered items */}
+      {searchResults.map((todo) => (
+        <tr key={todo.id}>
+          <Todo
+            todo={todo}
+            changeTodoText={changeTodoText}
+            deleteTodoItem={deleteTodoItem}
+          />
+        </tr>
+      ))}
+    </tbody>
+  ) : (
+    <tbody>
+      <tr>
+        <td colSpan={11} className="text-center">Nothing found</td>
       </tr>
-    ))}
-  </tbody>
+    </tbody>
+  )
 ) : (
-
   <tbody>
     {filteredTodoItems.map((todo) => (
       <tr key={todo.id}>
@@ -150,7 +157,6 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
       />
       </tr>
     ))}
-            
   </tbody>
 )}
         </table>

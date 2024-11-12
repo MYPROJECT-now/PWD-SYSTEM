@@ -30,22 +30,30 @@ export const Sidebar_user = ({ className }: Props) => {
 
                 <div className="flex flex-col gap-3 ">
                     <SidebarItem 
-                        label="DASHBOARD" 
-                        href="/dashboard_user"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
-                        label="HEALTH SERVICES" 
-                        href="/dashboard_user/health_services"
-                        iconSrc="/pdao.png" 
-                    />
-
-                    <SidebarItem 
                         label="PRIVELAGES" 
-                        href="/dashboard_user/health_services"
+                        href="/user"
                         iconSrc="/pdao.png" 
                     />
+                     <SidebarItem 
+                        label="HEALTH SERVICES" 
+                        href="/user/health_services"
+                        iconSrc="/pdao.png" 
+                    />
+
+                    <SidebarItem 
+                        label="APPLICATION" 
+                        href="/user/application"
+                        iconSrc="/pdao.png" 
+                    />
+
+                    <SidebarItem 
+                        label="ACHIVEMENTS" 
+                        href="/user/achievements"
+                        iconSrc="/pdao.png" 
+                    />
+
+                   
+                   
                 </div>
 
             </div>
