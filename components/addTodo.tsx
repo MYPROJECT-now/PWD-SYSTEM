@@ -295,15 +295,15 @@ interface Props {
                     value={typeOfDisability}
                    >
                     <option className="text-gray-300" value="">Disability</option>
-                    <option value="Intellectual">Intellectual </option>
-                    <option value="Learning">Lerning</option>
-                    <option value="Mental">Mental</option>
-                    <option value="Physical">Physical</option>
-                    <option value="Psychological">Psychological</option>
-                    <option value="Speech">Speech</option>
-                    <option value="Visual">Visual</option>
-                    <option value="Cancer">Cancer</option>
-                    <option value="Rare Disease">Rare Disease</option>
+                    <option value="Deaf/Hard of Hearing">Deaf/Hard of Hearing </option>
+                    <option value="Intelectual Disability">Intelectual Disability</option>
+                    <option value="Learning Disability">Learning Disability</option>
+                    <option value="Mental Disability">Mental Disability</option>
+                    <option value="Orthopedic Disability">Orthopedic Disability</option>
+                    <option value="Physical Disability">Physical Disability</option>
+                    <option value="Psychological Disability">Psychological Disability</option>
+                    <option value="Speech and Language Impairment">Speech and Language Impairment</option>
+                    <option value="Visual Disability">Visual Disability</option>
                     {/* Add more options as needed */}
                   </select>
                 </div>

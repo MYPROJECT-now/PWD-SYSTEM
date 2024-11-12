@@ -99,6 +99,28 @@ export async function getAgeGroupDistribution() {
   return ageGroups[0];
 }
 
+
+export async function getDisabilityDistribution() {
+  // Query the database to count the number of occurrences for each disability type
+  const distribution = await db
+    .select({
+      deafHardOfHearing: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Deaf/Hard of Hearing')`.as('deafHardOfHearing'),
+      intellectualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Intelectual Disability')`.as('intellectualDisability'),
+      learningDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Learning Disability')`.as('learningDisability'),
+      mentalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Mental Disability')`.as('mentalDisability'),
+      orthopedicDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Orthopedic Disability')`.as('orthopedicDisability'),
+      physicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Physical Disability')`.as('physicalDisability'),
+      psychologicalDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Psychological Disability')`.as('psychologicalDisability'),
+      speechLanguageImpairment: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Speech and Language Impairment')`.as('speechLanguageImpairment'),
+      visualDisability: sql`COUNT(*) FILTER (WHERE type_of_disability = 'Visual Disability')`.as('visualDisability'),
+    })
+    .from(pwdTable);
+
+  return distribution[0]; // Return the first (and only) row
+}
+
+
+
 // export const addTodo = async ( pwdNo: string, surname: string, name: string) => {
 //   await db.insert(pwdTable).values({
 //     pwdNo: pwdNo,

@@ -105,20 +105,20 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
 
         </div>
 
-<div className="max-w-[1100px] overflow-x-auto">
-          <table className=" mt-3 border-collapse mx-auto w-full">
+<div className="max-w-[1100px] overflow-auto">
+          <table className=" mt-3 border-collapse mx-auto ">
   <thead>
     <tr>
-      <th className="border border-black px-1">IssuanceDate</th>
-      <th className="border border-black px-1">PwdNo</th>
-      <th className="border border-black px-1">Surname</th>
-      <th className="border border-black px-1">Name</th>
-      <th className="border border-black px-1">Middlename</th>
-      <th className="border border-black px-1">Address</th>
-      <th className="border border-black">Age</th>
-      <th className="border border-black px-1">ContactNo</th>
+      <th className="border border-black px-1 min-w-[10px] ">IssuanceDate</th>
+      <th className="border border-black px-1 min-w-[10px]">PwdNo</th>
+      <th className="border border-black px-1 min-w-[130px]">Surname</th>
+      <th className="border border-black px-1 min-w-[130px]">Name</th>
+      <th className="border border-black px-1 min-w-[130px]">Middlename</th>
+      <th className="border border-black px-1 min-w-[10px]">Address</th>
+      <th className="border border-black px-1 min-w-[20px]">Age</th>
+      <th className="border border-black px-1 min-w-[130px]">ContactNo</th>
       <th className="border border-black px-1">ExpiryDate</th>
-      <th className="border border-black px-1">Type of Disability</th>
+      <th className="border border-black px-1 min-w-[250px]">Type of Disability</th>
 
       {/* <th className="border border-black">Done</th> */}
       <th className="border border-black px-10">Actions</th>

@@ -19,7 +19,7 @@ const FillDatabase = async () => {
             contactNo: "09123456789",
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
-            typeOfDisability: "None" 
+            typeOfDisability: "Mental Disability" 
         },
         {
             pwdNo: "002",
@@ -31,7 +31,7 @@ const FillDatabase = async () => {
             contactNo: "09123456789",
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
-            typeOfDisability: "None", 
+            typeOfDisability: "Mental Disability", 
         },
 
         {
@@ -44,7 +44,7 @@ const FillDatabase = async () => {
             contactNo: "09123456789",
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
-            typeOfDisability: "None",  
+            typeOfDisability: "Mental Disability",  
         },
 
         {
@@ -57,7 +57,7 @@ const FillDatabase = async () => {
             contactNo: "09123456789",
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
-            typeOfDisability: "Blind",  
+            typeOfDisability: "Speech and Language Impairment",  
         },
         
     ]);
