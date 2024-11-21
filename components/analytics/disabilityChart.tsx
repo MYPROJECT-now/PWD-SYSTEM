@@ -1,117 +1,118 @@
-import React, { useEffect, useState } from "react";
-import { Pie } from "react-chartjs-2";
-import { getDisabilityDistribution } from "@/actions/todoAction";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from "chart.js";
+// import React, { useEffect, useState } from "react";
+// import { Pie } from "react-chartjs-2";
+// import { getDisabilityDistribution } from "@/actions/todoAction";
+// import {
+//   Chart as ChartJS,
+//   ArcElement,
+//   Tooltip,
+//   Legend,
+// } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-const DisabilityPieChart = () => {
-  const [chartData, setChartData] = useState({
-    labels: [] as string[],
-    datasets: [] as any[],
-  });
 
-  const [chartOptions, setChartOptions] = useState({});
+// const DisabilityPieChart = () => {
+//   const [chartData, setChartData] = useState({
+//     labels: [] as string[],
+//     datasets: [] as any[],
+//   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const disabilityData = await getDisabilityDistribution();
-      const data = [
-        { name: "Deaf/Hard of Hearing", value: disabilityData.deafHardOfHearing as number },
-        { name: "Intellectual Disability", value: disabilityData.intellectualDisability as number },
-        { name: "Learning Disability", value: disabilityData.learningDisability as number },
-        { name: "Mental Disability", value: disabilityData.mentalDisability as number },
-        { name: "Physical Disability", value: disabilityData.physicalDisability as number },
-        { name: "Psychological Disability", value: disabilityData.psychologicalDisability as number },
-        { name: "Speech and Language Impairment", value: disabilityData.speechAndLanguageImpairment as number },
-        { name: "Visual Disability", value: disabilityData.visualDisability as number },
-        { name: "Cancer", value: disabilityData.cancer as number },
-        { name: "Rare Disease", value: disabilityData.rareDisease as number },
-      ];
+//   const [chartOptions, setChartOptions] = useState({});
 
-      setChartData({
-        labels: data.map((d) => d.name),
-        datasets: [
-          {
-            label: "Disability Distribution",
-            data: data.map((d) => d.value),
-            backgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56",
-              "#4BC0C0",
-              "#9966FF",
-              "#FF9F40",
-              "#C9CBCF",
-              "#8E44AD",
-              "#E67E22",
-              "#3498DB",
-            ],
-            hoverOffset: 4,
-          },
-        ],
-      });
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const disabilityData = await getDisabilityDistribution();
+//       const data = [
+//         { name: "Deaf/Hard of Hearing", value: disabilityData.deafHardOfHearing as number },
+//         { name: "Intellectual Disability", value: disabilityData.intellectualDisability as number },
+//         { name: "Learning Disability", value: disabilityData.learningDisability as number },
+//         { name: "Mental Disability", value: disabilityData.mentalDisability as number },
+//         { name: "Physical Disability", value: disabilityData.physicalDisability as number },
+//         { name: "Psychological Disability", value: disabilityData.psychologicalDisability as number },
+//         { name: "Speech and Language Impairment", value: disabilityData.speechAndLanguageImpairment as number },
+//         { name: "Visual Disability", value: disabilityData.visualDisability as number },
+//         { name: "Cancer", value: disabilityData.cancer as number },
+//         { name: "Rare Disease", value: disabilityData.rareDisease as number },
+//       ];
 
-      setChartOptions({
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "right",
-            labels: {
-              boxWidth: 10,
-              boxHeight: 10,
-              font: {
-                size: 12,
-                family: "Arial, sans-serif",
-              },
-              padding: 10,
-            },
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context: any) {
-                const value = context.raw || 0;
-                return `${context.label}: ${value}`;
-              },
-            },
-          },
-          datalabels: {
-            color: "#fff",
-            font: {
-              size: 12,
-              weight: "bold",
-            },
-            formatter: (value: number) => value, // Display values inside the pie
-          },
-        },
-      });
-    };
+//       setChartData({
+//         labels: data.map((d) => d.name),
+//         datasets: [
+//           {
+//             label: "Disability Distribution",
+//             data: data.map((d) => d.value),
+//             backgroundColor: [
+//               "#FF6384",
+//               "#36A2EB",
+//               "#FFCE56",
+//               "#4BC0C0",
+//               "#9966FF",
+//               "#FF9F40",
+//               "#C9CBCF",
+//               "#8E44AD",
+//               "#E67E22",
+//               "#3498DB",
+//             ],
+//             hoverOffset: 4,
+//           },
+//         ],
+//       });
 
-    fetchData();
-  }, []);
+//       setChartOptions({
+//         responsive: true,
+//         plugins: {
+//           legend: {
+//             position: "right",
+//             labels: {
+//               boxWidth: 10,
+//               boxHeight: 10,
+//               font: {
+//                 size: 12,
+//                 family: "Arial, sans-serif",
+//               },
+//               padding: 10,
+//             },
+//           },
+//           tooltip: {
+//             callbacks: {
+//               label: function (context: any) {
+//                 const value = context.raw || 0;
+//                 return `${context.label}: ${value}`;
+//               },
+//             },
+//           },
+//           datalabels: {
+//             color: "#fff",
+//             font: {
+//               size: 12,
+//               weight: "bold",
+//             },
+//             formatter: (value: number) => value, // Display values inside the pie
+//           },
+//         },
+//       });
+//     };
 
-  return (
-    <div
-      className="flex justify-center items-center bg-white p-6 rounded-lg shadow-md w-full max-w-lg"
-      style={{ height: "350px" }} // Limit height to 500px
-    >
-      <div>
-        <h2 className="text-center text-lg font-semibold">
-          Disability Distribution of PWDs
-        </h2>
-        <Pie data={chartData} options={chartOptions} />
-      </div>
-    </div>
-  );
-};
+//     fetchData();
+//   }, []);
 
-export default DisabilityPieChart;
+//   return (
+//     <div
+//       className="flex justify-center items-center bg-white p-6 rounded-lg shadow-md w-full max-w-lg"
+//       style={{ height: "350px" }} // Limit height to 500px
+//     >
+//       <div>
+//         <h2 className="text-center text-lg font-semibold">
+//           Disability Distribution of PWDs
+//         </h2>
+//         <Pie data={chartData} options={chartOptions} />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DisabilityPieChart;
 
 
 
@@ -236,3 +237,126 @@ export default DisabilityPieChart;
 // };
 
 // export default DisabilityPieChart;
+
+import React, { useEffect, useState } from "react";
+import { Pie } from "react-chartjs-2";
+import { getDisabilityDistribution } from "@/actions/todoAction";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  ChartOptions,
+  TooltipItem,
+} from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+interface ChartData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+    hoverOffset: number;
+  }[];
+}
+
+const DisabilityPieChart = () => {
+  const [chartData, setChartData] = useState<ChartData>({
+    labels: [],
+    datasets: [
+      {
+        label: "",
+        data: [],
+        backgroundColor: [],
+        hoverOffset: 0,
+      },
+    ],
+  });
+
+  const [chartOptions] = useState<ChartOptions<"pie">>({
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "right",
+        labels: {
+          boxWidth: 10,
+          boxHeight: 10,
+          font: {
+            size: 12,
+            family: "Arial, sans-serif",
+          },
+          padding: 10,
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context: TooltipItem<"pie">) {
+            const value = context.raw || 0;
+            return `${context.label}: ${value}`;
+          },
+        },
+      },
+    },
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const disabilityData = await getDisabilityDistribution();
+      const data = [
+        { name: "Deaf/Hard of Hearing", value: disabilityData.deafHardOfHearing as number },
+        { name: "Intellectual Disability", value: disabilityData.intellectualDisability as number },
+        { name: "Learning Disability", value: disabilityData.learningDisability as number },
+        { name: "Mental Disability", value: disabilityData.mentalDisability as number },
+        { name: "Physical Disability", value: disabilityData.physicalDisability as number },
+        { name: "Psychological Disability", value: disabilityData.psychologicalDisability as number },
+        { name: "Speech and Language Impairment", value: disabilityData.speechAndLanguageImpairment as number },
+        { name: "Visual Disability", value: disabilityData.visualDisability as number },
+        { name: "Cancer", value: disabilityData.cancer as number },
+        { name: "Rare Disease", value: disabilityData.rareDisease as number },
+      ];
+
+      setChartData({
+        labels: data.map((d) => d.name),
+        datasets: [
+          {
+            label: "Disability Distribution",
+            data: data.map((d) => d.value),
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56",
+              "#4BC0C0",
+              "#9966FF",
+              "#FF9F40",
+              "#C9CBCF",
+              "#8E44AD",
+              "#E67E22",
+              "#3498DB",
+            ],
+            hoverOffset: 4,
+          },
+        ],
+      });
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div
+      className="flex justify-center items-center bg-white p-6 rounded-lg shadow-md w-full max-w-lg"
+      style={{ height: "350px" }} // Limit height to 500px
+    >
+      <div>
+        <h2 className="text-center text-lg font-semibold">
+          Disability Distribution of PWDs
+        </h2>
+        <Pie data={chartData} options={chartOptions} />
+      </div>
+    </div>
+  );
+};
+
+export default DisabilityPieChart;

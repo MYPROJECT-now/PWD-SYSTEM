@@ -89,7 +89,7 @@ export default function CreateUserForm() {
         setMessage(`Error: ${data.error}`);
       }
     } catch (error) {
-      setMessage('An unexpected error occurred.');
+      setMessage(`An unexpected ${error} occurred.`);
     }
   };
 
