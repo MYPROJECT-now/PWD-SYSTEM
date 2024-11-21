@@ -51,7 +51,7 @@ const AdminPage = async () => {
           <div className="mx-4 mt-4 flex flex-col gap-5">
             <DisabilityDistributionChart />
 
-            <div className="w-[500px] h-[270px] bg-white rounded-lg flex flex-col">
+            <div className="w-[500px] h-[220px] bg-white rounded-lg flex flex-col">
               <p className='text-center text-dash text-[40px] font-bold mb-5'>Status</p>
               <div className='flex flex-row justify-around'>   
                 <div className='flex flex-col'>

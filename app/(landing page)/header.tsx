@@ -24,10 +24,8 @@ export const Header = () => {
         if (isSignedIn && isLoaded) {
             // Assuming you have 'role' stored in publicMetadata of the user
             if (user?.publicMetadata?.role === 'admin') {
-                // Redirect to admin dashboard
                 router.push("/admin/dashboard_admin");
             } else {
-                // Redirect to user dashboard
                 router.push("/user");
             }
         }

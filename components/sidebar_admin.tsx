@@ -23,7 +23,7 @@ export const Sidebar_admin = ({ className }: Props) => {
                         src="/home.png" 
                         width={150}
                         height={150} 
-                        alt="Dalawika icon"
+                        alt="PWD Icon"
                     />
                    
                 </Link>
@@ -38,6 +38,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <SidebarItem 
                         label="PWD Masterlist" 
                         href="/admin/masterlist"
+                        iconSrc="/masterlist.png" 
+                    />
+
+                    <SidebarItem 
+                        label="Create User" 
+                        href="/admin/create"
                         iconSrc="/masterlist.png" 
                     />
                 </div>
