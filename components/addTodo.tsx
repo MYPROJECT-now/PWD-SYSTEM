@@ -14,7 +14,7 @@ import moment from 'moment';
 
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
-    age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => void;
+    age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => void;
 }
 
 
@@ -30,6 +30,7 @@ interface Props {
   const [issueDate, setIssueDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [typeOfDisability, setTypeOfDisability] = useState("");
+  const [status, setStatus] = useState("Active");
 
   const { isOpen, close } = useAddModal();
 
@@ -107,7 +108,7 @@ interface Props {
       alert('Invalid contact number. Please enter a valid contact number.');
       return;
     }
-    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), contactNo, issueDate, expiryDate, typeOfDisability);
+    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), contactNo, issueDate, expiryDate, typeOfDisability, status);
     setPwdNo("");
     setSurname("");
     setName("");
@@ -118,6 +119,7 @@ interface Props {
     setIssueDate("");
     setExpiryDate("");
     setTypeOfDisability("");
+    setStatus("Active");
   };
 
   // Rendering the AddTodo component
@@ -309,6 +311,7 @@ interface Props {
                 </div>
               </div>
 
+
                 {/* Button for adding a new todo */}
               <div className="flex justify-center mt-4">
                 <button
@@ -318,9 +321,6 @@ interface Props {
                   Add
                 </button>
               </div>
-
-
-
               </div>
             </DialogDescription>
         </DialogHeader>

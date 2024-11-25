@@ -10,4 +10,5 @@ export type pwdType = {
   issueDate: string;
   expiryDate: string;
   typeOfDisability: string;
+  status: string;
 };

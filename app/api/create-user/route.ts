@@ -1,44 +1,13 @@
-// import { clerkClient } from '@clerk/nextjs/server';
-// import { NextResponse } from 'next/server';
-
-// export async function POST(request: Request) {
-//   try {
-//     const { pwdNo, password } = await request.json();
-
-//     if (!pwdNo || !password) {
-//       return NextResponse.json(
-//         { error: 'PWD No. and password are required' },
-//         { status: 400 }
-//       );
-//     }
-
-//     // Create the user in Clerk using the provided password
-//     const user = await clerkClient.users.createUser({
-//       username: pwdNo,
-//       password: password,
-//     });
-
-//     return NextResponse.json({ message: 'User created', user });
-//   } catch (error) {
-//     console.error(error);
-//     return NextResponse.json(
-//       { error: 'Error creating user' },
-//       { status: 500 }
-//     );
-//   }
-// }
-
-
-
 import { db } from '@/db/drizzle';
-import { clerkUserTable } from '@/db/schema';
+import { clerkUserTable, pwdTable } from '@/db/schema';
 import { clerkClient } from '@clerk/nextjs/server';
+import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 // Random password generator
 function generateRandomPassword(length = 12) {
-  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*+";
   return Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('');
 }
 
@@ -78,6 +47,34 @@ export async function POST(request: Request) {
       );
     }
 
+       // Check if pwdNo exists in pwdTable
+       const pwdNoExistsInPwdTable = await db.select().from(pwdTable).where(eq(pwdTable.pwdNo, pwdNo));
+       if (!pwdNoExistsInPwdTable.length) {
+         return NextResponse.json(
+           { error: 'PWD number does not exist in the database' },
+           { status: 400 }
+         );
+       }
+
+         // Check if pwdNo exists in clerkUserTable
+    const pwdNoExistsInClerkUserTable = await db.select().from(clerkUserTable).where(eq(clerkUserTable.pwdNo, pwdNo));
+    if (pwdNoExistsInClerkUserTable.length) {
+      return NextResponse.json(
+        { error: 'PWD user already has an account' },
+        { status: 400 }
+      );
+    }
+
+   // Check if email exists in Clerk
+   const emailExistsInClerk = await clerkClient.users.getUserList({ emailAddress: email });
+   if (emailExistsInClerk.data.length > 0){
+     return NextResponse.json(
+       { error: 'Email is already in use' },
+       { status: 400 }
+     );
+   }
+
+
     // Generate a random password
     const randomPassword = generateRandomPassword();
 
@@ -86,7 +83,9 @@ export async function POST(request: Request) {
       username: `pwd-${pwdNo}`,
       password: randomPassword,
       emailAddress: [email],
-      publicMetadata: { pwdNo }, // Store the PWD No. in public metadata
+      publicMetadata: { 
+        pwdNo, // Store the PWD No. in public metadata
+        needsPasswordChange: true }, // sets the user as needing a password change
     });
 
       // Insert into the linking table to link Clerk user to pwdNo

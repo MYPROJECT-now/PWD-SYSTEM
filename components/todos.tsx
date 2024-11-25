@@ -21,13 +21,13 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Function to change the text of a todo item
   const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
-    age: number, contactNo: string, issueDate: string, expiryDate: string,  typeOfDisability: string) => {
+    age: number, contactNo: string, issueDate: string, expiryDate: string,  typeOfDisability: string, status: string) => {
     setTodoItems((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
-        age, contactNo, issueDate, expiryDate, typeOfDisability, } : todo))
+        age, contactNo, issueDate, expiryDate, typeOfDisability, status } : todo))
     );
     editTodo(id, pwdNo, surname, name, middlename, purok,
-      age, contactNo, issueDate, expiryDate, typeOfDisability);
+      age, contactNo, issueDate, expiryDate, typeOfDisability, status);
   };
 
 
@@ -118,7 +118,8 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
       <th className="border border-black px-1 min-w-[20px]">Age</th>
       <th className="border border-black px-1 min-w-[130px]">ContactNo</th>
       <th className="border border-black px-1">ExpiryDate</th>
-      <th className="border border-black px-1 min-w-[250px]">Type of Disability</th>
+      <th className="border border-black px-1 min-w-[255px]">Type of Disability</th>
+      <th className="border border-black px-4">Status</th>
 
       {/* <th className="border border-black">Done</th> */}
       <th className="border border-black px-10">Actions</th>

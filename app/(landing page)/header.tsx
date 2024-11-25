@@ -18,15 +18,21 @@ import { useRouter } from "next/navigation";
 export const Header = () => {
     const { user, isSignedIn, isLoaded } = useUser(); 
     const router = useRouter();
-
+    
     useEffect(() => {
         // Check if the user is signed in and user data is loaded
         if (isSignedIn && isLoaded) {
             // Assuming you have 'role' stored in publicMetadata of the user
-            if (user?.publicMetadata?.role === 'admin') {
-                router.push("/admin/dashboard_admin");
-            } else {
-                router.push("/user");
+            const needsPasswordChange = user?.publicMetadata?.needsPasswordChange;
+            if (needsPasswordChange) {
+                router.push("/reset");
+            }
+            else {
+                if (user?.publicMetadata?.role === 'admin') {
+                    router.push("/admin/dashboard_admin");
+                } else {
+                    router.push("/user");
+                }
             }
         }
     }, [isSignedIn, isLoaded, user, router]);

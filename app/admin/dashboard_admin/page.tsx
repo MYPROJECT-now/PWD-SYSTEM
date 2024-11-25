@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Dashboard_header } from "@/components/header";
 import AdminClientComponent from "../admin_validate";
-import { getTotalPwd } from "@/actions/todoAction";
+import { getTotalPwd, getStatusDistribution  } from "@/actions/todoAction";
 import AgeDistributionChart from '@/components/analytics/ageChart';
 import DisabilityDistributionChart from '@/components/analytics/disabilityChart';
 import Image from 'next/image';
@@ -10,11 +10,19 @@ import Image from 'next/image';
 const AdminPage = async () => {
 
   const [totalPwds, setTotalPwds] = useState(0);
+  const [statusDistribution, setStatusDistribution] = useState({
+    active: 0,
+    inactive: 0,
+    deceased: 0,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       const totalPwds = await getTotalPwd();
       setTotalPwds(totalPwds);
+
+      const statusDistribution = await getStatusDistribution() as { active: number; inactive: number; deceased: number };
+      setStatusDistribution(statusDistribution);
     };
     fetchData();
   }, []);
@@ -57,15 +65,15 @@ const AdminPage = async () => {
                 <div className='flex flex-col'>
                     <div className='flex flex-row items-center gap-2'>
                       <p className='text-green-400 text-3xl font-bold' >Active:</p>
-                      <p className='text-green-400 ml-5 text-3xl font-bold' >7</p>
+                      <p className='text-green-400 ml-[36px] text-3xl font-bold' >{statusDistribution.active}</p>
                     </div>
                     <div className='flex flex-row items-center gap-2'>
                     <p className='text-red-400 text-3xl font-bold' >Inactive:</p>
-                      <p className='text-red-400 ml-4 text-3xl font-bold' >0</p>
+                      <p className='text-red-400 ml-4 text-3xl font-bold' >{statusDistribution.inactive}</p>
                     </div>
                     <div className='flex flex-row items-center gap-2'>
                       <p className='text-gray-400 text-2xl font-bold' >Deceased:</p>
-                      <p className='text-gray-400 ml-1 text-3xl font-bold' >0</p>
+                      <p className='text-gray-400 ml-5 text-3xl font-bold' >{statusDistribution.deceased}</p>
                     </div>
                   </div>
                   

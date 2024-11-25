@@ -19,7 +19,8 @@ const FillDatabase = async () => {
             contactNo: "09123456789",
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
-            typeOfDisability: "Mental Disability" 
+            typeOfDisability: "Mental Disability", 
+            status: "Active",
         },
         {
             pwdNo: "002",
@@ -32,6 +33,7 @@ const FillDatabase = async () => {
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
             typeOfDisability: "Mental Disability", 
+            status: "Active",
         },
 
         {
@@ -45,6 +47,7 @@ const FillDatabase = async () => {
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
             typeOfDisability: "Mental Disability",  
+            status: "Active",
         },
 
         {
@@ -58,6 +61,7 @@ const FillDatabase = async () => {
             issueDate: "2022-10-10",
             expiryDate: "2022-10-10",
             typeOfDisability: "Speech and Language Impairment",  
+            status: "Active",
         },
         
     ]);
@@ -69,6 +73,7 @@ const main = async () => {
 
         // Clear the existing data in the table
         await db.delete(schema.pwdTable);
+        await db.delete(schema.clerkUserTable);
 
         // Call the FillDatabase function to insert data
         await FillDatabase();

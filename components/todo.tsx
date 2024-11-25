@@ -5,7 +5,7 @@ import { ChangeEvent, FC, useState } from "react";
 interface Props {
   todo: pwdType;
   changeTodoText: (id: number, pwdNo: string, surname: string, name: string, middleName: string, 
-    Purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, ) => void;
+    Purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string ) => void;
   // toggleIsTodoDone: (id: number, done: boolean) => void;
   deleteTodoItem: (id: number) => void;
 }
@@ -30,6 +30,7 @@ const Todo: FC<Props> = ({
   const [issueDate, setIssueDate] = useState(todo.issueDate);
   const [expiryDate, setExpiryDate] = useState(todo.expiryDate);
   const [typeOfDisability, setTypeOfDisability] = useState(todo.typeOfDisability);
+  const [status, setStatus] = useState(todo.status);
 
 
 
@@ -71,6 +72,9 @@ const Todo: FC<Props> = ({
     setTypeOfDisability(e.target.value);
   };
 
+  const handleStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setStatus(e.target.value);
+  };
 
   // Event handler for initiating the edit mode
   const handleEdit = () => {
@@ -79,7 +83,7 @@ const Todo: FC<Props> = ({
 
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, contactNo, issueDate, expiryDate, typeOfDisability);
+    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, contactNo, issueDate, expiryDate, typeOfDisability, status);
     setEditing(false);
   };
 
@@ -96,12 +100,27 @@ const Todo: FC<Props> = ({
     setIssueDate(todo.issueDate);
     setExpiryDate(todo.expiryDate);
     setTypeOfDisability(todo.typeOfDisability);
+    setStatus(todo.status);
   };
 
   // Event handler for deleting a todo item
   const handleDelete = () => {
     if (confirm("Are you sure you want to delete this todo?")) {
       deleteTodoItem(todo.id);
+    }
+  };
+
+  //status color
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'Active':
+        return 'bg-green-500';
+      case 'Inactive':
+        return 'bg-red-500';
+      case 'Deceased':
+        return 'bg-gray-500';
+      default:
+        return '';
     }
   };
 
@@ -201,6 +220,16 @@ return (
         onChange={handleTypeOfDisabilityChange}
         readOnly={!editing}
         className="w-full text-center"
+      />
+    </td>
+
+    <td className="border border-black w-auto">
+      <input
+        type="text"
+        value={status}
+        onChange={handleStatusChange}
+        readOnly={!editing}
+        className={`w-full text-center py-1 ${getStatusColor(status)}`}
       />
     </td>
 

@@ -13,7 +13,7 @@ export const getData = () => {
 
 
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
-  age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => {
+  age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
   try {
     await db.insert(pwdTable).values({
       pwdNo: pwdNo,
@@ -26,6 +26,7 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
+      status: status
     });
     revalidatePath("/admin/masterlist");
     revalidatePath("admin/masterlist/editPage");
@@ -52,7 +53,7 @@ export const deleteTodo = async (id: number) => {
 
 
 export const editTodo = async (id: number, pwdNo: string, surname: string, name: string, middlename: string, 
-  purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => {
+  purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
   await db
     .update(pwdTable)
     .set({
@@ -66,12 +67,12 @@ export const editTodo = async (id: number, pwdNo: string, surname: string, name:
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
+      status: status
     })
     .where(eq(pwdTable.id, id));
 
   revalidatePath("/");
 };
-
 
 
 export async function getTotalPwd() {
@@ -121,65 +122,14 @@ export async function getDisabilityDistribution() {
 }
 
 
-// export const addTodo = async ( pwdNo: string, surname: string, name: string) => {
-//   await db.insert(pwdTable).values({
-//     pwdNo: pwdNo,
-//     surname: surname,
-//     name: name,
-//   });
-//   revalidatePath("/admin/masterlist");
-//   revalidatePath("admin/masterlist/editPage");
-// };
+export async function getStatusDistribution() {
+  const statusCounts = await db
+    .select({
+      active: sql`COUNT(*) FILTER (WHERE status = 'Active')`.as("active"),
+      inactive: sql`COUNT(*) FILTER (WHERE status = 'Inactive')`.as("inactive"),
+      deceased: sql`COUNT(*) FILTER (WHERE status = 'Deceased')`.as("deceased"),
+    })
+    .from(pwdTable);
 
-
-// export const addTodo = async (pwdNo: string, surname: string, name: string) => {
-//   try {
-//     await db.insert(pwdTable).values({
-//       pwdNo: pwdNo,
-//       surname: surname,
-//       name: name,
-//     });
-//     revalidatePath("/admin/masterlist");
-//     revalidatePath("admin/masterlist/editPage");
-//     return { success: true };
-//   } catch (error) {
-//     const failedPwdNo = pwdNo; // capture the value of pwdNo
-//     if (error instanceof Error && (error as any).code === '23505') {// 23505 is the PostgreSQL error code for unique constraint violation
-//       return { success: false, message: `PwdNo ${failedPwdNo} already exists in the database.` };
-//     } else {
-//       console.error(error);
-//       return { success: false, message: 'An error occurred while adding the todo item.' };
-//     }
-//   }
-// };
-
-// export const toggleTodo = async (id: number) => {
-//   await db
-//     .update(pwdTable)
-//     .set({
-//       done: not(pwdTable.done),
-//     })
-//     .where(eq(pwdTable.id, id));
-
-//   revalidatePath("/");
-// };
-
-
-// export const addTodo = async (pwdNo: string, surname: string, name: string) => {
-//     await db.insert(pwdTable).values({
-//       pwdNo: pwdNo,
-//       surname: surname,
-//       name: name,
-//     });
-// };
-
-// // todoAction.ts
-// export const getData = (filter: string) => {
-//   if (filter) {
-//     const data = db.select().from(pwdTable).where(eq(pwdTable.Purok, filter));;
-//     return data;
-//   } else {
-//     const data = db.select().from(pwdTable);
-//     return data;
-//   }
-// };
+  return statusCounts[0];
+}

@@ -14,6 +14,7 @@ import { relations } from "drizzle-orm"
     issueDate: date('issue_date').notNull(),
     expiryDate: date('expiry_date').notNull(),
     typeOfDisability: varchar('type_of_disability', { length: 50 }).notNull(),
+    status: varchar('status', { length: 10 }).notNull(),
   });
 
   export const clerkUserTable = pgTable("clerk_user", {

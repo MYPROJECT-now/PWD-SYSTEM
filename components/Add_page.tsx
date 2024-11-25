@@ -11,9 +11,9 @@ export const Add_page = () => {
 
 
   const createTodo = (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, age: number, 
-    contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string) => {
+    contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
     console.log("Creating todo item with pwdNo:", pwdNo, "surname:", surname, "name:", name);
-    addTodo(pwdNo, surname, name, middleName, Purok, age, contactNo, issueDate, expiryDate, typeOfDisability)
+    addTodo(pwdNo, surname, name, middleName, Purok, age, contactNo, issueDate, expiryDate, typeOfDisability, status)
       .then((response) => {
         console.log("Response from server:", response);
         if (response.success) {
