@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
-import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/nextjs";
+import { ClerkLoading, ClerkLoaded, SignOutButton } from "@clerk/nextjs";
 import { Loader} from "lucide-react";
 
 type Props = {
@@ -46,6 +46,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                         href="/admin/create"
                         iconSrc="/masterlist.png" 
                     />
+
+                    <SidebarItem 
+                        label="Notifications" 
+                        href="/admin/notification"
+                        iconSrc="/masterlist.png" 
+                    />
                 </div>
 
                 
@@ -58,7 +64,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
                 </ClerkLoading>
                 <ClerkLoaded>
-                    <UserButton afterSignOutUrl="/" />
+                <SignOutButton>
+                    <button
+                    className="text-white bg-blue-600 rounded-lg px-5 py-2.5 text-center"
+                    >
+                        Log Out</button>
+                </SignOutButton>
                 </ClerkLoaded>
             </div>
            

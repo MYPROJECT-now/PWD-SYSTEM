@@ -12,3 +12,4 @@ export type pwdType = {
   typeOfDisability: string;
   status: string;
 };
+

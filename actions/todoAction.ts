@@ -2,16 +2,15 @@
 import { asc, eq, ilike, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
-import { pwdTable } from "@/db/schema";
+import { notificationTable, pwdTable } from "@/db/schema";
 
-
+//get all data
 export const getData = () => {
-
     const data = db.select().from(pwdTable).orderBy(asc(pwdTable.surname));
     return data;
   };
 
-
+  // functions for crud
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
   age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
   try {
@@ -43,13 +42,10 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
 };
 
 
-
-
 export const deleteTodo = async (id: number) => {
   await db.delete(pwdTable).where(eq(pwdTable.id, id));
   revalidatePath("/admin/masterlist");
 };
-
 
 
 export const editTodo = async (id: number, pwdNo: string, surname: string, name: string, middlename: string, 
@@ -75,6 +71,7 @@ export const editTodo = async (id: number, pwdNo: string, surname: string, name:
 };
 
 
+// functions for analytics
 export async function getTotalPwd() {
   const totalPwds = await db
     .select({
@@ -133,3 +130,31 @@ export async function getStatusDistribution() {
 
   return statusCounts[0];
 }
+
+
+//notification
+
+//adding notification
+export const addNotif = async ( title: string, message: string) => {
+  await db.insert(notificationTable).values({
+    title: title,
+    message: message
+  });
+};
+
+//get pending notif
+export const getPendingNotifications = async () => {
+  const notifications = await db
+    .select()
+    .from(notificationTable)
+    .where(eq(notificationTable.done, true));
+  return notifications;
+};
+
+//update notif status
+export const updateNotificationStatus = async (id: number) => {
+  await db
+    .update(notificationTable)
+    .set({ done: false })
+    .where(eq(notificationTable.id, id));
+};

@@ -31,7 +31,7 @@ export const Header = () => {
                 if (user?.publicMetadata?.role === 'admin') {
                     router.push("/admin/dashboard_admin");
                 } else {
-                    router.push("/user");
+                    router.push("/user/privileges");
                 }
             }
         }

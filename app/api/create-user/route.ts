@@ -47,6 +47,8 @@ export async function POST(request: Request) {
       );
     }
 
+   
+
        // Check if pwdNo exists in pwdTable
        const pwdNoExistsInPwdTable = await db.select().from(pwdTable).where(eq(pwdTable.pwdNo, pwdNo));
        if (!pwdNoExistsInPwdTable.length) {
@@ -55,6 +57,9 @@ export async function POST(request: Request) {
            { status: 400 }
          );
        }
+
+  
+    
 
          // Check if pwdNo exists in clerkUserTable
     const pwdNoExistsInClerkUserTable = await db.select().from(clerkUserTable).where(eq(clerkUserTable.pwdNo, pwdNo));
@@ -75,6 +80,18 @@ export async function POST(request: Request) {
    }
 
 
+    // Fetch the user's first and last name from the pwdTable
+    const userFromPwdTable = await db
+      .select()
+      .from(pwdTable)
+      .where(eq(pwdTable.pwdNo, pwdNo))
+      .limit(1);
+
+
+    const { surname, name } = userFromPwdTable[0];
+
+
+
     // Generate a random password
     const randomPassword = generateRandomPassword();
 
@@ -83,8 +100,11 @@ export async function POST(request: Request) {
       username: `pwd-${pwdNo}`,
       password: randomPassword,
       emailAddress: [email],
+      firstName: name, // Set the first name directly
+      lastName: surname, // Set the last name directly
       publicMetadata: { 
         pwdNo, // Store the PWD No. in public metadata
+        role: 'user',
         needsPasswordChange: true }, // sets the user as needing a password change
     });
 

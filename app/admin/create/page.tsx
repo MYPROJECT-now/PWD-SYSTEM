@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import AdminClientComponent from '../admin_validate';
 
 export default function CreateUserForm() {
   const [pwdNo, setPwdNo] = useState('');
@@ -31,6 +32,7 @@ export default function CreateUserForm() {
 
   return (
     <div className="h-full p-3 w-full">
+       <AdminClientComponent>
       <div className='flex flex-col w-full h-full items-center justify-center bg-gray-300 rounded-2xl pt-2'>
           <div className='w-[300px] h-[180px] flex flex-col items-center bg-gray-500 rounded-lg p-5'>
           <h1>Create PWD User</h1>
@@ -68,6 +70,7 @@ export default function CreateUserForm() {
           {message && <p>{message}</p>}
           </div>
       </div>
+      </AdminClientComponent>
     </div>
   );
 }

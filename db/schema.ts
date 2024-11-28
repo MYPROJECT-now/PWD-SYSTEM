@@ -1,5 +1,5 @@
-  import { serial,varchar, pgTable, integer, date } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm"
+  import { serial,varchar, pgTable, integer, date, boolean } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 
   export const pwdTable = pgTable("pwdTable", {
     id: serial("id").primaryKey(),
@@ -23,7 +23,17 @@ import { relations } from "drizzle-orm"
     clerkId: varchar("clerk_id", { length: 100 }).notNull(), // Clerk's generated user ID
   });
 
+  export const notificationTable = pgTable("notification", {
+    id: serial("id").primaryKey(),
+    title: varchar("title", { length: 100 }).notNull(),
+    message: varchar("message", { length: 500 }).notNull(),
+    done: boolean("done").default(true).notNull(),
+  });
 
+
+
+
+  // Relations
   export const clerkUserRelations = relations(clerkUserTable, ({ one }) => ({
     pwd: one(pwdTable, {
       fields: [clerkUserTable.pwdNo],
