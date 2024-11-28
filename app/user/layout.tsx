@@ -5,7 +5,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-const AdminLayout = ({ children }:Props) => {
+const UserLayout = ({ children }:Props) => {
     return (
         <div className="min-h-screen flex flex-row bg-dash">
             <>
@@ -20,4 +20,4 @@ const AdminLayout = ({ children }:Props) => {
     );
 };
 
-export default AdminLayout;
+export default UserLayout;

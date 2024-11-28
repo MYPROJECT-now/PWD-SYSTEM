@@ -26,7 +26,7 @@ const ChangePassword = () => {
         if (result.error) {
             setError(result.error);
         } else {
-            router.push("/user/privileges");
+            router.push("/user/user_dashboard");
         }
     };
 

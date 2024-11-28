@@ -18,7 +18,7 @@ export const Sidebar_admin = ({ className }: Props) => {
             )}
         >
             <div className="gap-1 mx-auto flex flex-col items-center ">
-                <Link href="/learn">
+                <Link href="/admin/dashboard_admin">
                     <Image 
                         src="/home.png" 
                         width={150}
@@ -44,13 +44,13 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <SidebarItem 
                         label="Create User" 
                         href="/admin/create"
-                        iconSrc="/masterlist.png" 
+                        iconSrc="/create.png" 
                     />
 
                     <SidebarItem 
                         label="Notifications" 
                         href="/admin/notification"
-                        iconSrc="/masterlist.png" 
+                        iconSrc="/notification.png" 
                     />
                 </div>
 

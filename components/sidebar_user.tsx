@@ -23,32 +23,26 @@ export const Sidebar_user = ({ className }: Props) => {
             )}
         >
              <div className="gap-1 mx-auto flex flex-col items-center ">
-                <Link href="/learn">
+                <Link href="/user/user_dashboard">
                     <Image 
                         src="/home.png" 
                         width={150}
                         height={150} 
-                        alt="Dalawika icon"
+                        alt="Home"
                     />
                    
                 </Link>
 
                 <div className="flex flex-col gap-3 ">
                     <SidebarItem 
-                        label="PRIVILEGES" 
-                        href="/user/privileges"
-                        iconSrc="/privelage.png" 
+                        label="DASHBOARD" 
+                        href="/user/user_dashboard"
+                        iconSrc="/dashboard.png" 
                     />
                      <SidebarItem 
                         label="HEALTH SERVICES" 
                         href="/user/health_services"
                         iconSrc="/health.png" 
-                    />
-
-                    <SidebarItem 
-                        label="APPLICATION" 
-                        href="/user/application"
-                        iconSrc="/application.png" 
                     />
 
                     <SidebarItem 
