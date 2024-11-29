@@ -1,4 +1,5 @@
 import UserClientComponent from "@/app/admin/user_validate";
+import { Achievements } from "@/components/achievements/acievements";
 import { Dashboard_header } from "@/components/header";
 
 const AchievementsPage = () => {
@@ -11,6 +12,7 @@ const AchievementsPage = () => {
                     <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
                     Achievements
                     </div>
+                    <Achievements />
                 </div>
             </div>
             </UserClientComponent>

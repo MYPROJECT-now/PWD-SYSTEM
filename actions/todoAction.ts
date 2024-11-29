@@ -158,3 +158,18 @@ export const updateNotificationStatus = async (id: number) => {
     .set({ done: false })
     .where(eq(notificationTable.id, id));
 };
+
+// fetching all notif
+export const getNotifications = async () => {
+  try {
+    const notifications = await db.select()
+      .from(notificationTable)
+      .where(eq(notificationTable.done,false)); // For example, only get undone notifications
+
+
+    return notifications;
+  } catch (error) {
+    console.error("Error fetching notifications:", error);
+    return [];
+  }
+};

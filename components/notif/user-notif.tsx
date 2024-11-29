@@ -43,6 +43,8 @@ export const UserNotif = () => {
       setNotifications(updatedNotifications);
       setCurrentNotif(updatedNotifications[0] || null); // Show the next notification
     }
+
+    window.location.reload();
   };
 
   return (

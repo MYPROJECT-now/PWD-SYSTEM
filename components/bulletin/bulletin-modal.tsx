@@ -1,41 +1,40 @@
+// bulletin-modal.tsx
+
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-  } from "@/components/ui/dialog"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useBulletinModal } from "@/store/use-bulletin-modal";
 import Image from "next/image";
 
-  export const BulletinModal = () => {
+export const BulletinModal = () => {
+  const { isOpen, close, notificationData } = useBulletinModal(); // Use notificationData to display dynamic content
 
-    const { isOpen, close } = useBulletinModal();
-
-    
   const handleClose = () => {
     close();
-    };
-
-    return (
-        <Dialog open={isOpen} onOpenChange={handleClose}>
-        <DialogContent className="w-[500px]">
-          <DialogHeader>
-            <DialogTitle>ANNOUNCEMENT</DialogTitle>
-          </DialogHeader>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
-              <Image
-                src="/pwd.jpg" 
-                width={1000} 
-                height={100} 
-                alt="logo" 
-              />
-
-            </DialogDescription>
-        </DialogContent>
-      </Dialog>
-      
-    );
   };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className="w-[500px]">
+        <DialogHeader>
+          <DialogTitle>{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
+        </DialogHeader>
+        <DialogDescription>
+          <div>
+            <p>{notificationData?.message}</p> {/* Display message dynamically */}
+            <Image
+              src="/pwd.jpg"
+              width={1000}
+              height={100}
+              alt="logo"
+            />
+          </div>
+        </DialogDescription>
+      </DialogContent>
+    </Dialog>
+  );
+};

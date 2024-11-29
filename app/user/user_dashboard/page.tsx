@@ -1,12 +1,11 @@
 "use client"
 import UserClientComponent from "@/app/admin/user_validate";
-import { BulletinModal } from "@/components/bulletin/bulletin-modal";
+import { BulletinList } from "@/components/bulletin/bulletinList";
 import { Dashboard_header } from "@/components/header";
 import { UserNotif } from "@/components/notif/user-notif";
 import { BenefitsModal } from "@/components/privileges/benefirs-modal";
 import { RightsModal } from "@/components/privileges/rights-modal";
 import { useBenefitsModal } from "@/store/use-benefits-modal";
-import { useBulletinModal } from "@/store/use-bulletin-modal";
 import { useRightsModal } from "@/store/use-rights-modal";
 import Image from "next/image";
 
@@ -19,7 +18,6 @@ const DashboardPage = () => {
 
   const benefitsModal = useBenefitsModal();
   const rightsModal = useRightsModal();
-  const bulletinModal = useBulletinModal();
 
 
   return(
@@ -81,14 +79,15 @@ const DashboardPage = () => {
           <div className="bg-dash font-bold text-white text-lg py-5 pl-5 mb-2">
             Bulletin
           </div>
-          <BulletinModal />
+          {/* <BulletinModal />
           <div className="w-full text-center">
             <button 
             className="bg-dash p-2 w-[250px] text-center rounded-lg text-white"
             onClick={() => bulletinModal.open()}>
               title
             </button>          
-          </div>
+          </div> */}
+          <BulletinList />
         </div>
         </div>
       </div>
