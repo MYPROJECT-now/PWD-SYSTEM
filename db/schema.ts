@@ -30,7 +30,12 @@ import { relations } from "drizzle-orm";
     done: boolean("done").default(true).notNull(),
   });
 
-
+  export const AchievementsTable = pgTable("achievements", {
+    id: serial("id").primaryKey(),
+    title: varchar("title", { length: 100 }).notNull(),
+    description: varchar("description", { length: 500 }).notNull(),
+    imageSrc: varchar("imageSrc", { length: 500 }).notNull(),
+  });
 
 
   // Relations

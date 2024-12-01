@@ -17,6 +17,7 @@ export const Sidebar_admin = ({ className }: Props) => {
                 className
             )}
         >
+            
             <div className="gap-1 mx-auto flex flex-col items-center ">
                 <Link href="/admin/dashboard_admin">
                     <Image 
@@ -52,6 +53,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                         href="/admin/notification"
                         iconSrc="/notification.png" 
                     />
+
+                    <SidebarItem 
+                        label="Achievements" 
+                        href="/admin/achievements"
+                        iconSrc="/notification.png" 
+                    />
                 </div>
 
                 
@@ -64,11 +71,13 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
                 </ClerkLoading>
                 <ClerkLoaded>
+
                 <SignOutButton>
                     <button
                     className="text-white bg-blue-600 rounded-lg px-5 py-2.5 text-center"
                     >
-                        Log Out</button>
+                        Log Out
+                    </button>
                 </SignOutButton>
                 </ClerkLoaded>
             </div>

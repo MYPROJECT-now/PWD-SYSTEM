@@ -48,21 +48,24 @@ export const UserNotif = () => {
   };
 
   return (
+
     <Dialog open={!!currentNotif} onOpenChange={handleAcknowledge}>
-      <DialogContent>
+      <DialogContent className="w-[500px] min-h-[400px]">
         <DialogHeader>
           <DialogTitle className="text-center">{currentNotif?.title || "Notification"}</DialogTitle>
         </DialogHeader>
-        <DialogDescription className="text-center">
+        <DialogDescription className="text-center flex flex-col justify-between">
           {currentNotif?.message || "You have a new notification."}
-        </DialogDescription>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          <button
+          className="bg-blue-500 hover:bg-blue-700 text-white h-[50px] font-bold py-2 px-4 rounded "
           onClick={handleAcknowledge}
         >
           Okay
         </button>
+        </DialogDescription>
+       
       </DialogContent>
     </Dialog>
+  
   );
 };

@@ -8,7 +8,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useBulletinModal } from "@/store/use-bulletin-modal";
-import Image from "next/image";
 
 export const BulletinModal = () => {
   const { isOpen, close, notificationData } = useBulletinModal(); // Use notificationData to display dynamic content
@@ -19,20 +18,18 @@ export const BulletinModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="w-[500px]">
+      <DialogContent className="w-[500px] min-h-[400px]">
         <DialogHeader>
-          <DialogTitle>{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
+          <DialogTitle  className="text-center">{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
         </DialogHeader>
-        <DialogDescription>
-          <div>
-            <p>{notificationData?.message}</p> {/* Display message dynamically */}
-            <Image
-              src="/pwd.jpg"
-              width={1000}
-              height={100}
-              alt="logo"
-            />
-          </div>
+        <DialogDescription className="text-center flex flex-col justify-between">
+          <p>{notificationData?.message}</p> {/* Display message dynamically */}
+          <button
+          className="bg-blue-500 hover:bg-blue-700 text-white h-[50px] font-bold py-2 px-4 rounded "
+          onClick={close}
+        >
+          Okay
+        </button>
         </DialogDescription>
       </DialogContent>
     </Dialog>

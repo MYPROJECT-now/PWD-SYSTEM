@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { handlePasswordUpdate } from "./changePassword";
 import { useUser } from "@clerk/clerk-react"; // Assuming you're using Clerk for authentication
+import UserClientComponent from "@/app/admin/user_validate";
+import { Dashboard_header } from "@/components/header";
 
 
 const ChangePassword = () => {
@@ -31,9 +33,16 @@ const ChangePassword = () => {
     };
 
     return (
-        <div className="h-[625px] flex items-center justify-center">
-        <div className="flex flex-col items-center justify-center bg-gray-500 h-[300px] w-[500px] rounded-lg ">
-            
+        <div className="h-full p-3 w-full">
+        <UserClientComponent>
+        <div className="bg-gray-400 h-full rounded-2xl pt-2">
+        <Dashboard_header />
+            <div className="mt-4 mx-16 bg-white h-[600px] items-center flex flex-col">
+                <div className="bg-dash font-bold w-full  text-white text-lg py-5 pl-5">
+                    Account Management
+                </div>
+
+        <div className="flex flex-col  items-center justify-center bg-slate-400 w-[600px] h-[300px] mt-[80px] rounded-lg">
             <h1 className="text-xl font-bold">Change Your Password</h1>
             <input
                 type="password"
@@ -57,6 +66,10 @@ const ChangePassword = () => {
                 Update Password
             </button>
         </div>
+
+        </div>
+        </div>
+        </UserClientComponent>
         </div>
     );
 };

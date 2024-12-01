@@ -2,7 +2,10 @@
 import { asc, eq, ilike, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
-import { notificationTable, pwdTable } from "@/db/schema";
+import { notificationTable, pwdTable, clerkUserTable, AchievementsTable } from "@/db/schema";
+
+
+import { auth } from "@clerk/nextjs/server";
 
 //get all data
 export const getData = () => {
@@ -173,3 +176,55 @@ export const getNotifications = async () => {
     return [];
   }
 };
+
+
+// Function to fetch user data based on the current Clerk user
+export const getUserData = async () => {
+  // Step 1: Get current Clerk user ID
+  const { userId } = auth();
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  // Step 2: Find the corresponding `pwdNo` in the `clerkUserTable` using Clerk's `userId`
+  const clerkUser = await db
+    .select()
+    .from(clerkUserTable)
+    .where(eq(clerkUserTable.clerkId, userId))
+    .limit(1);
+
+  if (clerkUser.length === 0) {
+    throw new Error("No PWD data found for this user");
+  }
+
+  const pwdNo = clerkUser[0].pwdNo;
+
+  // Step 3: Fetch the PWD data from `pwdTable` using `pwdNo`
+  const userData = await db
+    .select()
+    .from(pwdTable)
+    .where(eq(pwdTable.pwdNo, pwdNo))
+    .limit(1);
+
+  if (userData.length === 0) {
+    throw new Error("No PWD data found for this pwdNo");
+  }
+
+  return userData[0]; // Return the first matching result
+};
+
+
+//adding achievements
+export const addAchievement = async (title: string, description: string, imageSrc: string) => {
+  await db.insert(AchievementsTable).values({
+    title: title,
+    description: description,
+    imageSrc: imageSrc
+  });
+}
+
+//getting achievements
+export const getAchievements = async () => {
+  const achievements = await db.select().from(AchievementsTable);
+  return achievements;
+}

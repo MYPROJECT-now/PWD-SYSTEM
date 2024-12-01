@@ -6,7 +6,7 @@ type Props = {
 const ResetLayout = ({ children }:Props) => {
     return (
         
-        <div className="h-full flex flex-grow">
+        <div className="min-h-screen flex flex-grow bg-dash">
             <>
                 <main className="flex-grow">
                     <div className="h-full">
