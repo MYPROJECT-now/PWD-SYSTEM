@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
 import { ClerkLoading, ClerkLoaded, SignOutButton } from "@clerk/nextjs";
 import { Loader} from "lucide-react";
+import { Button } from "./ui/button";
 
 
 type Props = {
@@ -18,11 +19,11 @@ export const Sidebar_user = ({ className }: Props) => {
     return (
         <div
             className={cn(
-                "flex flex-col h-screen w-[250px] items-center pt-5 justify-between",
+                "flex flex-col h-screen w-[250px] items-center pt-5 justify-between ",
                 className
             )}
         >
-             <div className="gap-1 mx-auto flex flex-col items-center ">
+             <div className="gap-1 mx-auto flex flex-col items-center">
                 <Link href="/user/user_dashboard">
                     <Image 
                         src="/home.png" 
@@ -57,7 +58,7 @@ export const Sidebar_user = ({ className }: Props) => {
             </div>
                 
             {/* ClerkLoading and ClerkLoaded components added here for alignment */}
-            <div className="pb-[110px] text-center">
+            <div className="pb-[110px] w-[200px] text-center mx-2">
                 <ClerkLoading>
                     <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
                 </ClerkLoading>
@@ -76,10 +77,11 @@ export const Sidebar_user = ({ className }: Props) => {
                     />
                 </div>
                 <SignOutButton>
-                    <button
-                    className="text-white  bg-blue-600 rounded-lg px-5 py-2.5 text-center"
+                    <Button
+                    variant="signin"
+                    size="lg"
                     >
-                        Log Out</button>
+                        Log Out</Button>
                 </SignOutButton>
                 </div>
                 </ClerkLoaded>

@@ -24,7 +24,7 @@ const AgeDistributionChart = () => {
   }, []);
 
   return (
-    <div className="w-[500px] h-[270px] bg-white rounded-md"> 
+    <div className="w-[450px] h-[270px] bg-white rounded-md"> 
     <h2 className="text-center text-lg font-semibold">Age Distribution of PWDs</h2>
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 40 }}>

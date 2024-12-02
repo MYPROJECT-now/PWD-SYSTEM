@@ -74,7 +74,7 @@ const main = async () => {
         // Clear the existing data in the table
         await db.delete(schema.pwdTable);
         await db.delete(schema.clerkUserTable);
-        await db.delete(schema.notificationTable);
+        await db.delete(schema.AchievementsTable);
 
 
         // Call the FillDatabase function to insert data

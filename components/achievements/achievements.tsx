@@ -12,13 +12,13 @@ import { CldImage } from 'next-cloudinary';
 
 export const Achievements = ({ data }: { data: Array<{ id: number; title: string; description: string; imageSrc: string }> }) => {
   return (
-    <div className="w-[500px] h-[330px] mx-auto flex items-center justify-center ">
-      <Carousel opts={{ align: "start", loop: true }} className="text-center rounded-xl">
+    <div className="w-[700px] h-[330px] mx-auto flex items-center justify-center ">
+      <Carousel opts={{ align: "start", loop: true }} className="text-center w-full">
         <CarouselContent>
           {data.map((achievement) => (
              
             <CarouselItem key={achievement.id}
-            className="bg-white h-[330px] w-[200px]  mx-2 basis-1/2 "
+            className=" h-[330px] w-[100px] flex flex-col items-center justify-center basis-1/3  bg-neutral-300"
             >
             {/* const data = await getAchievements(); add later */}
                 <div className="p-3">

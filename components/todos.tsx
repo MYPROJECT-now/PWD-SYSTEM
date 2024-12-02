@@ -4,6 +4,7 @@ import Todo from "./todo";
 import { deleteTodo, editTodo } from "@/actions/todoAction";
 import { pwdType } from "@/types/todoTypes";
 import { Add_page } from "./Add_page";
+import { Button } from "./ui/button";
 
 interface Props {
   todos: pwdType[];
@@ -74,8 +75,9 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
           ))}
         </select>
 
-<button
-  type="button"
+<Button
+  variant="signin"
+  size="lg"
   onClick={() => {
     // Filter the todoItems based on the search query
     const filteredItems = todoItems.filter((todo) => {
@@ -88,24 +90,23 @@ const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPuro
     });
     setSearchResults(filteredItems);
   }}
-
-  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 >
   Search
-</button>
-        <button 
+</Button>
+        <Button 
+          variant="signin"
+          size="lg"
          onClick={() => {
           setSelectedPurok(''); 
           setSearchQuery('');
           setSearchResults([]);
-          }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">   
+          }}>   
           Clear Filter
-        </button>
+        </Button>
 
         </div>
 
-<div className="max-w-[1100px] overflow-auto">
+<div className="max-w-[900px] xl:max-w-[1100px] overflow-auto">
           <table className=" mt-3 border-collapse mx-auto ">
   <thead>
     <tr>

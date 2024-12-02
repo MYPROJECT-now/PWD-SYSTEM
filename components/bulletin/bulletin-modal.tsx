@@ -8,6 +8,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useBulletinModal } from "@/store/use-bulletin-modal";
+import { format } from 'date-fns';
+import { Button } from "../ui/button";
 
 export const BulletinModal = () => {
   const { isOpen, close, notificationData } = useBulletinModal(); // Use notificationData to display dynamic content
@@ -24,12 +26,18 @@ export const BulletinModal = () => {
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
           <p>{notificationData?.message}</p> {/* Display message dynamically */}
-          <button
-          className="bg-blue-500 hover:bg-blue-700 text-white h-[50px] font-bold py-2 px-4 rounded "
+          <div>
+          <Button
+          variant="signin"
+          size="lg"
           onClick={close}
         >
           Okay
-        </button>
+        </Button>
+        {notificationData && (
+          <p>{notificationData.timestamp ? format(notificationData.timestamp, 'MMMM dd, yyyy hh:mm a') : 'No timestamp available'}</p>
+        )}
+        </div>
         </DialogDescription>
       </DialogContent>
     </Dialog>

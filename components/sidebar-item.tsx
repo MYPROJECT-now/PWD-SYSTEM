@@ -19,7 +19,7 @@ href,
     return(
         <Button 
         className="flex flex-row justify-start h-[40px]  "
-        variant="default2"
+        variant="sidebar"
         asChild
         >
             <Link href={href}>

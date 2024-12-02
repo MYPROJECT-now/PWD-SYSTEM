@@ -8,12 +8,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { getPendingNotifications, updateNotificationStatus } from "@/actions/todoAction";
+import { format } from 'date-fns';
 
 // Define the type for notifications
 type Notification = {
   id: number;
   title: string;
   message: string;
+  timestamp: Date;
   done: boolean;
 };
 
@@ -56,12 +58,15 @@ export const UserNotif = () => {
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
           {currentNotif?.message || "You have a new notification."}
+          <div>
           <button
-          className="bg-blue-500 hover:bg-blue-700 text-white h-[50px] font-bold py-2 px-4 rounded "
+          className="bg-blue-500 hover:bg-blue-700 text-white w-[100px] h-[50px] font-bold py-2 px-4 rounded mb-2 "
           onClick={handleAcknowledge}
         >
           Okay
         </button>
+        <p>{currentNotif ? format(currentNotif.timestamp, 'MMMM dd, yyyy hh:mm a') : 'No timestamp available'}</p>
+        </div>
         </DialogDescription>
        
       </DialogContent>

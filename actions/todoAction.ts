@@ -139,11 +139,17 @@ export async function getStatusDistribution() {
 
 //adding notification
 export const addNotif = async ( title: string, message: string) => {
+  try {
   await db.insert(notificationTable).values({
     title: title,
     message: message
   });
+  return { success: true };
+  } catch (error) {
+    console.error("Error adding notification:", error);
+  }
 };
+
 
 //get pending notif
 export const getPendingNotifications = async () => {
@@ -216,11 +222,16 @@ export const getUserData = async () => {
 
 //adding achievements
 export const addAchievement = async (title: string, description: string, imageSrc: string) => {
+  try {
   await db.insert(AchievementsTable).values({
     title: title,
     description: description,
     imageSrc: imageSrc
   });
+  return { success: true };
+  } catch (error) {
+    console.error("Error adding achievement:", error);
+  }
 }
 
 //getting achievements

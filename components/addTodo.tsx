@@ -11,6 +11,7 @@ import {
 import { useAddModal } from "@/store/use-add-modal";
 
 import moment from 'moment';
+import { Button } from "./ui/button";
 
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
@@ -314,12 +315,13 @@ interface Props {
 
                 {/* Button for adding a new todo */}
               <div className="flex justify-center mt-4">
-                <button
-                  className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-14 py-1"
+                <Button
+                  variant="add"
+                  size="lg"
                   onClick={handleAdd}
                 >
                   Add
-                </button>
+                </Button>
               </div>
               </div>
             </DialogDescription>

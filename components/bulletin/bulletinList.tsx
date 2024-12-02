@@ -48,12 +48,14 @@ type Notification = {
   title: string;
   message: string; // Assuming this replaces the 'content' property
   done: boolean; // Assuming you have a done property
+  timestamp: Date;
 };
 
 import { useBulletinModal } from "@/store/use-bulletin-modal";
 import { BulletinModal } from "./bulletin-modal";
 import { getNotifications } from "@/actions/todoAction";
 import { useEffect, useState } from "react";
+import { format } from 'date-fns';
 
 // Assume the fetch function returns data in the correct format
 export const BulletinList = () => {
@@ -65,11 +67,12 @@ export const BulletinList = () => {
     const fetchNotifications = async () => {
       const data = await getNotifications(); // Fetch notifications from your server or database
       // Ensure the fetched data is in the correct type format
-      const formattedData = data.map((notification: { id: number; title: string; message: string; done: boolean }) => ({
+      const formattedData = data.map((notification: { id: number; title: string; message: string; done: boolean, timestamp: Date }) => ({
         id: notification.id,
         title: notification.title,
         message: notification.message, // Map message to content if needed
         done: notification.done,
+        timestamp: notification.timestamp
       }));
       setNotifications(formattedData); // Set the correctly typed data
     };
@@ -83,14 +86,17 @@ export const BulletinList = () => {
   };
 
   return (
-    <div className="px-3 w-full">
+    <div className="px-3 w-full ">
       {notifications.map((notification) => (
         <button
-          className="p-2 bg-blue-500 w-full text-white rounded-lg mb-2"
-          key={notification.id}
+        key={notification.id} 
+          className="p-3 bg-white border-2 border-neutral-300 w-full text-white rounded-lg mb-2"
+          
           onClick={() => handleButtonClick(notification)}
         >
-          {notification.title}
+          <p className="text-lg font-bold mb-1 text-black">{notification.title}</p>
+          <hr />
+          <p className="text-xs mt-1 text-black">{notification.timestamp ? format(notification.timestamp, 'MMMM dd, yyyy hh:mm a') : 'No timestamp available'}</p>
         </button>
       ))}
       <BulletinModal />

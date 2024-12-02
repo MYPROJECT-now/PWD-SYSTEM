@@ -1,4 +1,4 @@
-  import { serial,varchar, pgTable, integer, date, boolean } from "drizzle-orm/pg-core";
+  import { serial,varchar, pgTable, integer, date, boolean, timestamp } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
   export const pwdTable = pgTable("pwdTable", {
@@ -28,6 +28,7 @@ import { relations } from "drizzle-orm";
     title: varchar("title", { length: 100 }).notNull(),
     message: varchar("message", { length: 500 }).notNull(),
     done: boolean("done").default(true).notNull(),
+    timestamp: timestamp("timestamp").defaultNow().notNull(),
   });
 
   export const AchievementsTable = pgTable("achievements", {

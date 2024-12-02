@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useAddModal } from "@/store/use-add-modal";
+import { Button } from "../ui/button";
 
 
 interface Props {
@@ -133,12 +134,13 @@ export const AddAchievement: FC<Props> = ({ createTodo }) => {
               )}
 
               <div className="flex justify-center mt-4">
-                <button
-                  className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-14 py-1"
+                <Button
+                  variant="add"
+                  size="lg"
                   onClick={handleAdd}
                 >
                   Add
-                </button>
+                </Button>
               </div>
             </div>
           </DialogDescription>

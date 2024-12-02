@@ -287,7 +287,7 @@ const DisabilityPieChart = () => {
             size: 12,
             family: "Arial, sans-serif",
           },
-          padding: 10,
+          padding: 3,
         },
       },
       tooltip: {
@@ -347,10 +347,11 @@ const DisabilityPieChart = () => {
   return (
     <div
       className="flex justify-center items-center bg-white p-6 rounded-lg shadow-md w-full max-w-lg"
-      style={{ height: "350px" }} // Limit height to 500px
+      style={{ height: "270px" }} // Limit height to 500px
     >
       <div>
-        <h2 className="text-center text-lg font-semibold">
+        <h2 className="text-center text-lg font-semibold mt-7"
+        style={{ marginBottom: -20 }}>
           Disability Distribution of PWDs
         </h2>
         <Pie data={chartData} options={chartOptions} />

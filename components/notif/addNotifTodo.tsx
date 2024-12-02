@@ -1,5 +1,6 @@
 "use client";
 import { ChangeEvent, FC, useState } from "react";
+import { Button } from "../ui/button";
 
 interface Props {
   createNotif: (title: string, message: string) => void;
@@ -58,12 +59,13 @@ const AddNotif: FC<Props> = ({ createNotif }) => {
       </div>
       {/* Button for adding a new todo */}
       <div className="text-center w-full  mt-2" >
-        <button
-          className=" bg-green-600 text-green-50 rounded px-2 h-9 w-14 py-1"
+        <Button
+          variant="add"
+          size="lg"
           onClick={handleAdd}
         >
           Add
-        </button>
+        </Button>
       </div>
     </div>
   );

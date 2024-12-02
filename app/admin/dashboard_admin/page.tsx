@@ -35,7 +35,7 @@ const AdminPage = async () => {
         <div className='flex flex-row justify-center gap-6'>
           <div className="mx-4 mt-4 flex flex-col gap-5">
 
-            <div className="w-[500px] h-[270px] bg-white rounded-lg flex flex-row items-center justify-center">
+            <div className="w-[450px] h-[270px] bg-white rounded-lg flex flex-row items-center justify-center">
               <div>
                 <Image 
                   src="/pwd.png"    
@@ -59,21 +59,21 @@ const AdminPage = async () => {
           <div className="mx-4 mt-4 flex flex-col gap-5">
             <DisabilityDistributionChart />
 
-            <div className="w-[500px] h-[220px] bg-white rounded-lg flex flex-col">
-              <p className='text-center text-dash text-[40px] font-bold mb-5'>Status</p>
+            <div className="w-[450px] h-[270px] bg-white rounded-lg flex flex-col">
+              <p className='text-center text-dash text-[40px] font-bold mb-5 mt-5'>Status</p>
               <div className='flex flex-row justify-around'>   
                 <div className='flex flex-col'>
-                    <div className='flex flex-row items-center gap-2'>
-                      <p className='text-green-400 text-3xl font-bold' >Active:</p>
-                      <p className='text-green-400 ml-[36px] text-3xl font-bold' >{statusDistribution.active}</p>
+                    <div className='flex flex-row items-center'>
+                      <p className='text-green-400 text-3xl font-bold w-[170px]' >Active:</p>
+                      <p className='text-green-400 text-3xl font-bold' >{statusDistribution.active}</p>
                     </div>
-                    <div className='flex flex-row items-center gap-2'>
-                    <p className='text-red-400 text-3xl font-bold' >Inactive:</p>
-                      <p className='text-red-400 ml-4 text-3xl font-bold' >{statusDistribution.inactive}</p>
+                    <div className='flex flex-row items-center'>
+                    <p className='text-red-400 text-3xl font-bold w-[170px]' >Inactive:</p>
+                      <p className='text-red-400 text-3xl font-bold' >{statusDistribution.inactive}</p>
                     </div>
-                    <div className='flex flex-row items-center gap-2'>
-                      <p className='text-gray-400 text-2xl font-bold' >Deceased:</p>
-                      <p className='text-gray-400 ml-5 text-3xl font-bold' >{statusDistribution.deceased}</p>
+                    <div className='flex flex-row items-center'>
+                      <p className='text-gray-400 text-3xl font-bold w-[170px]' >Deceased:</p>
+                      <p className='text-gray-400 text-3xl font-bold' >{statusDistribution.deceased}</p>
                     </div>
                   </div>
                   

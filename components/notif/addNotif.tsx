@@ -6,9 +6,23 @@ import AddNotif from "./addNotifTodo";
 const Notif = () => {
 
 
+  // Function to create a new todo itemconst Notif = () => {
   // Function to create a new todo item
   const createNotif = (title: string, message: string) => {
-    addNotif(title, message);
+    console.log("Creating todo item with pwdNo:", title, "tile:", message, "message:");
+    addNotif(title, message)
+    .then((response) => {
+      console.log("Response from server:", response);
+      if (response && response.success) {
+        alert("You have successfully added a notification.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error creating notification:", error);
+      if (error) {
+        alert("Error adding notification. Please try again.");
+      }
+    });
   };
 
   // Rendering the Todo List component

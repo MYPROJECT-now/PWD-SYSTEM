@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
 import { ClerkLoading, ClerkLoaded, SignOutButton } from "@clerk/nextjs";
 import { Loader} from "lucide-react";
+import { Button } from "./ui/button";
 
 type Props = {
     className?: string;
@@ -18,7 +19,7 @@ export const Sidebar_admin = ({ className }: Props) => {
             )}
         >
             
-            <div className="gap-1 mx-auto flex flex-col items-center ">
+            <div className="gap-1 mx-auto flex flex-col items-start ">
                 <Link href="/admin/dashboard_admin">
                     <Image 
                         src="/home.png" 
@@ -45,19 +46,19 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <SidebarItem 
                         label="Create User" 
                         href="/admin/create"
-                        iconSrc="/create.png" 
+                        iconSrc="/dashboard.png" 
                     />
 
                     <SidebarItem 
                         label="Notifications" 
                         href="/admin/notification"
-                        iconSrc="/notification.png" 
+                        iconSrc="/dashboard.png" 
                     />
 
                     <SidebarItem 
                         label="Achievements" 
                         href="/admin/achievements"
-                        iconSrc="/notification.png" 
+                        iconSrc="/dashboard.png" 
                     />
                 </div>
 
@@ -73,11 +74,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                 <ClerkLoaded>
 
                 <SignOutButton>
-                    <button
-                    className="text-white bg-blue-600 rounded-lg px-5 py-2.5 text-center"
+                    <Button
+                    variant="signin"
+                    size="lg"
                     >
-                        Log Out
-                    </button>
+                        LOGOUT
+                    </Button>
                 </SignOutButton>
                 </ClerkLoaded>
             </div>

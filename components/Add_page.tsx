@@ -3,6 +3,7 @@
 import { useAddModal } from "@/store/use-add-modal";
 import { addTodo } from "@/actions/todoAction";
 import { AddTodo } from "./addTodo";
+import { Button } from "./ui/button";
 
 
 export const Add_page = () => {
@@ -35,12 +36,13 @@ export const Add_page = () => {
 
   return (
     <div>
-      <button
-        className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-[250px] py-1 mt-4"
+      <Button
+      variant="add"
+      size="lg"
         onClick={open}
       >
         ADD PWD MEMBER
-      </button>
+      </Button>
       <AddTodo createTodo={createTodo} />
     </div>
   );

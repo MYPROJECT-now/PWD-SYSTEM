@@ -101,6 +101,7 @@ import { Loader } from "lucide-react";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export const Header = () => {
     const { user, isSignedIn, isLoaded } = useUser(); 
@@ -156,9 +157,14 @@ export const Header = () => {
                         <SignedOut>
                             <SignInButton
                                 mode="modal">
-                                <button className="w-20 h-10 b-2 rounded-md bg-blue-400"> 
+                                {/* <button className="w-20 h-10 b-2 rounded-md bg-blue-400"> 
                                     LogIn
-                                </button>
+                                </button> */}
+                                <Button
+                                variant="signin"
+                                size="lg">
+                                    Sign IN
+                                </Button>
                             </SignInButton>
                         </SignedOut>
                     </ClerkLoaded>
