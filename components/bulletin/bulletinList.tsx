@@ -90,7 +90,7 @@ export const BulletinList = () => {
       {notifications.map((notification) => (
         <button
         key={notification.id} 
-          className="p-3 bg-white border-2 border-neutral-300 w-full text-white rounded-lg mb-2"
+          className="p-3 bg-white border-2 border-l-8 border-neutral-300 w-full text-white rounded-lg mb-2"
           
           onClick={() => handleButtonClick(notification)}
         >
