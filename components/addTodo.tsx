@@ -128,10 +128,10 @@ interface Props {
     <Dialog open={isOpen} onOpenChange={handleClose}>
     <DialogContent className="w-[800px]">
         <DialogHeader>
-            <DialogTitle className="text-center font-bold  text-3xl">
+            <DialogTitle className=" text-center text-white text-xl pt-3 bg-green-800 w-[513px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">
                 ADD PWD MEMBER
             </DialogTitle>
-            <DialogDescription className="text-center text-xl">
+            <DialogDescription className="text-center text-xl py-5">
             <div className="w-full flex flex-col gap-0 mt-2">
             <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
@@ -314,7 +314,7 @@ interface Props {
 
 
                 {/* Button for adding a new todo */}
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center mt-6">
                 <Button
                   variant="add"
                   size="lg"

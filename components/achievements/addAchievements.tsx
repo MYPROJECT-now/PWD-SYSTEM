@@ -74,7 +74,7 @@ export const AddAchievement: FC<Props> = ({ createTodo }) => {
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent className="w-[800px]">
         <DialogHeader>
-          <DialogTitle className="text-center font-bold text-3xl">
+          <DialogTitle className=" text-center text-white text-xl pt-3 bg-green-800 w-[514px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">
             ADD ACHIEVEMENTS
           </DialogTitle>
           <DialogDescription className="text-center text-xl">

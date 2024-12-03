@@ -350,8 +350,8 @@ const DisabilityPieChart = () => {
       style={{ height: "270px" }} // Limit height to 500px
     >
       <div>
-        <h2 className="text-center text-lg font-semibold mt-7"
-        style={{ marginBottom: -20 }}>
+        <h2 className="text-center text-lg font-semibold mt-[45px]"
+        style={{ marginBottom: -25 }}>
           Disability Distribution of PWDs
         </h2>
         <Pie data={chartData} options={chartOptions} />

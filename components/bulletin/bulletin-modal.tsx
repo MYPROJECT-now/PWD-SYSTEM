@@ -20,16 +20,20 @@ export const BulletinModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="w-[500px] min-h-[400px]">
+      <DialogContent className="w-[500px] min-h-[400px] flex flex-col">
         <DialogHeader>
-          <DialogTitle  className="text-center">{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
+          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
-          <p>{notificationData?.message}</p> {/* Display message dynamically */}
+          <div className="min-h-[300px]">
+            <p>{notificationData?.message}</p> {/* Display message dynamically */}
+          </div>
+          
           <div>
           <Button
           variant="signin"
           size="lg"
+          className="mb-3"
           onClick={close}
         >
           Okay

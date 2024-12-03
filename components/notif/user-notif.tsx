@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { getPendingNotifications, updateNotificationStatus } from "@/actions/todoAction";
 import { format } from 'date-fns';
+import { Button } from "../ui/button";
 
 // Define the type for notifications
 type Notification = {
@@ -52,19 +53,26 @@ export const UserNotif = () => {
   return (
 
     <Dialog open={!!currentNotif} onOpenChange={handleAcknowledge}>
-      <DialogContent className="w-[500px] min-h-[400px]">
+      <DialogContent className="w-[500px] min-h-[400px] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="text-center">{currentNotif?.title || "Notification"}</DialogTitle>
+          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">{currentNotif?.title || "Notification"}</DialogTitle>
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
-          {currentNotif?.message || "You have a new notification."}
-          <div>
-          <button
-          className="bg-blue-500 hover:bg-blue-700 text-white w-[100px] h-[50px] font-bold py-2 px-4 rounded mb-2 "
+          <div className=" min-h-[300px]">
+            <p className="p-2 text-sm">
+            {currentNotif?.message || "You have a new notification."}
+            </p>
+          </div>
+          <div className="">
+          <Button
+          variant="signin"
+          size="lg"
+          className="mb-3"
+
           onClick={handleAcknowledge}
         >
           Okay
-        </button>
+        </Button>
         <p>{currentNotif ? format(currentNotif.timestamp, 'MMMM dd, yyyy hh:mm a') : 'No timestamp available'}</p>
         </div>
         </DialogDescription>

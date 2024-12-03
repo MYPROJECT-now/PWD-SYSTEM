@@ -8,6 +8,7 @@ import { handlePasswordUpdate } from "./changePassword";
 import { useUser } from "@clerk/clerk-react"; // Assuming you're using Clerk for authentication
 import UserClientComponent from "@/app/admin/user_validate";
 import { Dashboard_header } from "@/components/header";
+import { Button } from "@/components/ui/button";
 
 
 const ChangePassword = () => {
@@ -43,7 +44,7 @@ const ChangePassword = () => {
                 </div>
 
         <div className="flex flex-col  items-center justify-center bg-slate-400 w-[600px] h-[300px] mt-[80px] rounded-lg">
-            <h1 className="text-xl font-bold">Change Your Password</h1>
+            <h1 className="text-3xl text-white font-bold">Change Your Password</h1>
             <input
                 type="password"
                 placeholder="Enter current password"
@@ -58,13 +59,15 @@ const ChangePassword = () => {
                 onChange={(e) => setNewPassword(e.target.value)}
                 className="mt-4 p-2 border rounded"
             />
-            {error && <p className="text-red-500 mt-2">{error}</p>}
-            <button
+            {error && <p className="text-red-500 mb-2">{error}</p>}
+            <Button
+            variant="signin"
+            size="lg"
+            className="mt-4"
                 onClick={handlePasswordChange}
-                className="mt-4 p-2 bg-blue-500 text-white rounded"
             >
                 Update Password
-            </button>
+            </Button>
         </div>
 
         </div>

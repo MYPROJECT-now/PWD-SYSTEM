@@ -28,7 +28,6 @@ const Notif = () => {
   // Rendering the Todo List component
   return (
     <div className="flex mx-auto flex-col items-center p-16 bg-neutral-500 h-full">
-      <div className="text-5xl font-medium">Add Notification</div>
      
       {/* Adding Todo component for creating new todos */}
       <AddNotif createNotif={createNotif} />

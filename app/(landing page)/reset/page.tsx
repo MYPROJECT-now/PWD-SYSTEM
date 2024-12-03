@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { handlePasswordUpdate } from "./changePassword";
 import { useUser } from "@clerk/clerk-react"; // Assuming you're using Clerk for authentication
+import { Button } from "@/components/ui/button";
 
 
 const ChangePassword = () => {
@@ -50,12 +51,14 @@ const ChangePassword = () => {
                 className="mt-4 p-2 border rounded"
             />
             {error && <p className="text-red-500 mt-2">{error}</p>}
-            <button
+            <Button
                 onClick={handlePasswordChange}
-                className="mt-4 p-2 bg-blue-500 text-white rounded"
+                variant="signin"
+                size="lg"
+                className="mt-5"
             >
                 Update Password
-            </button>
+            </Button>
         </div>
         </div>
     );

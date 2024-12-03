@@ -83,13 +83,15 @@ export default function CreateUserForm() {
               <Button
               variant='add'
               size='lg'
+              type='submit'
               >
                 Create User
               </Button>
               </div>
+              {message && <p>{message}</p>}
             </div>
             </form>
-          {message && <p>{message}</p>}
+ 
           </div>
 
 
