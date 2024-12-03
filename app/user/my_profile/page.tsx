@@ -14,18 +14,61 @@ const AccountsPage = async () => {
           <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
             Account Details
           </div>
-          <div className="px-5 py-4">
-            <h3 className="text-lg font-semibold">User Information</h3>
-            <div className="mt-2">
-              <p><strong>Full Name:</strong> {userData.name} {userData.middleName} {userData.surname}</p>
-              <p><strong>Age:</strong> {userData.age}</p>
-              <p><strong>Purok:</strong> {userData.Purok}</p>
-              <p><strong>Contact:</strong> {userData.contactNo}</p>
-              <p><strong>Disability Type:</strong> {userData.typeOfDisability}</p>
-              <p><strong>Status:</strong> {userData.status}</p>
-              <p><strong>Issue Date:</strong> {userData.issueDate}</p>
-              <p><strong>Expiry Date:</strong> {userData.expiryDate}</p>
+          <div className="px-5 py-4 flex flex-col gap-8">
+            <div className="bg-green-400 text-green-900 p-2 w-[400px] rounded-md">
+              <p>*Read-only</p>
+              <p>*Direct to the office for changing any Information</p>
             </div>
+
+            <div className="flex flex-row gap-5">
+            
+              <div>
+                <p>Pwd number</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.pwdNo}</p>
+              </div>
+
+              <div>
+                <p>Issuance Date</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.issueDate}</p>
+              </div>
+
+              <div>
+                <p>Expiry Date</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.expiryDate}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-row gap-5">
+              <div>
+                <p>Last Name</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.surname}</p>
+              </div>
+
+              <div>
+                <p>First Name</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.name}</p>
+              </div>
+
+              <div>
+                <p>Middle Name</p>
+                <p className="w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.middleName}</p>
+              </div>
+            </div>
+
+            <div className="">
+              <div>
+                <p>Address</p>
+                <p className="w-[600px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.Purok}</p>
+              </div>
+            </div>
+
+            <div className="">
+              <div>
+                <p>Contact Information</p>
+                <p className="w-[200px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.contactNo}</p>
+              </div>
+            </div>
+
           </div>
         </div>
     </div>
