@@ -1,6 +1,6 @@
-
 "use client"
 
+import React, { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -11,29 +11,32 @@ import {
 import { CldImage } from 'next-cloudinary';
 
 export const Achievements = ({ data }: { data: Array<{ id: number; title: string; description: string; imageSrc: string }> }) => {
+  const [achievements, setAchievements] = useState(data);
+
+  // Update achievements when new data is received
+  useEffect(() => {
+    setAchievements(data);
+  }, [data]);
+
   return (
-    <div className="w-[700px] h-[330px] mx-auto flex items-center justify-center ">
+    <div className="w-[700px] h-[330px] flex items-center justify-center gap-3 ">
       <Carousel opts={{ align: "start", loop: true }} className="text-center w-full">
         <CarouselContent>
-          {data.map((achievement) => (
-             
+          {achievements.map((achievement) => (
             <CarouselItem key={achievement.id}
-            className=" h-[330px] w-[100px] flex flex-col items-center justify-center basis-1/3  bg-neutral-300"
+              className=" h-[330px] w-full flex flex-col items-center justify-center basis-1/2"
             >
-            {/* const data = await getAchievements(); add later */}
-                <div className="p-3">
+              <div className="relative w-[340px] h-[200px]">
                 <CldImage
-                  width="300"
-                  height="300"
+                  fill
                   src={achievement.imageSrc}
                   alt={achievement.title}
-                  className="mx-auto w-[120px] h-[150px]"
+                  className="object-cover w-full h-full"
                 />
-                </div>
-
-              <p className="text-lg font-bold">{achievement.title}</p>
-              <div className=" h-[100px] overflow-auto">
-              <p className="text-sm">{achievement.description}</p>
+              </div>
+              <p className="text-lg text-white font-bold mb-2">{achievement.title}</p>
+              <div className=" h-[120px] overflow-auto">
+                <p className="text-start text-sm text-white">{achievement.description}</p>
               </div>
             </CarouselItem>
           ))}
@@ -44,7 +47,6 @@ export const Achievements = ({ data }: { data: Array<{ id: number; title: string
     </div>
   );
 };
-
 
 
 // import {

@@ -10,6 +10,7 @@ import {
 import { useBulletinModal } from "@/store/use-bulletin-modal";
 import { format } from 'date-fns';
 import { Button } from "../ui/button";
+import { CldImage } from "next-cloudinary";
 
 export const BulletinModal = () => {
   const { isOpen, close, notificationData } = useBulletinModal(); // Use notificationData to display dynamic content
@@ -25,9 +26,21 @@ export const BulletinModal = () => {
           <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">{notificationData?.title}</DialogTitle> {/* Display title dynamically */}
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
-          <div className="min-h-[300px]">
-            <p>{notificationData?.message}</p> {/* Display message dynamically */}
-          </div>
+
+            <div className="min-h-[300px]">
+              <p>{notificationData?.message}</p> {/* Display message dynamically */}
+
+              <div className="">
+            <CldImage
+                    width="300"
+                    height="300"
+                    src={notificationData?.imageSrc || ""}
+                    alt={notificationData?.title || ""}
+                    className="mx-auto w-[150px] h-[150px]"
+                  />
+            </div>
+            </div>
+        
           
           <div>
           <Button

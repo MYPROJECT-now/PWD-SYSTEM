@@ -27,6 +27,7 @@ import { relations } from "drizzle-orm";
     id: serial("id").primaryKey(),
     title: varchar("title", { length: 100 }).notNull(),
     message: varchar("message", { length: 500 }).notNull(),
+    imageSrc: varchar("imgSrc", { length: 500 }),
     done: boolean("done").default(true).notNull(),
     timestamp: timestamp("timestamp").defaultNow().notNull(),
   });

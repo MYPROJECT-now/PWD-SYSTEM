@@ -8,9 +8,9 @@ const Notif = () => {
 
   // Function to create a new todo itemconst Notif = () => {
   // Function to create a new todo item
-  const createNotif = (title: string, message: string) => {
+  const createNotif = (title: string, message: string, imageSrc: string) => {
     console.log("Creating todo item with pwdNo:", title, "tile:", message, "message:");
-    addNotif(title, message)
+    addNotif(title, message, imageSrc)
     .then((response) => {
       console.log("Response from server:", response);
       if (response && response.success) {

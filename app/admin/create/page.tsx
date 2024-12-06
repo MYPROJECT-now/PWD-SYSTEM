@@ -59,7 +59,7 @@ export default function CreateUserForm() {
                   value={pwdNo}
                   onChange={(e) => setPwdNo(e.target.value)}
                   required
-                  className='h-[50px] rounded-sm'
+                  className='h-[50px] rounded-sm text-black pl-3'
                 />
               </div>
 
@@ -74,7 +74,7 @@ export default function CreateUserForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className='h-[50px] rounded-sm'
+                  className='h-[50px] rounded-sm text-black pl-3'
                 />
               </div>
             </div>      

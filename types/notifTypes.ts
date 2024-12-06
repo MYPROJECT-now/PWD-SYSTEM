@@ -3,4 +3,5 @@ export type notifType = {
     title: string;
     message: string;
    done: boolean;
+   imageSrc?: string; 
   }

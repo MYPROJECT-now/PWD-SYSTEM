@@ -33,10 +33,10 @@ const DashboardPage = () => {
           <Link href="/user/benefits">
           <button
           >
-            <div className=" flex flex-col items-center justify-center h-[300px] w-[300px] rounded-lg  shadow-2xl">
-              <div>
+            <div className=" flex flex-col items-center justify-center h-[300px] w-[300px] rounded-lg  border-r-4 border-b-4 border-r-black border-b-black">
+              <div className="mb-3">
                 <Image
-                src="/pwd.jpg" 
+                src="/benefits.jpeg" 
                 width={200} 
                 height={200} 
                 alt="logo" 
@@ -53,10 +53,10 @@ const DashboardPage = () => {
             <Link href="/user/rights">
             <button
             >
-              <div className=" flex flex-col items-center justify-center h-[300px] w-[300px] rounded-lg  shadow-2xl">
-                <div>
+              <div className=" flex flex-col items-center justify-center h-[300px] w-[300px] rounded-lg border-r-4 border-b-4 border-r-black border-b-black">
+                <div className="mb-3">
                     <Image
-                    src="/pwd.jpg" 
+                    src="/rights.jpeg" 
                     width={200} 
                     height={200} 
                     alt="logo" 

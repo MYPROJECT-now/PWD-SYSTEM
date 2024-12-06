@@ -5,7 +5,7 @@ import { db } from "@/db/drizzle";
 import { notificationTable, pwdTable, clerkUserTable, AchievementsTable } from "@/db/schema";
 
 
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 
 //get all data
 export const getData = () => {
@@ -45,9 +45,64 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
 };
 
 
+// export const deleteTodo = async (id: number) => {
+//   await db.delete(pwdTable).where(eq(pwdTable.id, id));
+//   revalidatePath("/admin/masterlist");
+// };
+
+// export const deleteTodo = async (id: number) => {
+//   // Fetch the PWD record to get the pwdNo for relation
+//   const pwdRecord = await db
+//     .select({ pwdNo: pwdTable.pwdNo })
+//     .from(pwdTable)
+//     .where(eq(pwdTable.id, id))
+//     .limit(1);
+
+//   if (pwdRecord.length > 0) {
+//     const pwdNo = pwdRecord[0].pwdNo;
+
+//     // Delete the related record in clerkUserTable
+//     await db.delete(clerkUserTable).where(eq(clerkUserTable.pwdNo, pwdNo));
+//   }
+
+//   // Delete the PWD record from pwdTable
+//   await db.delete(pwdTable).where(eq(pwdTable.id, id));
+
+//   // Revalidate the page
+//   revalidatePath("/admin/masterlist");
+// };
+
 export const deleteTodo = async (id: number) => {
+  // Fetch the PWD record along with the related clerkId by joining pwdTable and clerkUserTable
+  const pwdRecord = await db
+    .select({ pwdNo: pwdTable.pwdNo, clerkId: clerkUserTable.clerkId })
+    .from(pwdTable)
+    .innerJoin(clerkUserTable, eq(pwdTable.pwdNo, clerkUserTable.pwdNo))  // Join the tables
+    .where(eq(pwdTable.id, id))
+    .limit(1);
+
+  if (pwdRecord.length > 0) {
+    const pwdNo = pwdRecord[0].pwdNo;
+    const clerkId = pwdRecord[0].clerkId;
+
+    // Delete the related record in clerkUserTable
+    await db.delete(clerkUserTable).where(eq(clerkUserTable.pwdNo, pwdNo));
+
+    // Now call Clerk's API to delete the user
+    try {
+      const client = await clerkClient();
+      await client.users.deleteUser(clerkId);  // Use the dynamic clerkId
+      console.log('User deleted from Clerk');
+    } catch (error) {
+      console.log('Error deleting user from Clerk:', error);
+    }
+  }
+
+  // Delete the PWD record from pwdTable
   await db.delete(pwdTable).where(eq(pwdTable.id, id));
-  revalidatePath("/admin/masterlist");
+
+  // Revalidate the page
+  revalidatePath('/admin/masterlist');
 };
 
 
@@ -138,15 +193,30 @@ export async function getStatusDistribution() {
 //notification
 
 //adding notification
-export const addNotif = async ( title: string, message: string) => {
+// export const addNotif = async ( title: string, message: string, imageSrc: string) => {
+//   try {
+//   await db.insert(notificationTable).values({
+//     title: title,
+//     message: message,
+//     imageSrc: imageSrc
+//   });
+//   return { success: true };
+//   } catch (error) {
+//     console.error("Error adding notification:", error);
+//   }
+// };
+
+export const addNotif = async (title: string, message: string, imageSrc?: string | null) => {
   try {
-  await db.insert(notificationTable).values({
-    title: title,
-    message: message
-  });
-  return { success: true };
+    await db.insert(notificationTable).values({
+      title: title,
+      message: message,
+      imageSrc: imageSrc || null, // Default to null if undefined
+    });
+    return { success: true };
   } catch (error) {
     console.error("Error adding notification:", error);
+    return { success: false };
   }
 };
 

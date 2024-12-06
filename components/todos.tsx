@@ -11,16 +11,31 @@ interface Props {
 }
 
 const Todos: FC<Props> = ({ todos }) => {
-  // State to manage the list of todo items
   const [todoItems, setTodoItems] = useState<pwdType[]>(todos);
-
-  // state for search
   const [searchResults, setSearchResults] = useState<pwdType[]>([]);
+  const [selectedPurok, setSelectedPurok] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
+  const filteredTodoItems = todoItems.filter(
+    (todo) => todo.Purok === selectedPurok || selectedPurok === ""
+  );
 
+  const displayedTodos =
+    searchQuery !== "" ? searchResults : filteredTodoItems;
 
-  // Function to change the text of a todo item
+  // Paginated data
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedData = displayedTodos.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+
+  const totalPages = Math.ceil(displayedTodos.length / itemsPerPage);
+
   const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
     age: number, contactNo: string, issueDate: string, expiryDate: string,  typeOfDisability: string, status: string) => {
     setTodoItems((prev) =>
@@ -31,148 +46,116 @@ const Todos: FC<Props> = ({ todos }) => {
       age, contactNo, issueDate, expiryDate, typeOfDisability, status);
   };
 
-
-  // Function to delete a todo item
   const deleteTodoItem = (id: number) => {
     setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
     deleteTodo(id);
   };
 
-
-  //filtering method
-  // Add a new state to store the selected Purok value
-const [selectedPurok, setSelectedPurok] = useState('');
-
-// search engine
-const [searchQuery, setSearchQuery] = useState('');
-
-// Filter the todoItems based on the selected Purok value
-const filteredTodoItems = todoItems.filter((todo) => todo.Purok === selectedPurok || selectedPurok === '');
-
-  // Rendering the Todo List component
-
   return (
     <main className="px-[20px] mt-5">
-       {/* Add a search input field */}
-    <div className="flex gap-3">
-
-    <input
-      type="search"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      placeholder="Search PWD MEMBERS"
-      className="pl-2 border-gray-300 border-2 rounded-md py-2 w-[400px]"
-    />
-
-       {/* Mapping through todoItems and rendering Todo component for each */}
-       <select value={selectedPurok} onChange={(e) => setSelectedPurok(e.target.value)} 
-       className="border-gray-300 border-2 rounded-md py-2.5">
-        <option value="">Purok</option>
+      <div className="flex gap-3">
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search PWD MEMBERS"
+          className="pl-2 border-gray-300 border-2 rounded-md py-2 w-[400px]"
+        />
+        <select
+          value={selectedPurok}
+          onChange={(e) => setSelectedPurok(e.target.value)}
+          className="border-gray-300 border-2 rounded-md py-2.5"
+        >
+          <option value="">Purok</option>
           {["Purok 1", "Purok 2", "Purok 3", "Purok 4", "Purok 5", "Purok 6", "Purok 7"].map((purok) => (
             <option key={purok} value={purok}>
               {purok}
             </option>
           ))}
         </select>
-
-<Button
-  variant="signin"
-  size="lg"
-  onClick={() => {
-    // Filter the todoItems based on the search query
-    const filteredItems = todoItems.filter((todo) => {
-      const query = searchQuery.toLowerCase();
-      return (
-        todo.pwdNo.toLowerCase().includes(query) ||
-        todo.surname.toLowerCase().includes(query) ||
-        todo.name.toLowerCase().includes(query)
-      );
-    });
-    setSearchResults(filteredItems);
-  }}
->
-  Search
-</Button>
-        <Button 
+        <Button
           variant="signin"
           size="lg"
-         onClick={() => {
-          setSelectedPurok(''); 
-          setSearchQuery('');
-          setSearchResults([]);
-          }}>   
+          onClick={() => {
+            const filteredItems = todoItems.filter((todo) => {
+              const query = searchQuery.toLowerCase();
+              return (
+                todo.pwdNo.toLowerCase().includes(query) ||
+                todo.surname.toLowerCase().includes(query) ||
+                todo.name.toLowerCase().includes(query)
+              );
+            });
+            setSearchResults(filteredItems);
+          }}
+        >
+          Search
+        </Button>
+        <Button
+          variant="signin"
+          size="lg"
+          onClick={() => {
+            setSelectedPurok("");
+            setSearchQuery("");
+            setSearchResults([]);
+          }}
+        >
           Clear Filter
         </Button>
+      </div>
 
-        </div>
-
-<div className="max-w-[900px] xl:max-w-[1100px] overflow-auto">
-          <table className=" mt-3 border-collapse mx-auto ">
-  <thead>
-    <tr>
-      <th className="border border-black px-1 min-w-[10px] ">IssuanceDate</th>
-      <th className="border border-black px-1 min-w-[10px]">PwdNo</th>
-      <th className="border border-black px-1 min-w-[130px]">Surname</th>
-      <th className="border border-black px-1 min-w-[130px]">Name</th>
-      <th className="border border-black px-1 min-w-[130px]">Middlename</th>
-      <th className="border border-black px-1 min-w-[10px]">Address</th>
-      <th className="border border-black px-1 min-w-[20px]">Age</th>
-      <th className="border border-black px-1 min-w-[130px]">ContactNo</th>
-      <th className="border border-black px-1">ExpiryDate</th>
-      <th className="border border-black px-1 min-w-[255px]">Type of Disability</th>
-      <th className="border border-black px-4">Status</th>
-
-      {/* <th className="border border-black">Done</th> */}
-      <th className="border border-black px-10">Actions</th>
-    </tr>
-  </thead>
-
-  {searchQuery !== '' ? (
-  searchResults.length > 0 ? (
-    <tbody>
-      {/* Render the filtered items */}
-      {searchResults.map((todo) => (
-        <tr key={todo.id}>
-          <Todo
-            todo={todo}
-            changeTodoText={changeTodoText}
-            deleteTodoItem={deleteTodoItem}
-          />
-        </tr>
-      ))}
-    </tbody>
-  ) : (
-    <tbody>
-      <tr>
-        <td colSpan={11} className="text-center">Nothing found</td>
-      </tr>
-    </tbody>
-  )
-) : (
-  <tbody>
-    {filteredTodoItems.map((todo) => (
-      <tr key={todo.id}>
-        <Todo    
-          todo={todo}
-          changeTodoText={changeTodoText}
-          deleteTodoItem={deleteTodoItem}
-      />
-      </tr>
-    ))}
-  </tbody>
-)}
+      <div className="max-w-[900px] xl:max-w-[1100px] overflow-auto">
+        <table className="mt-3 border-collapse mx-auto">
+          <thead>
+            <tr>
+              <th className="border border-black px-1 min-w-[10px]">IssuanceDate</th>
+              <th className="border border-black px-1 min-w-[10px]">PwdNo</th>
+              <th className="border border-black px-1 min-w-[130px]">Surname</th>
+              <th className="border border-black px-1 min-w-[130px]">Name</th>
+              <th className="border border-black px-1 min-w-[130px]">Middlename</th>
+              <th className="border border-black px-1 min-w-[100px]">Address</th>
+              <th className="border border-black px-1 min-w-[20px]">Age</th>
+              <th className="border border-black px-1 min-w-[130px]">ContactNo</th>
+              <th className="border border-black px-1">ExpiryDate</th>
+              <th className="border border-black px-1 min-w-[255px]">Type of Disability</th>
+              <th className="border border-black px-4">Status</th>
+              <th className="border border-black px-10">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paginatedData.map((todo) => (
+              <tr key={todo.id}>
+                <Todo
+                  todo={todo}
+                  changeTodoText={changeTodoText}
+                  deleteTodoItem={deleteTodoItem}
+                />
+              </tr>
+            ))}
+          </tbody>
         </table>
+      </div>
 
-        </div>
+      <div className="flex justify-center gap-3 mt-5">
+        <Button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        >
+          Previous
+        </Button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+        >
+          Next
+        </Button>
+      </div>
 
-
-        <Add_page />
-      {/* Adding Todo component for creating new todos */}
-      {/* <AddTodo createTodo={createTodo} /> */}
+      <Add_page />
     </main>
   );
-
 };
-
 
 export default Todos;

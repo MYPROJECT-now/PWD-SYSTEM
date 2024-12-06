@@ -10,6 +10,7 @@ import {
 import { getPendingNotifications, updateNotificationStatus } from "@/actions/todoAction";
 import { format } from 'date-fns';
 import { Button } from "../ui/button";
+import { CldImage } from "next-cloudinary";
 
 // Define the type for notifications
 type Notification = {
@@ -18,6 +19,7 @@ type Notification = {
   message: string;
   timestamp: Date;
   done: boolean;
+  imageSrc?: string | null; 
 };
 
 export const UserNotif = () => {
@@ -55,13 +57,24 @@ export const UserNotif = () => {
     <Dialog open={!!currentNotif} onOpenChange={handleAcknowledge}>
       <DialogContent className="w-[500px] min-h-[400px] flex flex-col">
         <DialogHeader>
-          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">{currentNotif?.title || "Notification"}</DialogTitle>
+          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">
+            {currentNotif?.title || "Notification"}</DialogTitle>
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
           <div className=" min-h-[300px]">
-            <p className="p-2 text-sm">
+          <p className="p-2 text-sm mb-5">
             {currentNotif?.message || "You have a new notification."}
             </p>
+          <div className="">
+          <CldImage
+                  width="300"
+                  height="300"
+                  src={currentNotif?.imageSrc || ""}
+                  alt={currentNotif?.title || ""}
+                  className="mx-auto w-[150px] h-[150px]"
+                />
+          </div>
+            
           </div>
           <div className="">
           <Button

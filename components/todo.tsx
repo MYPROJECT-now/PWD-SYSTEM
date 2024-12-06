@@ -1,6 +1,7 @@
 "use client";
 import { pwdType } from "@/types/todoTypes";
 import { ChangeEvent, FC, useState } from "react";
+import { Button } from "./ui/button";
 
 interface Props {
   todo: pwdType;
@@ -105,7 +106,7 @@ const Todo: FC<Props> = ({
 
   // Event handler for deleting a todo item
   const handleDelete = () => {
-    if (confirm("Are you sure you want to delete this todo?")) {
+    if (confirm("Are you sure you want to delete this data?")) {
       deleteTodoItem(todo.id);
     }
   };
@@ -234,36 +235,43 @@ return (
     </td>
 
     <td className="border border-black">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-1">
         {editing ? (
-          <button
+          <Button
+            variant="add"
+            size="sm"
             onClick={handleSave}
-            className="bg-green-600 text-green-50 hover:bg-green-700 hover:text-green-100 rounded px-2 w-14 py-1"
+           
           >
             Save
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
+          variant="signin"
+            size="sm"
             onClick={handleEdit}
-            className="bg-blue-400 text-blue-50 hover:bg-blue-500 hover:text-blue-100  w-14 px-2 py-1"
+            className="px-4"
           >
             Edit
-          </button>
+          </Button>
         )}
         {editing ? (
-          <button
+          <Button
+          variant="destructive"
+          size="sm"
             onClick={handleCancel}
-            className="bg-red-400 w-16 text-red-50 hover:bg-red-500 hover:text-red-100 rounded px-2 py-1"
           >
             Close
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
+           variant="destructive"
+            size="sm"
             onClick={handleDelete}
-            className="bg-red-400 w-16 text-red-50 hover:bg-red-500 hover:text-red-100 rounded px-2 py-1"
+           
           >
             Delete
-          </button>
+          </Button>
         )}
         </div>
     </td>

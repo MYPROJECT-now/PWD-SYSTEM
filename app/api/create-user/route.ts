@@ -7,7 +7,7 @@ import nodemailer from 'nodemailer';
 
 // Random password generator
 function generateRandomPassword(length = 12) {
-  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*+";
+  const charset = "ABCDEFGHJKMNOPQRSTUVWXYZabcdefghjkmnopqrstuvwxyz0123456789@#$&*";
   return Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('');
 }
 

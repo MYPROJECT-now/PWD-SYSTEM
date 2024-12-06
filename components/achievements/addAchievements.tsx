@@ -27,7 +27,7 @@ export const AddAchievement: FC<Props> = ({ createTodo }) => {
     setTitle(e.target.value);
   };
 
-  const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
   };
 
@@ -98,11 +98,10 @@ export const AddAchievement: FC<Props> = ({ createTodo }) => {
                 <div className="w-[120px] text-black text-start">
                   <label htmlFor="Description">DESCRIPTION:</label>
                 </div>
-                <div className="w-[320px] text-black">
-                  <input
+                <div className="w-[320px] h-[200px] text-black">
+                  <textarea
                     placeholder="DESCRIPTION"
-                    type="text"
-                    className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+                    className="w-full h-full px-2 py-1 border border-gray-200 rounded outline-none"
                     onChange={handleDescriptionChange}
                     value={description}
                   />
