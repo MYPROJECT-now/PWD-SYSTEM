@@ -19,19 +19,19 @@ export const Achievements = ({ data }: { data: Array<{ id: number; title: string
   }, [data]);
 
   return (
-    <div className="w-[700px] h-[330px] flex items-center justify-center gap-3 ">
+    <div className="w-[250px] sm:w-[500px] xl:w-[700px] h-[330px] flex items-center justify-center gap-1">
       <Carousel opts={{ align: "start", loop: true }} className="text-center w-full">
         <CarouselContent>
           {achievements.map((achievement) => (
             <CarouselItem key={achievement.id}
-              className=" h-[330px] w-full flex flex-col items-center justify-center basis-1/2"
+              className=" h-[330px] w-full flex flex-col items-center justify-center overflow-hidden sm:basis-1/2 mx-2"
             >
-              <div className="relative w-[340px] h-[200px]">
+              <div className="relative w-[340px] h-[200px] ">
                 <CldImage
                   fill
                   src={achievement.imageSrc}
                   alt={achievement.title}
-                  className="object-cover w-full h-full"
+                  className="object-cover"
                 />
               </div>
               <p className="text-lg text-white font-bold mb-2">{achievement.title}</p>

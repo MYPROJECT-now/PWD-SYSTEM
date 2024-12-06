@@ -58,7 +58,7 @@ export const Sidebar_user = ({ className }: Props) => {
             </div>
                 
             {/* ClerkLoading and ClerkLoaded components added here for alignment */}
-            <div className="pb-[110px] w-[200px] text-center mx-2">
+            <div className="pb-[110px] w-full px-12 text-center mt-[170px]">
                 <ClerkLoading>
                     <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
                 </ClerkLoading>

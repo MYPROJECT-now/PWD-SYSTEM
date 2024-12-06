@@ -9,7 +9,7 @@ const HealthServicesPage = () => {
       <UserClientComponent>
         <div className="bg-gray-400 h-[680px] overflow-auto rounded-2xl pt-2">
           <Dashboard_header />
-          <div className="mt-4 mx-16 bg-white max-h-[600px] overflow-auto">
+          <div className="mt-4 mx-2 xl:mx-16 bg-white max-h-[600px] overflow-auto">
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">
               Benefits and Privileges
             </div>
@@ -23,11 +23,11 @@ const HealthServicesPage = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-dash opacity-50" />
                 <div className="absolute top-0 left-0 w-full h-full flex flex-col py-8 px-5 gap-5">
                   <div className="flex flex-col text-end gap-5">
-                    <div className="flex flex-col gap-3">
-                      <p className="text-5xl text-white font-extrabold">
+                    <div className="flex flex-col gap-1 xl:gap-3">
+                      <p className="text-4xl xl:text-5xl text-white font-extrabold">
                       Services of
                       </p>
-                      <p className="text-5xl text-white font-extrabold">
+                      <p className="text-4xl xl:text-5xl text-white font-extrabold">
                       Member Agencies
                       </p>
                     </div>
@@ -35,7 +35,7 @@ const HealthServicesPage = () => {
                     <hr className="border-2"/>
 
                     <div className="flex flex-col">
-                      <p className="text-lg text-white">
+                      <p className="text-sm xl:text-lg text-white">
                       List of Member Agencies that <br />
                       compose the National Council on <br />
                       Disability Affairs.
@@ -47,9 +47,9 @@ const HealthServicesPage = () => {
                 </div> 
               </div>
 
-              <div className="w-full h-[150px] px-10 mt-5 ">
+              <div className="w-full h-[160px] px-10 mt-5 ">
                 <div className="w-full h-full flex flex-row border border-black px-5 py-3 gap-2">
-                  <div className="p-2 w-[150px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
+                  <div className="p-2 w-[190px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
                     <Image
                       src="/benefits_1.png"
                       width={100}
@@ -61,17 +61,16 @@ const HealthServicesPage = () => {
                   <div className="flex flex-col">
                     <Link
                     href="https://www.dswd.gov.ph/programs-projects-and-services/">
-                    <p className="text-xl font-extrabold text-dash"> Department of Social Welfare and Development </p>
+                    <p className="text-sm xl:text-xl font-bold xl:font-extrabold text-dash"> Department of Social Welfare and Development </p>
                     </Link>
-                    <p className="text-lg text-blue-600">
-                    The Department of Social Welfare and 
-                    Development is a government agency responsible for providing <br />
+                    <p className="text-xs xl:text-lg text-blue-600">
+                    The Department of Social Welfare and Development is a government agency responsible for providing <br />
                      assistance 
                     to vulnerable sectors, including those with disabilities.
                     </p>
                     <Link
                     href="https://www.dswd.gov.ph/programs-projects-and-services/">
-                    <p className="text-end underline text-lg text-blue-600 hover:text-blue-400">
+                    <p className="text-end underline text-xs xl:text-lg text-blue-600 hover:text-blue-400">
                       Read more...
                     </p>
                     </Link>
@@ -79,9 +78,9 @@ const HealthServicesPage = () => {
                 </div>
               </div>
 
-              <div className="w-full h-[150px] px-10 mt-5 ">
+              <div className="w-full h-[160px] px-10 mt-5 ">
                 <div className="w-full h-full flex flex-row border border-black px-5 py-3 gap-2">
-                  <div className="p-2 w-[150px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
+                  <div className="p-2 w-[200px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
                     <Image
                       src="/benefits_2.png"
                       width={100}
@@ -93,14 +92,14 @@ const HealthServicesPage = () => {
                   <div className="flex flex-col">
                     <Link
                     href="https://www.deped.gov.ph/?s=persons+with+disabilities">
-                    <p className="text-xl font-extrabold text-dash"> Department of Education</p>
+                    <p className="text-sm xl:text-xl font-bold xl:font-extrabold text-dash"> Department of Education</p>
                     </Link>
-                    <p className="text-lg text-blue-600">
+                    <p className="text-xs  xl:text-lg text-blue-600">
                     The Department of Education ensures the inclusivity of all in education, including the persons with disabilities. 
                     </p>
                     <Link
                     href="https://www.deped.gov.ph/?s=persons+with+disabilities">
-                    <p className="text-end underline text-lg text-blue-600 hover:text-blue-400">
+                    <p className="text-end underline text-xs xl:text-lg mt-[60px] lg:mt-4 text-blue-600 hover:text-blue-400">
                       Read more...
                     </p>
                     </Link>
@@ -108,9 +107,9 @@ const HealthServicesPage = () => {
                 </div>
               </div>
 
-              <div className="w-full h-[150px] px-10 mt-5 ">
+              <div className="w-full h-[160px] px-10 mt-5 ">
                 <div className="w-full h-full flex flex-row border border-black px-5 py-3 gap-2">
-                  <div className="p-2 w-[150px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
+                  <div className="p-2 w-[190px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
                     <Image
                       src="/benefits_3.png"
                       width={100}
@@ -122,14 +121,14 @@ const HealthServicesPage = () => {
                   <div className="flex flex-col">
                     <Link
                     href="https://pwd.doh.gov.ph/home.php">
-                    <p className="text-xl font-extrabold text-dash"> Department of Health </p>
+                    <p className="text-sm xl:text-xl font-bold xl:font-extrabold text-dash"> Department of Health </p>
                     </Link>
-                    <p className="text-lg text-blue-600">
+                    <p className="text-xs  xl:text-lg text-blue-600">
                     The Department of Health ensures the well-being and health of persons with disabilities in the Philippines.
                     </p>
                     <Link
                     href="https://pwd.doh.gov.ph/home.php">
-                    <p className="text-end underline text-lg text-blue-600 hover:text-blue-400">
+                    <p className="text-end underline text-xs xl:text-lg mt-[60px] lg:mt-4 text-blue-600 hover:text-blue-400">
                       Read more...
                     </p>
                     </Link>
@@ -137,9 +136,9 @@ const HealthServicesPage = () => {
                 </div>
               </div>
 
-              <div className="w-full h-[150px] px-10 mt-5 mb-5 ">
+              <div className="w-full h-[160px] px-10 mt-5 mb-5 ">
                 <div className="w-full h-full flex flex-row border border-black px-5 py-3 gap-2">
-                  <div className="p-2 w-[230px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
+                  <div className="p-2 w-[280px] flex justify-center items-center overflow-hidden border-4 border-dash rounded-lg">
                     <Image
                       src="/benefits_4.png"
                       width={100}
@@ -151,13 +150,13 @@ const HealthServicesPage = () => {
                   <div className="flex flex-col">
                     <Link
                     href="https://doj.gov.ph/search.html?q=persons+with+disabilities">
-                    <p className="text-xl font-extrabold text-dash"> Department of Justice </p>
+                    <p className="text-sm xl:text-xl font-bold xl:font-extrabold text-dash"> Department of Justice </p>
                     </Link>
-                    <p className="text-lg text-blue-600">
+                    <p className="text-xs  xl:text-lg text-blue-600">
                     The Department of Justice complies with accessibility laws and other legislations that affects PWDs, and ensures that persons with disabilities have equal rights and access to justice.                    </p>
                     <Link
                     href="https://doj.gov.ph/search.html?q=persons+with+disabilities">
-                    <p className="text-end underline text-lg text-blue-600 hover:text-blue-400">
+                    <p className="text-end underline text-xs xl:text-lg mt-3 text-blue-600 hover:text-blue-400">
                       Read more...
                     </p>
                     </Link>

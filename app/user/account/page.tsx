@@ -38,13 +38,13 @@ const ChangePassword = () => {
         <UserClientComponent>
         <div className="bg-gray-400 h-full rounded-2xl pt-2">
         <Dashboard_header />
-            <div className="mt-4 mx-16 bg-white h-[600px] items-center flex flex-col">
+            <div className="mt-4 mx-2 xl:mx-16 bg-white h-[600px] w-[400px] sm:w-[720px] xl:w-[1100px]   items-center flex flex-col">
                 <div className="bg-dash font-bold w-full  text-white text-lg py-5 pl-5">
                     Account Management
                 </div>
 
-        <div className="flex flex-col  items-center justify-center bg-slate-400 w-[600px] h-[300px] mt-[80px] rounded-lg">
-            <h1 className="text-3xl text-white font-bold">Change Your Password</h1>
+        <div className="flex flex-col  items-center justify-center bg-slate-400 w-[300px] sm:w-[450px] h-[300px] mt-[80px] rounded-lg">
+            <h1 className="text-xl sm:text-3xl text-white font-bold">Change Your Password</h1>
             <input
                 type="password"
                 placeholder="Enter current password"

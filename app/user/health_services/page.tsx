@@ -80,19 +80,19 @@ const HealthServicesPage = () => {
 
   // Static content for each page
   const content = [
-<div className="mt-4 mx-16 h-[550px] overflow-y-auto" key="page1">
+<div className="mt-4 mx-2 sm:mx-16 h-[550px] overflow-y-auto" key="page1">
 <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">Health Services</div>
 <div className="w-full h-full flex justify-center items-center" >
     <div className="w-full h-full relative">
     <Image src="/health.jpg" fill alt="logo" />
     <div className="absolute top-0 left-0 w-full h-full bg-dash opacity-70" />
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center  gap-5  ">
-        <div className=" mt-[70px] px-[200px]">
+        <div className=" mt-10 sm:mt-[70px] px-10 lg:px-[200px]">
         <div className="flex flex-row items-center gap-3 mb-3">
           <Image src="/pwd.jpg" width={30} height={30} alt="logo" />
-          <p className="text-3xl font-extrabold text-white">PWD Health Services</p>
+          <p className="text:sm sm:text-3xl font-extrabold text-white">PWD Health Services</p>
         </div>
-        <p className="text-white text-xl">
+        <p className="text-white text-sm sm:text-xl">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
           consequatur veniam temporibus natus deserunt odio inventore placeat...
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
@@ -107,19 +107,19 @@ const HealthServicesPage = () => {
 </div>
 </div>,
 
-<div className="mt-4 mx-16 h-[550px] overflow-y-auto" key="page2">
+<div className="mt-4  mx-2 sm:mx-16 h-[550px] overflow-y-auto" key="page2">
 <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">Health Services</div>
 <div className="w-full h-full flex justify-center items-center" >
     <div className="w-full h-full relative">
     <Image src="/health.jpg" fill alt="logo" />
     <div className="absolute top-0 left-0 w-full h-full bg-dash opacity-70" /> 
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col px-20 pt-[60px]  gap-5">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col px-5 sm:px-20 pt-10 sm:pt-[60px]  gap-5">
         <div className="flex items-center gap-3 text-start">
-          <p className="text-3xl font-extrabold text-white">MEDICAL ASSISTANCE</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-white">MEDICAL ASSISTANCE</p>
         </div>
         <div className="text-white">
         <div className="text-white">
-          <div className="text-2xl">
+          <div className="text-lg sm:text-2xl">
             <ol className="list-decimal pl-8">
               <li>
                 Request letter
@@ -135,7 +135,7 @@ const HealthServicesPage = () => {
             </ol>
           </div>
 
-          <p className="text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
+          <p className="text-[10px] sm:text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
           <hr className="border-2" />
         </div>
         </div>
@@ -144,19 +144,19 @@ const HealthServicesPage = () => {
 </div>
 </div>,
 
-<div className="mt-4 mx-16 h-[550px] overflow-y-auto" key="page3">
+<div className="mt-4 mx-2 sm:mx-16 h-[550px] overflow-y-auto" key="page3">
 <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">Health Services</div>
 <div className="w-full h-full flex justify-center items-center" >
     <div className="w-full h-full relative">
     <Image src="/health.jpg" fill alt="logo" />
     <div className="absolute top-0 left-0 w-full h-full bg-dash opacity-70" /> 
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col px-20 pt-[60px]  gap-5">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col px-5 sm:px-20 pt-10 sm:pt-[60px]  gap-5">
         <div className="flex items-center gap-3 text-start">
-          <p className="text-3xl font-extrabold text-white">THERAPY ASSISTANCE</p>
+          <p className="text-xl sm:text-3xl font-extrabold text-white">THERAPY ASSISTANCE</p>
         </div>
         <div className="text-white">
         <div className="text-white">
-          <div className="text-2xl">
+          <div className="text-lg sm:text-2xl">
             <ol className="list-decimal pl-8">
               <li>
                 Request letter
@@ -172,7 +172,7 @@ const HealthServicesPage = () => {
             </ol>
           </div>
 
-          <p className="text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
+          <p className="text-[10px] sm:text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
           <hr className="border-2" />
         </div>
         </div>
@@ -181,20 +181,20 @@ const HealthServicesPage = () => {
 </div>
 </div>,
 
-<div className="mt-4 mx-16 h-[550px] overflow-y-auto" key="page4">
+<div className="mt-4 mx-2 sm:mx-16 h-[550px] overflow-y-auto" key="page4">
 <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">Health Services</div>
 <div className="w-full h-full flex justify-center items-center" >
     <div className="w-full h-full relative">
     <Image src="/health.jpg" fill alt="logo" />
     <div className="absolute top-0 left-0 w-full h-full bg-dash opacity-70" /> 
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col px-20 pt-[60px]  gap-5">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col p-5 sm:px-20 pt-10 sm:pt-[60px]  gap-5">
         <div className="flex items-center gap-3 text-start">
-          <p className="text-3xl font-extrabold text-white">REQUIREMENTS FOR AVAILING ASSITIVE DEVICES</p>
+          <p className="text-lg sm:text-3xl font-extrabold text-white">REQUIREMENTS FOR AVAILING ASSITIVE DEVICES</p>
         </div>
         <div className="text-white">
         <div className="text-white">
           
-          <div className="text-2xl">
+          <div className="text-lg sm:text-2xl">
             <ol className="list-decimal pl-8">
               <li>
                 Request letter
@@ -231,7 +231,7 @@ const HealthServicesPage = () => {
         {content[currentPage - 1]} {/* Display content based on the current page */}
 
         {/* Pagination controls */}
-        <Pagination className="flex justify-center pt-2" >
+        <Pagination className="flex justify-center pt-2 pb-2" >
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious

@@ -3,6 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { useEffect } from "react";
+import { MobileSidebar } from "./mobile-sidebar";
 
 export const Dashboard_header = () => {
     const { user } = useUser();
@@ -23,13 +24,19 @@ export const Dashboard_header = () => {
       
     return (
         <div className="flex flex-row justify-between mx-9">
+            <div className="flex flex-row">
+             <nav className="lg:hidden block h-full items-center  mt-3 mr-5 z-50">
+            <MobileSidebar />
+            </nav>
+          
             <div className="flex flex-col">
-                <p className="text-dash font-bold text-xl">
+                <p className="text-dash font-bold text-lg sm:text-xl">
                     PWD MANAGEMENT SYSTEM
                 </p>
-                <p className="text-neutral-500 font-bold text-xs">
+                <p className="text-neutral-500 font-bold text-[10px] sm:text-xs">
                     {currentDate}
                 </p>
+            </div>
             </div>
 
             <div className="flex flex-row gap-3 items-center">
@@ -38,9 +45,10 @@ export const Dashboard_header = () => {
                     width={50}
                     height={50}
                     alt="logo"
+                    className="hidden sm:block"
                 />
 
-                <h1>
+                <h1 className="hidden sm:block">
                 {user?.fullName}
                 </h1>
 
