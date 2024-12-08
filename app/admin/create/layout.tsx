@@ -1,5 +1,4 @@
 "use client";
-import { Sidebar_admin } from "@/components/sidebar_admin";
 
 type Props = {
     children: React.ReactNode;

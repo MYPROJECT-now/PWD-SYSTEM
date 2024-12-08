@@ -1,6 +1,4 @@
 
-import { Footer } from "@/components/footer";
-import { Sidebar_admin } from "@/components/sidebar_admin";
 
 
 
