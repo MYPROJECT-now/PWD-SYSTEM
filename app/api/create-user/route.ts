@@ -25,12 +25,21 @@ async function sendEmail(to: string, password: string, pwdNo: string) {
     from: process.env.EMAIL_USER,
     to,
     subject: 'Your Account has been created',
-    text: `Your account has been created successfully.
-          Your username would be pwd-${pwdNo},
-          Your temporary password is: ${password}
-          Please change your password as soon as possible.`,
-
-          
+    text: `
+      Dear User,
+  
+      Your account has been created successfully.
+  
+      Here are your login credentials:
+  
+      Username: pwd-${pwdNo}
+      Temporary Password: ${password}
+  
+      Please change your password as soon as possible.
+  
+      Best regards,
+      The PWD Office of Barangay Parian
+    `,
   };
 
   return transporter.sendMail(mailOptions);
