@@ -31,13 +31,15 @@ export const BulletinModal = () => {
               <p>{notificationData?.message}</p> {/* Display message dynamically */}
 
               <div className="">
-            <CldImage
-                    width="300"
-                    height="300"
-                    src={notificationData?.imageSrc || ""}
-                    alt={notificationData?.title || ""}
-                    className="mx-auto w-[150px] h-[150px]"
-                  />
+              {notificationData?.imageSrc && (
+                <CldImage
+                  width="300"
+                  height="300"
+                  src={notificationData.imageSrc}
+                  alt={notificationData?.title || ""}
+                  className="mx-auto w-[150px] h-[150px]"
+                />
+              )}
             </div>
             </div>
         

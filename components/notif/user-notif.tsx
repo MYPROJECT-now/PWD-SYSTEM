@@ -66,13 +66,15 @@ export const UserNotif = () => {
             {currentNotif?.message || "You have a new notification."}
             </p>
           <div className="">
-          <CldImage
-                  width="300"
-                  height="300"
-                  src={currentNotif?.imageSrc || ""}
-                  alt={currentNotif?.title || ""}
-                  className="mx-auto w-[150px] h-[150px]"
-                />
+          {currentNotif?.imageSrc && (
+            <CldImage
+              width="300"
+              height="300"
+              src={currentNotif.imageSrc}
+              alt={currentNotif.title || ""}
+              className="mx-auto w-[150px] h-[150px]"
+            />
+          )}
           </div>
             
           </div>
