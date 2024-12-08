@@ -55,9 +55,9 @@ export const UserNotif = () => {
   return (
 
     <Dialog open={!!currentNotif} onOpenChange={handleAcknowledge}>
-      <DialogContent className="w-[500px] min-h-[400px] flex flex-col">
+      <DialogContent className="w-[250px] sm:w-[500px] min-h-[400px] flex flex-col rounded-t-lg">
         <DialogHeader>
-          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[502px] h-[50px] -mt-[25px] -ml-[26px] rounded-t-lg">
+          <DialogTitle className=" text-center text-white text-xl pt-3 bg-dash w-[322px] sm:w-[502px] h-[50px] -mt-[26px] -ml-[26px] rounded-t-lg">
             {currentNotif?.title || "Notification"}</DialogTitle>
         </DialogHeader>
         <DialogDescription className="text-center flex flex-col justify-between">
