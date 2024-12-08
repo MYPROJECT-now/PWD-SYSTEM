@@ -309,3 +309,16 @@ export const getAchievements = async () => {
   const achievements = await db.select().from(AchievementsTable);
   return achievements;
 }
+
+// deleting an achievement
+// Function to delete an achievement by id
+export const deleteAchievement = async (id: number) => {
+  try {
+    // Delete the achievement from the database using the provided id
+    await db.delete(AchievementsTable).where(eq(AchievementsTable.id, id));
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting achievement:", error);
+    return { success: false, error: "Failed to delete achievement" };
+  }
+};
