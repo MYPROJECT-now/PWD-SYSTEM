@@ -25,7 +25,7 @@ const DashboardPage = () => {
         <UserNotif />
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 ">
           {/* dashboard */}
-          <div className="mt-4 bg-white h-full w-[330px] sm:w-[800px]"> 
+          <div className="mt-4 bg-white h-full w-[350px] sm:w-[800px]"> 
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
               Dashboard
             </div>
@@ -72,7 +72,7 @@ const DashboardPage = () => {
           </div>
 
           {/* bulletin */}
-          <div className="mt-4 bg-white h-[600px] w-[400px] sm:w-[300px]">
+          <div className="mt-4 bg-white h-[600px] w-[350px] sm:w-[300px]">
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5 mb-2">
               Bulletin
             </div>
