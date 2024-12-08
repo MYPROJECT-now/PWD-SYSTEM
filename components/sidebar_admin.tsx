@@ -46,19 +46,19 @@ export const Sidebar_admin = ({ className }: Props) => {
                     <SidebarItem 
                         label="Create User" 
                         href="/admin/create"
-                        iconSrc="/dashboard.png" 
+                        iconSrc="/create.png" 
                     />
 
                     <SidebarItem 
                         label="Notifications" 
                         href="/admin/notification"
-                        iconSrc="/dashboard.png" 
+                        iconSrc="/notif.png" 
                     />
 
                     <SidebarItem 
                         label="Achievements" 
                         href="/admin/achievements"
-                        iconSrc="/dashboard.png" 
+                        iconSrc="/achievement.png" 
                     />
                 </div>
 
