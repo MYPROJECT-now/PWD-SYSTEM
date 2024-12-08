@@ -38,7 +38,7 @@ const ChangePassword = () => {
         <UserClientComponent>
         <div className="bg-gray-400 h-full rounded-2xl pt-2">
         <Dashboard_header />
-            <div className="mt-4 mx-2 xl:mx-16 bg-white h-[600px] w-[330px] sm:w-[720px] xl:w-[1100px]   items-center flex flex-col">
+            <div className="mt-4 mx-2 sm:mx-auto xl:mx-16 bg-white h-[600px] w-[380px] sm:w-[720px] xl:w-[1100px]   items-center flex flex-col">
                 <div className="bg-dash font-bold w-full  text-white text-lg py-5 pl-5">
                     Account Management
                 </div>
