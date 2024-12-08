@@ -103,7 +103,7 @@ const Todos: FC<Props> = ({ todos }) => {
         </Button>
       </div>
 
-      <div className="max-w-[900px] xl:max-w-[1100px] overflow-auto">
+      <div className="max-w-[900px] xl:max-w-[1070px] overflow-auto">
         <table className="mt-3 border-collapse mx-auto">
           <thead>
             <tr>

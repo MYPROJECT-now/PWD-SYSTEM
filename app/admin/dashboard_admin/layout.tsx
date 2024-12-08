@@ -1,4 +1,5 @@
 
+import { Footer } from "@/components/footer";
 import { Sidebar_admin } from "@/components/sidebar_admin";
 
 
@@ -11,7 +12,6 @@ const AdminLayout = ({ children }:Props) => {
     return (
         <div className="min-h-screen flex flex-row bg-dash">
             <>
-                <Sidebar_admin />
                 <main className=" flex-grow">
                     <div className="h-full ">
                     {children}

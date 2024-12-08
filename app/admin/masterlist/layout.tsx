@@ -9,7 +9,6 @@ const MasterlistLayout = ({ children }:Props) => {
         
         <div className="min-h-screen flex flex-grow bg-dash">
             <>
-                <Sidebar_admin />
                 <main className="flex-grow">
                     <div className="h-full">
                         {children}

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HealthServicesPage = () => {
   return (
-    <div className="p-3 h-full w-full">
+    <div className="p-3 h-screen sm:h-full w-full">
       <UserClientComponent>
         <div className="bg-gray-400 h-[680px] overflow-auto rounded-2xl pt-2">
           <Dashboard_header />
