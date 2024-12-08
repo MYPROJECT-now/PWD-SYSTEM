@@ -10,10 +10,10 @@ export const MobileSidebar = () => {
     return(
         <Sheet>
             <SheetTrigger>
-                <Menu className="text-dash "/>
+                <Menu className="text-white border-white "/>
             </SheetTrigger>
 
-            <SheetContent className="p-0 z-[100] bg-dash" side="left">
+            <SheetContent className="p-0 z-[100] bg-dash w-[300px]" side="left">
                 <Sidebar_user />
             </SheetContent>
         </Sheet>

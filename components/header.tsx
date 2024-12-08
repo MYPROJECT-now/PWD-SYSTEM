@@ -25,7 +25,7 @@ export const Dashboard_header = () => {
     return (
         <div className="flex flex-row justify-between mx-9">
             <div className="flex flex-row">
-             <nav className="lg:hidden block h-full items-center  mt-3 mr-5 z-50">
+             <nav className="lg:hidden block h-full items-center  mt-3 mr-1 z-50">
             <MobileSidebar />
             </nav>
           

@@ -7,15 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const DashboardPage = () => {
-  // const { open } = useBenefitsModal();
-  // const { open } = useRightsModal();
-
-  // const { open: benefitsOpen } = useBenefitsModal();
-  // const { open: rightsOpen } = useRightsModal();
-
-  // const benefitsModal = useBenefitsModal();
-  // const rightsModal = useRightsModal();
-
 
   return(
     <div className="h-full p-3">
@@ -23,14 +14,16 @@ const DashboardPage = () => {
       <div className="bg-gray-300 rounded-2xl pt-2 h-full ">
       <Dashboard_header />
         <UserNotif />
-        <div className="flex flex-col sm:flex-row mx-10 gap-3 ">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 ">
           {/* dashboard */}
           <div className="mt-4 bg-white h-full w-[400px] sm:w-[800px]"> 
+
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
               Dashboard
             </div>
             
             <div className="flex flex-col sm:flex-row my-[100px] sm:my-0 bg-white h-[535px] gap-10 items-center justify-center">
+
               <Link href="/user/benefits">
               <button
               >
