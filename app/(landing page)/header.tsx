@@ -39,7 +39,7 @@ export const Header = () => {
     }, [isSignedIn, isLoaded, user, router]);
 
     return (
-        <header className="h-20 w-full border-b-2 border-black-300 xl:px-5">
+        <header className="h-20 w-full border-b-2 border-black-300 px-1 xl:px-5">
             <div className="lg:max-w-screen-2xl mx-auto flex items-center justify-between  h-full xl:px-20">
                 <div className="flex items-center ">
                     <Image

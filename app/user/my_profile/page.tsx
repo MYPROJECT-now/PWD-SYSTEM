@@ -10,7 +10,7 @@ const AccountsPage = async () => {
     <div className="min-h-full p-3 w-full">
       <div className="bg-gray-400 h-full rounded-2xl py-2">
         <Dashboard_header />
-        <div className="mt-4 mx-2 sm:mx-16 bg-white h-full w-[400px] sm:w-[800px] xl:w-[1100px]">
+        <div className="mt-4 mx-2 sm:mx-16 bg-white h-full w-[330px] sm:w-[800px] xl:w-[1100px]">
           <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
             Account Details
           </div>

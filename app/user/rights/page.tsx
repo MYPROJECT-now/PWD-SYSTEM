@@ -5,11 +5,11 @@ import Link from "next/link";
 
 const HealthServicesPage = () => {
   return (
-    <div className="p-3 h-full w-full">
+    <div className="p-3 h-screen">
       <UserClientComponent>
-        <div className="bg-gray-400 h-[680px] overflow-auto rounded-2xl pt-2">
+        <div className="bg-gray-400 h-full overflow-auto rounded-2xl pt-2">
           <Dashboard_header />
-          <div className="mt-4 mx-2 xl:mx-16 bg-white max-h-[600px] overflow-auto">
+          <div className="mt-4 mx-2 xl:mx-16 bg-white pb-5 overflow-auto">
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5 sticky top-0 z-10">
              Rights
             </div>
