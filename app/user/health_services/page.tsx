@@ -89,17 +89,15 @@ const HealthServicesPage = () => {
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center  gap-5  ">
         <div className=" mt-10 sm:mt-[70px] px-10 lg:px-[200px]">
         <div className="flex flex-row items-center gap-3 mb-3">
-          <Image src="/pwd.jpg" width={30} height={30} alt="logo" />
+          <Image src="/home.png" width={50} height={50} alt="logo" />
           <p className="text:sm sm:text-3xl font-extrabold text-white">PWD Health Services</p>
         </div>
         <p className="text-white text-sm sm:text-xl">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
-          consequatur veniam temporibus natus deserunt odio inventore placeat...
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
-          consequatur veniam temporibus natus deserunt odio inventore placeat...
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
-          consequatur veniam temporibus natus deserunt odio inventore placeat...
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem officia animi cupiditate
+        The Comprehensive Program for Persons with Disabilities aims to promote services to all types of 
+        PWDs 0-59 years of age and are members of the Self-Help Groups of PWDs. The program focuses on areas 
+        of disability prevention, rehabilitation and equalization of opportunities. Moreover, it is intended to 
+        enhance PWDs capacity to attain a more meaningful, productive and satisfying way of life and ultimately 
+        become self-reliant, productive and contributing members of society.
         </p>
       </div>
       </div>
