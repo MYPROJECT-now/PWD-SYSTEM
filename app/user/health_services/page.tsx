@@ -170,7 +170,7 @@ const HealthServicesPage = () => {
             </ol>
           </div>
 
-          <p className="text-[10px] sm:text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
+          <p className="text-xl sm:text-sm text-center mt-2">Note Documents must be Original or Certified true copy</p>
           <hr className="border-2" />
         </div>
         </div>
