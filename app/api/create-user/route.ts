@@ -121,6 +121,7 @@ export async function POST(request: Request) {
       await db.insert(clerkUserTable).values({
         pwdNo,  // Link the PWD number to Clerk user
         clerkId: user.id,  // Store Clerk user ID
+        email,
       });
   
     

@@ -21,6 +21,7 @@ import { relations } from "drizzle-orm";
     id: serial("id").primaryKey(),
     pwdNo: varchar("pwd_no", { length: 50 }).notNull().unique(), // Reference to pwdNo
     clerkId: varchar("clerk_id", { length: 100 }).notNull(), // Clerk's generated user ID
+    email: varchar("email", { length: 100 }).notNull().unique(),
   });
 
   export const notificationTable = pgTable("notification", {

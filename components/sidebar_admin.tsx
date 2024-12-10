@@ -50,6 +50,12 @@ export const Sidebar_admin = ({ className }: Props) => {
                     />
 
                     <SidebarItem 
+                        label="Change User&#39;s Password" 
+                        href="/admin/reset"
+                        iconSrc="/create.png" 
+                    />
+
+                    <SidebarItem 
                         label="Notifications" 
                         href="/admin/notification"
                         iconSrc="/notif.png" 
