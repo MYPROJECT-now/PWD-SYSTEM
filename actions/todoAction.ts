@@ -15,7 +15,7 @@ export const getData = () => {
 
   // functions for crud
 export const addTodo = async (pwdNo: string, surname: string, name: string,  middleName: string, Purok: string,
-  age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
+  age: number, dateOfBirth: string, gender: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
   try {
     await db.insert(pwdTable).values({
       pwdNo: pwdNo,
@@ -24,7 +24,8 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
       middleName: middleName,
       Purok: Purok,
       age: age,
-      contactNo: contactNo,
+      dateOfBirth: dateOfBirth,
+      gender: gender,
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,
@@ -107,7 +108,7 @@ export const deleteTodo = async (id: number) => {
 
 
 export const editTodo = async (id: number, pwdNo: string, surname: string, name: string, middlename: string, 
-  purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
+  purok: string, age: number, dataOfBirth: string, gender: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => {
   await db
     .update(pwdTable)
     .set({
@@ -117,7 +118,8 @@ export const editTodo = async (id: number, pwdNo: string, surname: string, name:
       middleName: middlename,
       Purok: purok,
       age: age,
-      contactNo: contactNo,
+      dateOfBirth: dataOfBirth,
+      gender: gender,
       issueDate: issueDate,
       expiryDate: expiryDate,
       typeOfDisability: typeOfDisability,

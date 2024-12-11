@@ -40,18 +40,23 @@ const ChangePassword = () => {
         <Dashboard_header_user />
             <div className="mt-4 mx-2 sm:mx-auto xl:mx-16 bg-white h-[600px] w-[380px] sm:w-[720px] xl:w-[1100px]   items-center flex flex-col">
                 <div className="bg-dash font-bold w-full  text-white text-lg py-5 pl-5">
-                    Account Management
+                    Change Password
                 </div>
 
-        <div className="flex flex-col  items-center justify-center bg-slate-400 w-[300px] sm:w-[450px] h-[300px] mt-[80px] rounded-lg">
-            <h1 className="text-xl sm:text-3xl text-white font-bold">Change Your Password</h1>
+        <div className="flex flex-col gap-4  items-center justify-center bg-white shadow-gray-500 shadow-xl w-[300px] sm:w-[450px] lg:w-[700px] h-[300px] xl:h-[350px] mt-[80px] rounded-lg">
+            <div className="flex flex-col w-full px-10 ">
+            <label htmlFor="current-password">Current Password</label>
             <input
                 type="password"
                 placeholder="Enter current password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="mt-4 p-2 border rounded"
+                className="mt-4 p-2 border rounded w-[400px]"
             />
+            </div>
+
+            <div className="flex flex-col w-full px-10 ">
+            <label htmlFor="current-password">New Password</label>
             <input
                 type="password"
                 placeholder="Enter new password"
@@ -59,6 +64,7 @@ const ChangePassword = () => {
                 onChange={(e) => setNewPassword(e.target.value)}
                 className="mt-4 p-2 border rounded"
             />
+            </div>
             {error && <p className="text-red-500 mb-2">{error}</p>}
             <Button
             variant="signin"

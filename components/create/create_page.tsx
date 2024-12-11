@@ -9,10 +9,10 @@ export const CreatePage = () => {
         <div>
               <Button
       variant="add"
-      size="lg"
+      size="sm"
         onClick={open}
       >
-        ADD CREATE USER
+        CREATE USERS ACCOUNT
       </Button>
       <CreateModal />
     </div>

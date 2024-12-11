@@ -10,7 +10,8 @@ import { relations } from "drizzle-orm";
     suffix: varchar('suffix', { length: 10 }),  // Optional
     Purok: varchar('purok', { length: 10 }).notNull(),
     age: integer('age').notNull(),
-    contactNo: varchar('contact', { length: 11 }).notNull(),
+    dateOfBirth: date('date_of_birth').notNull(),
+    gender: varchar('gender', { length: 10 }).notNull(),
     issueDate: date('issue_date').notNull(),
     expiryDate: date('expiry_date').notNull(),
     typeOfDisability: varchar('type_of_disability', { length: 50 }).notNull(),

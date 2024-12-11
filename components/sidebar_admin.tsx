@@ -16,12 +16,12 @@ export const Sidebar_admin = ({ className }: Props) => {
             )}
         >
             
-            <div className="gap-1 mx-auto flex flex-col items-start ">
+            <div className="gap-1 mx-auto flex flex-col items-center mt-[50px] ">
                 <Link href="/admin/dashboard_admin">
                     <Image 
                         src="/home.png" 
-                        width={150}
-                        height={150} 
+                        width={130}
+                        height={130} 
                         alt="PWD Icon"
                     />
                    

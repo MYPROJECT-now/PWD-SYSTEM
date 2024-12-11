@@ -20,12 +20,12 @@ export const Sidebar_user = ({ className }: Props) => {
                 className
             )}
         >
-             <div className="gap-1 mx-auto flex flex-col items-center">
+             <div className="gap-1 mx-auto flex flex-col items-center  mt-[50px]">
                 <Link href="/user/user_dashboard">
                     <Image 
                         src="/home.png" 
-                        width={150}
-                        height={150} 
+                        width={120}
+                        height={120} 
                         alt="Home"
                     />
                    

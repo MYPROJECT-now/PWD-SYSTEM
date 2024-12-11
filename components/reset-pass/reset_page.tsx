@@ -9,7 +9,7 @@ export const ResetPage = () => {
         <div>
               <Button
       variant="add"
-      size="lg"
+      size="sm"
         onClick={open}
       >
         RESET USERS PASSWORD

@@ -15,7 +15,7 @@ import { Button } from "./ui/button";
 
 interface Props {
   createTodo: (pwdNo: string, surname: string, name: string, middleName: string, Purok: string, 
-    age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => void;
+    age: number, dateOfBirth: string, gender: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string) => void;
 }
 
 
@@ -27,7 +27,8 @@ interface Props {
   const [middleName, setMiddleName] = useState("");
   const [Purok, setPurok] = useState("");
   const [age, setAge] = useState("");
-  const [contactNo, setContactNo] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [gender, setGender] = useState("");
   const [issueDate, setIssueDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [typeOfDisability, setTypeOfDisability] = useState("");
@@ -67,9 +68,15 @@ interface Props {
     setAge(e.target.value);
   };
 
-  const handleContactNoChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setContactNo(e.target.value);
+  const handleDateOfBirthChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDateOfBirth(e.target.value);
   };
+
+  const handleGenderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setGender(e.target.value);
+  };
+
+
 
   const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIssueDate(e.target.value);
@@ -86,12 +93,12 @@ interface Props {
 
   // Event handler for adding a new todo
   const handleAdd = async () => {
-    if (!pwdNo || !surname || !name || !Purok || !age || !issueDate || !expiryDate || !typeOfDisability) {
+    if (!pwdNo || !surname || !name || !Purok || !age || !dateOfBirth || !gender || !issueDate || !expiryDate || !typeOfDisability) {
       alert("Please fill in all fields");
       return;
     }
 
-    if (!moment(issueDate, 'YYYY-MM-DD', true).isValid() || !moment(expiryDate, 'YYYY-MM-DD', true).isValid()) {
+    if (!moment(issueDate, 'YYYY-MM-DD', true).isValid() || !moment(expiryDate, 'YYYY-MM-DD', true).isValid() || !moment(dateOfBirth , 'YYYY-MM-DD', true).isValid()) {
       alert('Invalid date format. Please use YYYY-MM-DD.');
       return;
     }
@@ -105,18 +112,15 @@ interface Props {
       return;
     }
 
-    if (contactNo && (contactNo.length !== 11 || contactNo.startsWith('09') !== true)) {
-      alert('Invalid contact number. Please enter a valid contact number.');
-      return;
-    }
-    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), contactNo, issueDate, expiryDate, typeOfDisability, status);
+    createTodo(pwdNo, surname, name, middleName, Purok, Number(age), dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status);
     setPwdNo("");
     setSurname("");
     setName("");
     setMiddleName("");
     setPurok("");
     setAge("");
-    setContactNo("");
+    setDateOfBirth("");
+    setGender("");
     setIssueDate("");
     setExpiryDate("");
     setTypeOfDisability("");
@@ -145,6 +149,22 @@ interface Props {
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
                     onChange={handleIssueDateChange}
                     value={issueDate}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-row gap-9">
+                <div className="w-[120px] text-black text-start  ">
+                  <label htmlFor="ExpiryDate">ExpiryDate:</label>
+                </div>
+
+                <div className="w-[320px] text-black">
+                  <input
+                    type="text"
+                    placeholder="YYYY-MM-DD"
+                    className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+                    onChange={handleExpiryDateChange}
+                    value={expiryDate}
                   />
                 </div>
               </div>
@@ -254,37 +274,37 @@ interface Props {
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="ContactNo">ContactNo:</label>
+                  <label htmlFor="DateOfBirth">DateOfBirth:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="09123456789"
+                    placeholder="YYYY-MM-DD"  
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
-                    onChange={handleContactNoChange}
-                    value={contactNo}
+                    onChange={handleDateOfBirthChange}
+                    value={dateOfBirth}
                   />
                 </div>
               </div>
-
-             
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">
-                  <label htmlFor="ExpiryDate">ExpiryDate:</label>
+                  <label htmlFor="Gender">Gender:</label>
                 </div>
 
                 <div className="w-[320px] text-black">
                   <input
                     type="text"
-                    placeholder="YYYY-MM-DD"
+                    placeholder="Female"
                     className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
-                    onChange={handleExpiryDateChange}
-                    value={expiryDate}
+                    onChange={handleGenderChange}
+                    value={gender}
                   />
                 </div>
               </div>
+
+              
 
               <div className="flex flex-row gap-9">
                 <div className="w-[120px] text-black text-start  ">

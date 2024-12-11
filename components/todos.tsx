@@ -36,13 +36,13 @@ const Todos: FC<Props> = ({ todos }) => {
   const totalPages = Math.ceil(displayedTodos.length / itemsPerPage);
 
   const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
-    age: number, contactNo: string, issueDate: string, expiryDate: string,  typeOfDisability: string, status: string) => {
+    age: number, dateOfBirth: string, gender: string, issueDate: string, expiryDate: string,  typeOfDisability: string, status: string) => {
     setTodoItems((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
-        age, contactNo, issueDate, expiryDate, typeOfDisability, status } : todo))
+        age, dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status } : todo))
     );
     editTodo(id, pwdNo, surname, name, middlename, purok,
-      age, contactNo, issueDate, expiryDate, typeOfDisability, status);
+      age, dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status);
   };
 
   const deleteTodoItem = (id: number) => {
@@ -107,14 +107,13 @@ const Todos: FC<Props> = ({ todos }) => {
           <thead>
             <tr>
               <th className="border border-black px-1 min-w-[10px]">IssuanceDate</th>
+              <th className="border border-black px-1">ExpiryDate</th>
               <th className="border border-black px-1 min-w-[10px]">PwdNo</th>
-              <th className="border border-black px-1 min-w-[130px]">Surname</th>
-              <th className="border border-black px-1 min-w-[130px]">Name</th>
-              <th className="border border-black px-1 min-w-[130px]">Middlename</th>
+              <th className="border border-black px-1 min-w-[180px]">Fullname</th>
               <th className="border border-black px-1 min-w-[100px]">Address</th>
               <th className="border border-black px-1 min-w-[20px]">Age</th>
-              <th className="border border-black px-1 min-w-[130px]">ContactNo</th>
-              <th className="border border-black px-1">ExpiryDate</th>
+              <th className="border border-black px-1 min-w-[20px]">DateOfBirth</th>
+              <th className="border border-black px-1 min-w-[20px]">Gender</th>
               <th className="border border-black px-1 min-w-[255px]">Type of Disability</th>
               <th className="border border-black px-4">Status</th>
               <th className="border border-black px-10">Actions</th>

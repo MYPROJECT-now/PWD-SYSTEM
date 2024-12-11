@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 interface Props {
   todo: pwdType;
   changeTodoText: (id: number, pwdNo: string, surname: string, name: string, middleName: string, 
-    Purok: string, age: number, contactNo: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string ) => void;
+    Purok: string, age: number, dateOfBirth: string, gender: string, issueDate: string, expiryDate: string, typeOfDisability: string, status: string ) => void;
   // toggleIsTodoDone: (id: number, done: boolean) => void;
   deleteTodoItem: (id: number) => void;
 }
@@ -27,7 +27,8 @@ const Todo: FC<Props> = ({
   const [middlename, setMiddlename] = useState(todo.middleName);
   const [purok, setPurok] = useState(todo.Purok);
   const [age, setAge] = useState(todo.age);
-  const [contactNo, setContactNo] = useState(todo.contactNo);
+  const [dateOfBirth, setDateOfBirth] = useState(todo.dateOfBirth); 
+  const [gender, setGender] = useState(todo.gender);
   const [issueDate, setIssueDate] = useState(todo.issueDate);
   const [expiryDate, setExpiryDate] = useState(todo.expiryDate);
   const [typeOfDisability, setTypeOfDisability] = useState(todo.typeOfDisability);
@@ -58,8 +59,12 @@ const Todo: FC<Props> = ({
     setAge(Number(e.target.value));
   };
 
-  const handleContactNoChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setContactNo(e.target.value);
+  const handleDateOfBirthChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDateOfBirth(e.target.value);
+  };
+
+  const handleGenderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setGender(e.target.value);
   };
   const handleIssueDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIssueDate(e.target.value);
@@ -84,7 +89,7 @@ const Todo: FC<Props> = ({
 
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, contactNo, issueDate, expiryDate, typeOfDisability, status);
+    changeTodoText(todo.id, pwdNo, surname, name, middlename, purok, age, dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status);
     setEditing(false);
   };
 
@@ -96,8 +101,9 @@ const Todo: FC<Props> = ({
     setName(todo.name);
     setMiddlename(todo.middleName); 
     setPurok(todo.Purok);
+    setDateOfBirth(todo.dateOfBirth);
+    setGender(todo.gender);
     setAge(todo.age);
-    setContactNo(todo.contactNo);
     setIssueDate(todo.issueDate);
     setExpiryDate(todo.expiryDate);
     setTypeOfDisability(todo.typeOfDisability);
@@ -125,6 +131,11 @@ const Todo: FC<Props> = ({
     }
   };
 
+  const getFullName = () => {
+    const middleInitial = middlename ? middlename[0].toUpperCase() + "." : "";
+    return `${surname}, ${name} ${middleInitial}`;
+  };
+
 
 return (
   <>
@@ -141,39 +152,54 @@ return (
     <td className="border border-black w-auto">
       <input
         type="text"
+        value={expiryDate}
+        onChange={handleExpiryDateChange}
+        readOnly={!editing}
+        className="w-full text-center"
+      />
+    </td>
+
+    <td className="border border-black w-auto">
+      <input
+        type="text"
         value={pwdNo}
         onChange={handlePwdNoChange}
         readOnly={!editing}
         className="w-full text-center "
       />
     </td>
+
     <td className="border border-black w-auto">
+  {editing ? (
+    <div className="flex flex-row gap-1">
       <input
         type="text"
         value={surname}
         onChange={handleSurnameChange}
-        readOnly={!editing}
+        placeholder="Surname"
         className="w-full text-center"
       />
-    </td>
-    <td className="border border-black w-auto">
       <input
         type="text"
         value={name}
         onChange={handleNameChange}
-        readOnly={!editing}
+        placeholder="Name"
         className="w-full text-center"
       />
-    </td>
-    <td className="border border-black w-auto">
       <input
         type="text"
         value={middlename}
         onChange={handleMiddlenameChange}
-        readOnly={!editing}
+        placeholder="Middle Name"
         className="w-full text-center"
       />
-    </td>
+    </div>
+  ) : (
+    <span className="text-start pl-1">{getFullName()}</span>
+  )}
+</td>
+
+      
     <td className="border border-black w-auto">
       <input
         type="text"
@@ -196,19 +222,18 @@ return (
     <td className="border border-black w-auto">
       <input
         type="text"
-        value={contactNo}
-        onChange={handleContactNoChange}
+        value={dateOfBirth}
+        onChange={handleDateOfBirthChange}
         readOnly={!editing}
         className="w-full text-center"
       />
     </td>
 
- 
     <td className="border border-black w-auto">
       <input
         type="text"
-        value={expiryDate}
-        onChange={handleExpiryDateChange}
+        value={gender}
+        onChange={handleGenderChange}
         readOnly={!editing}
         className="w-full text-center"
       />

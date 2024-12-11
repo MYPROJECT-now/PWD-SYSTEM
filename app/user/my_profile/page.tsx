@@ -55,19 +55,23 @@ const AccountsPage = async () => {
               </div>
             </div>
 
-            <div className="">
+            <div className="flex flex-col sm:flex-row gap-5">
               <div>
                 <p>Address</p>
-                <p className="w-[200px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.Purok}</p>
+                <p className="w-[300px] sm:w-[200px] xl:w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.Purok}</p>
+              </div>
+
+              <div>
+                <p>Date of Birth</p>
+                <p className="w-[300px] sm:w-[200px] xl:w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.dateOfBirth}</p>
+              </div>
+
+              <div>
+                <p>Gender</p>
+                <p className="w-[300px] sm:w-[200px] xl:w-[300px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.gender}</p>
               </div>
             </div>
 
-            <div className="mb-5">
-              <div>
-                <p>Contact Information</p>
-                <p className="w-[200px] bg-neutral-300 rounded-sm border-2 border-neutral-400 text-neutral-500 p-1">{userData.contactNo}</p>
-              </div>
-            </div>
 
           </div>
         </div>

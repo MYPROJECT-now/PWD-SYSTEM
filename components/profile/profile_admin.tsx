@@ -46,9 +46,7 @@ export const Profile_admin = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                 <SignOutButton>
-                    <button>
                         LOGOUT
-                    </button>
                 </SignOutButton>
                 </DropdownMenuItem>
             </DropdownMenuContent>

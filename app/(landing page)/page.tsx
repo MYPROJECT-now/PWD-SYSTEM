@@ -43,14 +43,14 @@ export default function Home() {
     <div className="w-full h-full relative">
     <Image src="/health.jpg" fill alt="logo" />
     <div className="absolute w-full h-full bg-dash opacity-70" />
-    <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center -mt-8 sm:-mt-4 mx-auto  gap-3">
+    <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center -mt-10 sm:-mt-4 mx-auto  gap-3">
       <div>
         <Image
         src="/home.png"
-        width={200}
-        height={200}
+        width={150}
+        height={150}
         alt="logo"
-        className="hidden sm:block" />
+        className="hidden sm:block mb-3" />
 
         <Image
         src="/home.png"
