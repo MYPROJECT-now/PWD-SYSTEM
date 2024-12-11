@@ -62,7 +62,7 @@ const ChangePassword = () => {
                 placeholder="Enter new password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="mt-4 p-2 border rounded"
+                className="mt-4 p-2 border rounded w-[400px]"
             />
             </div>
             {error && <p className="text-red-500 mb-2">{error}</p>}
