@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header } from "@/components/header/header";
 import AdminClientComponent from "../admin_validate";
 import { getTotalPwd, getStatusDistribution  } from "@/actions/todoAction";
 import AgeDistributionChart from '@/components/analytics/ageChart';

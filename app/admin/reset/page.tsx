@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header } from "@/components/header/header";
 import AdminClientComponent from "../admin_validate";
 
 const ChangePassword = () => {

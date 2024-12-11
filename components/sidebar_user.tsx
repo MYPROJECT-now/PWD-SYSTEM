@@ -3,9 +3,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
-import { ClerkLoading, ClerkLoaded, SignOutButton } from "@clerk/nextjs";
-import { Loader} from "lucide-react";
-import { Button } from "./ui/button";
 
 
 type Props = {
@@ -19,7 +16,7 @@ export const Sidebar_user = ({ className }: Props) => {
     return (
         <div
             className={cn(
-                "flex flex-col h-screen w-[250px] items-center pt-5 justify-between ",
+                "flex flex-col h-screen w-[250px] items-center pt-5",
                 className
             )}
         >
@@ -55,36 +52,6 @@ export const Sidebar_user = ({ className }: Props) => {
                    
                 </div>
 
-            </div>
-                
-            {/* ClerkLoading and ClerkLoaded components added here for alignment */}
-            <div className="pb-[110px] w-full px-12 text-center mt-[170px]">
-                <ClerkLoading>
-                    <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
-                </ClerkLoading>
-                <ClerkLoaded>
-                <div className="flex flex-col gap-5 items-center">
-                <div className="flex flex-col gap-1">
-                <SidebarItem 
-                        label="MY PROFILE" 
-                        href="/user/my_profile"
-                        iconSrc="/achievement.png" 
-                    />
-                <SidebarItem 
-                        label="ACCOUNT MANAGEMENT" 
-                        href="/user/account"
-                        iconSrc="/achievement.png" 
-                    />
-                </div>
-                <SignOutButton>
-                    <Button
-                    variant="signin"
-                    size="lg"
-                    >
-                        Log Out</Button>
-                </SignOutButton>
-                </div>
-                </ClerkLoaded>
             </div>
            
         </div>

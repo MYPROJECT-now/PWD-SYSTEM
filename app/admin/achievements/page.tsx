@@ -1,7 +1,7 @@
 "use client"; // Ensure this component is client-side
 
 import { useState, useEffect } from "react";
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header } from "@/components/header/header";
 import { getAchievements, deleteAchievement } from "@/actions/todoAction";
 import Image from "next/image";
 import AdminClientComponent from "../admin_validate";

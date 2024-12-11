@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import AdminClientComponent from '../admin_validate';
-import { Dashboard_header } from '@/components/header';
+import { Dashboard_header } from '@/components/header/header';
 import { Button } from '@/components/ui/button';
 
 export default function CreateUserForm() {

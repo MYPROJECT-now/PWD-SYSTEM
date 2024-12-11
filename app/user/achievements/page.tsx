@@ -1,11 +1,11 @@
 "use client"; // Ensure this component is client-side
 
 import { useState, useEffect } from "react";
-import { Dashboard_header } from "@/components/header";
 import { Achievements } from "@/components/achievements/achievements";
 import { getAchievements } from "@/actions/todoAction";
 import UserClientComponent from "@/app/admin/user_validate";
 import Image from "next/image";
+import { Dashboard_header_user } from "@/components/header/header_user";
 
 type Achievement = {
   id: number;
@@ -32,7 +32,7 @@ const AchievementsPage = () => {
     <div className="h-full p-3 w-full">
       <UserClientComponent>
         <div className="bg-gray-300 h-full rounded-2xl pt-2">
-          <Dashboard_header />
+          <Dashboard_header_user />
           <div className="mt-4 mx-2 sm:mx-16 h-[580px] flex flex-col items-center">
             <div className="bg-dash font-bold text-white text-lg py-5 pl-5 w-full">
               Achievements

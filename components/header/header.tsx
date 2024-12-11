@@ -3,7 +3,8 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { useEffect } from "react";
-import { MobileSidebar } from "./mobile-sidebar";
+import { MobileSidebar } from "../mobile-sidebar";
+import { Profile_admin } from "../profile/profile_admin";
 
 export const Dashboard_header = () => {
     const { user } = useUser();
@@ -52,7 +53,7 @@ export const Dashboard_header = () => {
                 {user?.fullName}
                 </h1>
 
-                {user?.imageUrl && (
+                {/* {user?.imageUrl && (
                     <div className="">
                     <Image
                         src={user.imageUrl}
@@ -62,7 +63,8 @@ export const Dashboard_header = () => {
                         className="rounded-full" // For circular profile picture
                     />
                     </div>
-                )}
+                )} */}
+                 <Profile_admin />
             
                 
             </div>

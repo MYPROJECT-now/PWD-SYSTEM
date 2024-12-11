@@ -1,5 +1,5 @@
 import UserClientComponent from "@/app/admin/user_validate";
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header } from "@/components/header/header";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -2,9 +2,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
-import { ClerkLoading, ClerkLoaded, SignOutButton } from "@clerk/nextjs";
-import { Loader} from "lucide-react";
-import { Button } from "./ui/button";
 
 type Props = {
     className?: string;
@@ -14,7 +11,7 @@ export const Sidebar_admin = ({ className }: Props) => {
     return (
         <div
             className={cn(
-                "flex flex-col h-screen w-[250px] items-center pt-5 justify-between",
+                "flex flex-col h-screen w-[250px] items-center pt-5",
                 className
             )}
         >
@@ -44,18 +41,6 @@ export const Sidebar_admin = ({ className }: Props) => {
                     />
 
                     <SidebarItem 
-                        label="Create User" 
-                        href="/admin/create"
-                        iconSrc="/create.png" 
-                    />
-
-                    <SidebarItem 
-                        label="Change User&#39;s Password" 
-                        href="/admin/reset"
-                        iconSrc="/create.png" 
-                    />
-
-                    <SidebarItem 
                         label="Notifications" 
                         href="/admin/notification"
                         iconSrc="/notif.png" 
@@ -72,23 +57,7 @@ export const Sidebar_admin = ({ className }: Props) => {
 
             </div>
                 
-            {/* ClerkLoading and ClerkLoaded components added here for alignment */}
-            <div className="pb-10">
-                <ClerkLoading>
-                    <Loader className="h-10 w-10 text-muted-foreground animate-spin" />
-                </ClerkLoading>
-                <ClerkLoaded>
-
-                <SignOutButton>
-                    <Button
-                    variant="signin"
-                    size="lg"
-                    >
-                        LOGOUT
-                    </Button>
-                </SignOutButton>
-                </ClerkLoaded>
-            </div>
+           
            
         </div>
     );

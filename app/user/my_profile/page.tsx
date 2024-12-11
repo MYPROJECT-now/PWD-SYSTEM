@@ -1,6 +1,6 @@
 // accountsPage.tsx
 import { getUserData } from "@/actions/todoAction";
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header_user } from "@/components/header/header_user";
 
 const AccountsPage = async () => {
   // Get the current user's data based on Clerk authentication
@@ -9,7 +9,7 @@ const AccountsPage = async () => {
   return (
     <div className="min-h-full p-3 w-full">
       <div className="bg-gray-400 h-full rounded-2xl py-2 ">
-        <Dashboard_header />
+        <Dashboard_header_user />
         <div className="mt-4 mx-auto sm:mx-16 bg-white h-full w-[330px] sm:w-[800px] xl:w-[1100px]">
           <div className="bg-dash font-bold text-white text-lg py-5 pl-5">
             Account Details

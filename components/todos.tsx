@@ -3,7 +3,6 @@ import { FC, useState } from "react";
 import Todo from "./todo";
 import { deleteTodo, editTodo } from "@/actions/todoAction";
 import { pwdType } from "@/types/todoTypes";
-import { Add_page } from "./Add_page";
 import { Button } from "./ui/button";
 
 interface Props {
@@ -18,7 +17,7 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
 
   const filteredTodoItems = todoItems.filter(
     (todo) => todo.Purok === selectedPurok || selectedPurok === ""
@@ -153,7 +152,7 @@ const Todos: FC<Props> = ({ todos }) => {
         </Button>
       </div>
 
-      <Add_page />
+      
     </main>
   );
 };

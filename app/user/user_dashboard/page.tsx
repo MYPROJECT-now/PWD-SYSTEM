@@ -1,7 +1,7 @@
 "use client"
 import UserClientComponent from "@/app/admin/user_validate";
 import { BulletinList } from "@/components/bulletin/bulletinList";
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header_user } from "@/components/header/header_user";
 import { UserNotif } from "@/components/notif/user-notif";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,7 @@ const DashboardPage = () => {
     <div className="h-full p-3">
       <UserClientComponent>
       <div className="bg-gray-300 rounded-2xl pt-2 h-full ">
-      <Dashboard_header />
+      <Dashboard_header_user />
         <UserNotif />
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 ">
           {/* dashboard */}

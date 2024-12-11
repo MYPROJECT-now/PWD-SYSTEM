@@ -1,5 +1,5 @@
 
-import { Dashboard_header } from "@/components/header";
+import { Dashboard_header } from "@/components/header/header";
 import AdminClientComponent from "../../admin_validate";
 // import { getAllPwds } from "@/db/queries";
 import Todos from "@/components/todos";
