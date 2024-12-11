@@ -54,16 +54,18 @@ import { useCreateModal } from "@/store/use-create-modal";
     };
     return (
         <Dialog open={isOpen} onOpenChange={close}>
-        <DialogContent>
+        <DialogContent className="w-[500px] h-[350px] flex flex-col rounded-t-lg">
           <DialogHeader>
-            <DialogTitle>Create User</DialogTitle>
+            <DialogTitle className=" text-center text-white text-xl pt-3 bg-green-700 w-[502px] h-[50px] -mt-[26px] -ml-[26px] rounded-t-lg">
+              Create User</DialogTitle>
             <DialogDescription>
             <form onSubmit={handleSubmit}>
-                  <div className="flex flex-col justify-between h-[200px]">
-                    <div className="flex flex-col gap-2">
+                  <div className="flex flex-col justify-center h-[280px] gap-10">
+                    <div className="flex flex-col items-center gap-2">
+
                       <div className="flex flex-row gap-2 mb-1">
-                        <div className="w-[100px] h-[50px] text-2xl text-semibold flex items-center">
-                          <label htmlFor="pwdNo">PWD No</label>
+                        <div className="w-[150px] h-[50px] text-xl text-semibold flex items-center">
+                          <label htmlFor="pwdNo">PWD Number</label>
                         </div>
                         <input
                           type="text"
@@ -72,22 +74,22 @@ import { useCreateModal } from "@/store/use-create-modal";
                           value={pwdNo}
                           onChange={(e) => setPwdNo(e.target.value)}
                           required
-                          className="h-[50px] rounded-sm text-black pl-3"
+                          className="h-[50px] w-[250px] border rounded-sm text-black pl-3"
                         />
                       </div>
 
                       <div className="flex flex-row gap-2">
-                        <div className="w-[100px] h-[50px] text-2xl text-semibold flex items-center">
+                        <div className="w-[150px] h-[50px] text-xl text-semibold flex items-center">
                           <label htmlFor="email">Email</label>
                         </div>
                         <input
                           type="email"
-                          placeholder=" cW9Ig@example.com"
+                          placeholder=" pwd@example.com"
                           id="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
-                          className="h-[50px] rounded-sm text-black pl-3"
+                          className="h-[50px] w-[250px] border rounded-sm text-black pl-3"
                         />
                       </div>
                     </div>

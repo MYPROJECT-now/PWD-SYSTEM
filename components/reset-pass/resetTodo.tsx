@@ -49,23 +49,27 @@ import { Button } from "../ui/button";
     };
     return (
         <Dialog open={isOpen} onOpenChange={close}>
-        <DialogContent>
+        <DialogContent className="w-[500px] h-[280px] flex flex-col rounded-t-lg">
           <DialogHeader>
-            <DialogTitle>Reset User&apos;s Password</DialogTitle>
+            <DialogTitle className=" text-center text-white text-xl pt-3 bg-green-700 w-[502px] h-[50px] -mt-[26px] -ml-[26px] rounded-t-lg">
+              Reset User&apos;s Password</DialogTitle>
             <DialogDescription>
-           <div className="flex flex-col">
+           <div className="flex flex-col justify-center items-center h-[200px] gap-4">
+            <div className="flex flex-col ">
+            <label className="text-sm" htmlFor="pwd no."> PWD number</label>
             <input
               type="text"
               placeholder="Enter PWD No."
               value={pwdNo}
               onChange={(e) => setPwdNo(e.target.value)}
-              className="mt-4 p-2 border rounded text-black"
+              className="  p-2 w-[400px] border-2 rounded text-black "
             />
+            </div>
             <Button
               onClick={handlePasswordReset}
-              variant="signin"
+              variant="add"
               size="lg"
-              className="mt-5 text-black"
+              className="mt-5 text-white"
               disabled={isButtonDisabled} // Disable button when state is true
             >
               Reset Password
