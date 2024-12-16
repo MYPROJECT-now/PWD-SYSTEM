@@ -13,22 +13,23 @@ const ChangePassword = () => {
     const { user } = useUser(); // Get the user from the Clerk hook
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const [error, setError] = useState("");
     const router = useRouter();
 
     const handlePasswordChange = async () => {
         if (!user) {
-            setError("User not found");
+            alert("User not found");
             return;
         }
 
         const result = await handlePasswordUpdate(user, currentPassword, newPassword); // Pass user to the function
 
         if (result.error) {
-            setError(result.error);
+            alert(result.error);
         } else {
             router.push("/user/user_dashboard");
         }
+
+        setNewPassword("");
     };
 
     return (
@@ -50,7 +51,6 @@ const ChangePassword = () => {
                 onChange={(e) => setNewPassword(e.target.value)}
                 className="mt-4 p-2 border rounded"
             />
-            {error && <p className="text-red-500 mt-2">{error}</p>}
             <Button
                 onClick={handlePasswordChange}
                 variant="signin"

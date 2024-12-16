@@ -15,10 +15,8 @@ type Achievement = {
 };
 
 const AchievementsPage = () => {
-  // Explicitly type the state to either null or an array of Achievement objects
   const [data, setData] = useState<Achievement[] | null>(null);
 
-  // Fetch data when the component mounts
   useEffect(() => {
     const fetchAchievements = async () => {
       const achievementsData = await getAchievements();
@@ -26,7 +24,7 @@ const AchievementsPage = () => {
     };
 
     fetchAchievements();
-  }, []); // Empty dependency array means it runs once when the component mounts
+  }, []); 
 
   return (
     <div className="h-full p-3 w-full">

@@ -45,34 +45,6 @@ export const addTodo = async (pwdNo: string, surname: string, name: string,  mid
   }
 };
 
-
-// export const deleteTodo = async (id: number) => {
-//   await db.delete(pwdTable).where(eq(pwdTable.id, id));
-//   revalidatePath("/admin/masterlist");
-// };
-
-// export const deleteTodo = async (id: number) => {
-//   // Fetch the PWD record to get the pwdNo for relation
-//   const pwdRecord = await db
-//     .select({ pwdNo: pwdTable.pwdNo })
-//     .from(pwdTable)
-//     .where(eq(pwdTable.id, id))
-//     .limit(1);
-
-//   if (pwdRecord.length > 0) {
-//     const pwdNo = pwdRecord[0].pwdNo;
-
-//     // Delete the related record in clerkUserTable
-//     await db.delete(clerkUserTable).where(eq(clerkUserTable.pwdNo, pwdNo));
-//   }
-
-//   // Delete the PWD record from pwdTable
-//   await db.delete(pwdTable).where(eq(pwdTable.id, id));
-
-//   // Revalidate the page
-//   revalidatePath("/admin/masterlist");
-// };
-
 export const deleteTodo = async (id: number) => {
   // Fetch the PWD record along with the related clerkId by joining pwdTable and clerkUserTable
   const pwdRecord = await db
@@ -190,23 +162,6 @@ export async function getStatusDistribution() {
 
   return statusCounts[0];
 }
-
-
-//notification
-
-//adding notification
-// export const addNotif = async ( title: string, message: string, imageSrc: string) => {
-//   try {
-//   await db.insert(notificationTable).values({
-//     title: title,
-//     message: message,
-//     imageSrc: imageSrc
-//   });
-//   return { success: true };
-//   } catch (error) {
-//     console.error("Error adding notification:", error);
-//   }
-// };
 
 export const addNotif = async (title: string, message: string, imageSrc?: string | null) => {
   try {

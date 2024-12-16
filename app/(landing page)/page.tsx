@@ -14,6 +14,7 @@ import { Loader } from "lucide-react";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { ResetSignInPage } from "@/components/reset-signIn/reset_page";
    
 
 
@@ -105,6 +106,9 @@ export default function Home() {
                         </SignedOut>
                         
                     </ClerkLoaded>
+      </div>
+      <div>
+        <ResetSignInPage />
       </div>
     </div>
   </div>

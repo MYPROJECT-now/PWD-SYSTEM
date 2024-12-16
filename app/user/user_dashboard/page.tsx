@@ -7,16 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const DashboardPage = () => {
-  // const { open } = useBenefitsModal();
-  // const { open } = useRightsModal();
-
-  // const { open: benefitsOpen } = useBenefitsModal();
-  // const { open: rightsOpen } = useRightsModal();
-
-  // const benefitsModal = useBenefitsModal();
-  // const rightsModal = useRightsModal();
-
-
   return(
     <div className="h-full p-3">
       <UserClientComponent>
@@ -36,12 +26,7 @@ const DashboardPage = () => {
               >
                 <div className=" flex flex-col items-center justify-center h-[280px] w-[280px] rounded-lg  border-r-4 border-b-4 border-r-black border-b-black">
                   <div className="mb-3">
-                    <Image
-                    src="/benefits.jpeg" 
-                    width={200} 
-                    height={200} 
-                    alt="logo" 
-                    />
+                 <Image src="/benefits.jpeg"  width={200}  height={200} alt="logo" />
                   </div>
                   <p>
                     Benefits and Privileges
@@ -55,12 +40,7 @@ const DashboardPage = () => {
                 >
                   <div className=" flex flex-col items-center justify-center h-[280px] w-[280px] rounded-lg border-r-4 border-b-4 border-r-black border-b-black">
                     <div className="mb-3">
-                        <Image
-                        src="/rights.jpeg" 
-                        width={200} 
-                        height={200} 
-                        alt="logo" 
-                        />
+                   <Image src="/rights.jpeg"   width={200}   height={200}   alt="logo"    />
                     </div>
                     <p>
                       Rights

@@ -27,6 +27,8 @@ const buttonVariants = cva(
           "text-neutral-400 shadow-sm underline-offset-4 hover:underline focus:text-neutral-100",
         add:
           "bg-green-700 text-primary-foreground shadow-sm hover:bg-green-500 border-green-800 border-b-4 active:border-b-0",
+        forget:
+        "underline underline-offset-4 hover:underline focus:text-neutral-100 text-white underline-white " , 
   
 
         default2:

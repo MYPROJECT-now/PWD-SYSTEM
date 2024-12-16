@@ -15,13 +15,21 @@ const Todos: FC<Props> = ({ todos }) => {
   const [selectedPurok, setSelectedPurok] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Targeted date filter state
+  const [filterDate, setFilterDate] = useState<string>("");
+
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  const filteredTodoItems = todoItems.filter(
-    (todo) => todo.Purok === selectedPurok || selectedPurok === ""
-  );
+  const filteredTodoItems = todoItems.filter((todo) => {
+    const isPurokMatch = todo.Purok === selectedPurok || selectedPurok === "";
+    const isDateMatch = filterDate
+      ? new Date(todo.issueDate).toISOString().split("T")[0] === filterDate
+      : true;
+
+    return isPurokMatch && isDateMatch;
+  });
 
   const displayedTodos =
     searchQuery !== "" ? searchResults : filteredTodoItems;
@@ -35,14 +43,57 @@ const Todos: FC<Props> = ({ todos }) => {
 
   const totalPages = Math.ceil(displayedTodos.length / itemsPerPage);
 
-  const changeTodoText = (id: number, pwdNo: string, surname: string, name: string, middlename: string, purok: string,
-    age: number, dateOfBirth: string, gender: string, issueDate: string, expiryDate: string,  typeOfDisability: string, status: string) => {
+  const changeTodoText = (
+    id: number,
+    pwdNo: string,
+    surname: string,
+    name: string,
+    middlename: string,
+    purok: string,
+    age: number,
+    dateOfBirth: string,
+    gender: string,
+    issueDate: string,
+    expiryDate: string,
+    typeOfDisability: string,
+    status: string
+  ) => {
     setTodoItems((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, pwdNo, surname, name, middlename, purok,
-        age, dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status } : todo))
+      prev.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              pwdNo,
+              surname,
+              name,
+              middlename,
+              purok,
+              age,
+              dateOfBirth,
+              gender,
+              issueDate,
+              expiryDate,
+              typeOfDisability,
+              status,
+            }
+          : todo
+      )
     );
-    editTodo(id, pwdNo, surname, name, middlename, purok,
-      age, dateOfBirth, gender, issueDate, expiryDate, typeOfDisability, status);
+    editTodo(
+      id,
+      pwdNo,
+      surname,
+      name,
+      middlename,
+      purok,
+      age,
+      dateOfBirth,
+      gender,
+      issueDate,
+      expiryDate,
+      typeOfDisability,
+      status
+    );
   };
 
   const deleteTodoItem = (id: number) => {
@@ -72,6 +123,13 @@ const Todos: FC<Props> = ({ todos }) => {
             </option>
           ))}
         </select>
+        <input
+          type="date"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+          className="border-gray-300 border-2 rounded-md py-2"
+          placeholder="Filter by Date"
+        />
         <Button
           variant="signin"
           size="lg"
@@ -96,6 +154,7 @@ const Todos: FC<Props> = ({ todos }) => {
             setSelectedPurok("");
             setSearchQuery("");
             setSearchResults([]);
+            setFilterDate("");
           }}
         >
           Clear Filter
@@ -150,8 +209,6 @@ const Todos: FC<Props> = ({ todos }) => {
           Next
         </Button>
       </div>
-
-      
     </main>
   );
 };
