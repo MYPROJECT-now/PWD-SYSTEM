@@ -24,12 +24,18 @@ const Todos: FC<Props> = ({ todos }) => {
 
   const filteredTodoItems = todoItems.filter((todo) => {
     const isPurokMatch = todo.Purok === selectedPurok || selectedPurok === "";
-    const isDateMatch = filterDate
+    
+    // Check if either issueDate or expiryDate matches the filterDate, not both
+    const isIssueDateMatch = filterDate
       ? new Date(todo.issueDate).toISOString().split("T")[0] === filterDate
       : true;
+    const isExpiryDateMatch = filterDate
+      ? new Date(todo.expiryDate).toISOString().split("T")[0] === filterDate
+      : true;
   
-    return isPurokMatch && isDateMatch;
+    return isPurokMatch && (isIssueDateMatch || isExpiryDateMatch); // Either date can match
   });
+  
   
 
   const displayedTodos =
