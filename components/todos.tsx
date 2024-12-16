@@ -27,9 +27,10 @@ const Todos: FC<Props> = ({ todos }) => {
     const isDateMatch = filterDate
       ? new Date(todo.issueDate).toISOString().split("T")[0] === filterDate
       : true;
-
+  
     return isPurokMatch && isDateMatch;
   });
+  
 
   const displayedTodos =
     searchQuery !== "" ? searchResults : filteredTodoItems;
